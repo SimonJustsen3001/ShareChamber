@@ -1,3 +1,6 @@
+using Application.Handlers;
+using MediatR;
+
 namespace API.Extensions
 {
   public static class ApplicationServiceExtensions
@@ -15,7 +18,9 @@ namespace API.Extensions
         });
       });
 
+      services.AddMediatR(typeof(Login.Handler));
       services.AddAutoMapper(typeof(Program).Assembly);
+
 
       return services;
     }

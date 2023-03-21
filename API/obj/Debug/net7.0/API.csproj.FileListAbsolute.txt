@@ -48,3 +48,16 @@ C:\Users\blade\Desktop\CSharp\ClothesShop\API\bin\Debug\net7.0\Microsoft.Extensi
 C:\Users\blade\Desktop\CSharp\ClothesShop\API\bin\Debug\net7.0\Microsoft.Extensions.Options.dll
 C:\Users\blade\Desktop\CSharp\ClothesShop\API\bin\Debug\net7.0\AutoMapper.dll
 C:\Users\blade\Desktop\CSharp\ClothesShop\API\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\blade\Desktop\CSharp\ClothesShop\API\bin\Debug\net7.0\Humanizer.dll
+C:\Users\blade\Desktop\CSharp\ClothesShop\API\bin\Debug\net7.0\MediatR.dll
+C:\Users\blade\Desktop\CSharp\ClothesShop\API\bin\Debug\net7.0\MediatR.Contracts.dll
+C:\Users\blade\Desktop\CSharp\ClothesShop\API\bin\Debug\net7.0\MediatR.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\blade\Desktop\CSharp\ClothesShop\API\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\blade\Desktop\CSharp\ClothesShop\API\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\blade\Desktop\CSharp\ClothesShop\API\bin\Debug\net7.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\blade\Desktop\CSharp\ClothesShop\API\bin\Debug\net7.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\blade\Desktop\CSharp\ClothesShop\API\bin\Debug\net7.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\blade\Desktop\CSharp\ClothesShop\API\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\blade\Desktop\CSharp\ClothesShop\API\bin\Debug\net7.0\Mono.TextTemplating.dll
+C:\Users\blade\Desktop\CSharp\ClothesShop\API\bin\Debug\net7.0\System.CodeDom.dll
+C:\Users\blade\Desktop\CSharp\ClothesShop\API\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll

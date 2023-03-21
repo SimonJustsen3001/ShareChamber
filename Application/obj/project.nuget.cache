@@ -1,11 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "URQuPDb4+bC895XquUT06qimFLdRTz1amv2Pnqcts3vLtjMi2Tp0GWhyN9JHj/LrVRCxyDoYwTKHtluoNiWn5Q==",
+  "dgSpecHash": "uGQ3+YxJCtNhr1hOetsBvOiQiZz4oaleWf1ql6innbInuU5PNgXaqi7ZQe3Ld4k9Q6eJhvg1+GPvmt5s5LhhGQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Application\\Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\blade\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
     "C:\\Users\\blade\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",
+    "C:\\Users\\blade\\.nuget\\packages\\mediatr\\11.0.0\\mediatr.11.0.0.nupkg.sha512",
+    "C:\\Users\\blade\\.nuget\\packages\\mediatr.contracts\\1.0.1\\mediatr.contracts.1.0.1.nupkg.sha512",
+    "C:\\Users\\blade\\.nuget\\packages\\mediatr.extensions.microsoft.dependencyinjection\\11.1.0\\mediatr.extensions.microsoft.dependencyinjection.11.1.0.nupkg.sha512",
     "C:\\Users\\blade\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\7.0.4\\microsoft.aspnetcore.cryptography.internal.7.0.4.nupkg.sha512",
     "C:\\Users\\blade\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\7.0.4\\microsoft.aspnetcore.cryptography.keyderivation.7.0.4.nupkg.sha512",
     "C:\\Users\\blade\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\7.0.4\\microsoft.aspnetcore.identity.entityframeworkcore.7.0.4.nupkg.sha512",
