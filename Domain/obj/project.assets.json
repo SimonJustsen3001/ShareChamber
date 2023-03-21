@@ -774,11 +774,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Domain\\Domain.csproj",
+      "projectUniqueName": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Domain\\Domain.csproj",
       "projectName": "Domain",
-      "projectPath": "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Domain\\Domain.csproj",
+      "projectPath": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Domain\\Domain.csproj",
       "packagesPath": "C:\\Users\\blade\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Domain\\obj\\",
+      "outputPath": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Domain\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\blade\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -788,6 +788,7 @@
         "net7.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

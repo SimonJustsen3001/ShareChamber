@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "mSNKuCds+uD2+Nc76mHOsGh1pjCnmHHk0f6CW1w9p1mXW6nWGFgngHIOewSu3ZwuQGWO4nYQ2RmOWSwKX8Dgxw==",
+  "dgSpecHash": "KCjtOm0kizwHre27aQB2ubpmJVnclvYhdKx4Z8TErczrUv3UB3kqmb7ZCqFi571QnoXT8yPN34hLvvJrGiHbmQ==",
   "success": true,
-  "projectFilePath": "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Domain\\Domain.csproj",
+  "projectFilePath": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Domain\\Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\blade\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\7.0.4\\microsoft.aspnetcore.cryptography.internal.7.0.4.nupkg.sha512",
     "C:\\Users\\blade\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\7.0.4\\microsoft.aspnetcore.cryptography.keyderivation.7.0.4.nupkg.sha512",
