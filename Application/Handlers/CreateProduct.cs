@@ -1,26 +1,23 @@
 using Application.Core;
-using Application.Interfaces;
 using Domain;
 using MediatR;
 using Persistance;
 
 namespace Application.Handlers
 {
-  public class Login
+  public class CreateProduct
   {
     public class Command : IRequest<Result<Unit>>
     {
-      public AppUser AppUser { get; set; }
+      public Product Product { get; set; }
     }
 
     public class Handler : IRequestHandler<Command, Result<Unit>>
     {
       private readonly DataContext _context;
-      private readonly IUserAccessor _userAccessor;
 
-      public Handler(DataContext context, IUserAccessor userAccessor)
+      public Handler(DataContext context)
       {
-        _userAccessor = userAccessor;
         _context = context;
       }
 

@@ -31,8 +31,8 @@
               "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Domain\\Domain.csproj": {
                 "projectPath": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Domain\\Domain.csproj"
               },
-              "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\Persistance.csproj": {
-                "projectPath": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\Persistance.csproj"
+              "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\Persistance.csproj": {
+                "projectPath": "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\Persistance.csproj"
               }
             }
           }
@@ -141,14 +141,14 @@
         }
       }
     },
-    "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\Persistance.csproj": {
+    "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\Persistance.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\Persistance.csproj",
+        "projectUniqueName": "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\Persistance.csproj",
         "projectName": "Persistance",
-        "projectPath": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\Persistance.csproj",
+        "projectPath": "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\Persistance.csproj",
         "packagesPath": "C:\\Users\\blade\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\obj\\",
+        "outputPath": "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\blade\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -180,6 +180,12 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
+          "dependencies": {
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[7.0.3, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

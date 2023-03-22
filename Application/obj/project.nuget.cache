@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "uGQ3+YxJCtNhr1hOetsBvOiQiZz4oaleWf1ql6innbInuU5PNgXaqi7ZQe3Ld4k9Q6eJhvg1+GPvmt5s5LhhGQ==",
+  "dgSpecHash": "wHfs+0bTndJHkquD1PzUCJ34Zly1GZeRxOn0h6dkuAxt5EAMQtar0Bvpq0WF+d6vmCXpKa8l7o1ZhKtsODN0Yw==",
   "success": true,
   "projectFilePath": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Application\\Application.csproj",
   "expectedPackageFiles": [
@@ -27,7 +27,9 @@
     "C:\\Users\\blade\\.nuget\\packages\\microsoft.extensions.logging\\7.0.0\\microsoft.extensions.logging.7.0.0.nupkg.sha512",
     "C:\\Users\\blade\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\7.0.0\\microsoft.extensions.logging.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\blade\\.nuget\\packages\\microsoft.extensions.options\\7.0.1\\microsoft.extensions.options.7.0.1.nupkg.sha512",
-    "C:\\Users\\blade\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512"
+    "C:\\Users\\blade\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512",
+    "C:\\Users\\blade\\.nuget\\packages\\npgsql\\7.0.2\\npgsql.7.0.2.nupkg.sha512",
+    "C:\\Users\\blade\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\7.0.3\\npgsql.entityframeworkcore.postgresql.7.0.3.nupkg.sha512"
   ],
   "logs": []
 }

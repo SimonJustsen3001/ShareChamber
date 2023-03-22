@@ -1,5 +1,9 @@
 using Application.Handlers;
+using Application.Interfaces;
+using Infrastructure.Security;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
+using Persistance;
 
 namespace API.Extensions
 {
@@ -9,6 +13,10 @@ namespace API.Extensions
     {
       services.AddEndpointsApiExplorer();
       services.AddSwaggerGen();
+      services.AddDbContext<DataContext>(opt =>
+      {
+        opt.UseNpgsql(config.GetConnectionString("DefaultConnection"));
+      });
 
       services.AddCors(opt =>
       {
@@ -18,8 +26,10 @@ namespace API.Extensions
         });
       });
 
-      services.AddMediatR(typeof(Login.Handler));
+      services.AddMediatR(typeof(GetProducts.Handler));
       services.AddAutoMapper(typeof(Program).Assembly);
+      services.AddHttpContextAccessor();
+      services.AddScoped<IUserAccessor, UserAccessor>();
 
 
       return services;

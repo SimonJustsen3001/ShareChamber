@@ -6,5 +6,7 @@ namespace Domain
   {
     public string DisplayName { get; set; }
 
+    public ICollection<Product> Products { get; set; } = new List<Product>();
+
   }
 }

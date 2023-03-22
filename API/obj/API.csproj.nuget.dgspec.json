@@ -30,6 +30,9 @@
             "projectReferences": {
               "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Application\\Application.csproj": {
                 "projectPath": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Application\\Application.csproj"
+              },
+              "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Infrastructure\\Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Infrastructure\\Infrastructure.csproj"
               }
             }
           }
@@ -44,6 +47,14 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Authentication.Core": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[7.0.4, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[7.0.3, )"
@@ -113,8 +124,8 @@
               "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Domain\\Domain.csproj": {
                 "projectPath": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Domain\\Domain.csproj"
               },
-              "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\Persistance.csproj": {
-                "projectPath": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\Persistance.csproj"
+              "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\Persistance.csproj": {
+                "projectPath": "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\Persistance.csproj"
               }
             }
           }
@@ -223,14 +234,79 @@
         }
       }
     },
-    "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\Persistance.csproj": {
+    "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\Persistance.csproj",
-        "projectName": "Persistance",
-        "projectPath": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\Persistance.csproj",
+        "projectUniqueName": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Infrastructure\\Infrastructure.csproj",
+        "projectName": "Infrastructure",
+        "projectPath": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Infrastructure\\Infrastructure.csproj",
         "packagesPath": "C:\\Users\\blade\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\obj\\",
+        "outputPath": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\blade\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Application\\Application.csproj": {
+                "projectPath": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Application\\Application.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Http": {
+              "target": "Package",
+              "version": "[2.2.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.200\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\Persistance.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\Persistance.csproj",
+        "projectName": "Persistance",
+        "projectPath": "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\Persistance.csproj",
+        "packagesPath": "C:\\Users\\blade\\.nuget\\packages\\",
+        "outputPath": "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\blade\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -262,6 +338,12 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
+          "dependencies": {
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[7.0.3, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
