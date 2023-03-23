@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "kdyGKF4Vw8ewLJT9hGebMB6Gc9OcujYOgo7aeXAf5y0n0o37hIRlCOt0XPgjCCcMxXahWIgvmhvxwdu/NFrB9g==",
+  "dgSpecHash": "LZsFUCyy4pczOxeMtdTngqXG3aZbfiT6wn5/K3RELdmPvlIBuRSQY+gLV/+2SrP1yeGZvXDnsJm21sSDF2ylmg==",
   "success": true,
-  "projectFilePath": "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\API\\API.csproj",
+  "projectFilePath": "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\API\\API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\blade\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
     "C:\\Users\\blade\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",

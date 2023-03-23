@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\API\\API.csproj": {}
+    "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\API\\API.csproj": {}
   },
   "projects": {
-    "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\API\\API.csproj": {
+    "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\API\\API.csproj",
+        "projectUniqueName": "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\API\\API.csproj",
+        "projectPath": "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\API\\API.csproj",
         "packagesPath": "C:\\Users\\blade\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\API\\obj\\",
+        "outputPath": "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\blade\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -21,17 +21,18 @@
           "net7.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Application\\Application.csproj": {
-                "projectPath": "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Application\\Application.csproj"
+              "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\Application\\Application.csproj": {
+                "projectPath": "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\Application\\Application.csproj"
               },
-              "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Infrastructure\\Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Infrastructure\\Infrastructure.csproj"
+              "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\Infrastructure\\Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\Infrastructure\\Infrastructure.csproj"
               }
             }
           }
@@ -104,14 +105,14 @@
         }
       }
     },
-    "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Application\\Application.csproj": {
+    "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Application\\Application.csproj",
+        "projectUniqueName": "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Application\\Application.csproj",
+        "projectPath": "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\Application\\Application.csproj",
         "packagesPath": "C:\\Users\\blade\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Application\\obj\\",
+        "outputPath": "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\blade\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -128,11 +129,11 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Domain\\Domain.csproj": {
-                "projectPath": "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Domain\\Domain.csproj"
+              "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\Domain\\Domain.csproj"
               },
-              "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\Persistance.csproj": {
-                "projectPath": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\Persistance.csproj"
+              "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\Persistance\\Persistance.csproj": {
+                "projectPath": "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\Persistance\\Persistance.csproj"
               }
             }
           }
@@ -176,14 +177,14 @@
         }
       }
     },
-    "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Domain\\Domain.csproj": {
+    "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Domain\\Domain.csproj",
+        "projectPath": "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\blade\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Domain\\obj\\",
+        "outputPath": "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\blade\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -241,14 +242,14 @@
         }
       }
     },
-    "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Infrastructure\\Infrastructure.csproj": {
+    "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Infrastructure\\Infrastructure.csproj",
+        "projectPath": "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\Infrastructure\\Infrastructure.csproj",
         "packagesPath": "C:\\Users\\blade\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Infrastructure\\obj\\",
+        "outputPath": "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\blade\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -265,8 +266,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Application\\Application.csproj": {
-                "projectPath": "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Application\\Application.csproj"
+              "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\Application\\Application.csproj": {
+                "projectPath": "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\Application\\Application.csproj"
               }
             }
           }
@@ -306,14 +307,14 @@
         }
       }
     },
-    "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\Persistance.csproj": {
+    "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\Persistance\\Persistance.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\Persistance.csproj",
+        "projectUniqueName": "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\Persistance\\Persistance.csproj",
         "projectName": "Persistance",
-        "projectPath": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\Persistance.csproj",
+        "projectPath": "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\Persistance\\Persistance.csproj",
         "packagesPath": "C:\\Users\\blade\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\obj\\",
+        "outputPath": "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\Persistance\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\blade\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -330,8 +331,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Domain\\Domain.csproj": {
-                "projectPath": "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Domain\\Domain.csproj"
+              "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\Domain\\Domain.csproj"
               }
             }
           }

@@ -9,7 +9,7 @@ namespace Application.Handlers
   {
     public class Command : IRequest<Result<Unit>>
     {
-      public Product Product { get; set; }
+      public Movie Movie { get; set; }
     }
 
     public class Handler : IRequestHandler<Command, Result<Unit>>

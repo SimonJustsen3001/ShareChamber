@@ -159,7 +159,7 @@ namespace Persistance.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Products",
+                name: "Movies",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
@@ -168,9 +168,9 @@ namespace Persistance.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Products", x => x.Id);
+                    table.PrimaryKey("PK_Movies", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Products_AspNetUsers_AppUserId",
+                        name: "FK_Movies_AspNetUsers_AppUserId",
                         column: x => x.AppUserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id");
@@ -214,8 +214,8 @@ namespace Persistance.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Products_AppUserId",
-                table: "Products",
+                name: "IX_Movies_AppUserId",
+                table: "Movies",
                 column: "AppUserId");
         }
 
@@ -238,7 +238,7 @@ namespace Persistance.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Products");
+                name: "Movies");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

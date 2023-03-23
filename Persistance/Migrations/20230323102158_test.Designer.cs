@@ -12,7 +12,7 @@ using Persistance;
 namespace Persistance.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230322122551_test")]
+    [Migration("20230323102158_test")]
     partial class test
     {
         /// <inheritdoc />
@@ -92,7 +92,7 @@ namespace Persistance.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("Domain.Product", b =>
+            modelBuilder.Entity("Domain.Movie", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -108,7 +108,7 @@ namespace Persistance.Migrations
 
                     b.HasIndex("AppUserId");
 
-                    b.ToTable("Products");
+                    b.ToTable("Movies");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -243,10 +243,10 @@ namespace Persistance.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Domain.Product", b =>
+            modelBuilder.Entity("Domain.Movie", b =>
                 {
                     b.HasOne("Domain.AppUser", null)
-                        .WithMany("Products")
+                        .WithMany("Movies")
                         .HasForeignKey("AppUserId");
                 });
 
@@ -303,7 +303,7 @@ namespace Persistance.Migrations
 
             modelBuilder.Entity("Domain.AppUser", b =>
                 {
-                    b.Navigation("Products");
+                    b.Navigation("Movies");
                 });
 #pragma warning restore 612, 618
         }

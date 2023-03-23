@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\Persistance.csproj": {}
+    "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\Persistance\\Persistance.csproj": {}
   },
   "projects": {
-    "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Domain\\Domain.csproj": {
+    "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Domain\\Domain.csproj",
+        "projectPath": "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\blade\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Domain\\obj\\",
+        "outputPath": "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\blade\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -69,14 +69,14 @@
         }
       }
     },
-    "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\Persistance.csproj": {
+    "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\Persistance\\Persistance.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\Persistance.csproj",
+        "projectUniqueName": "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\Persistance\\Persistance.csproj",
         "projectName": "Persistance",
-        "projectPath": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\Persistance.csproj",
+        "projectPath": "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\Persistance\\Persistance.csproj",
         "packagesPath": "C:\\Users\\blade\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\obj\\",
+        "outputPath": "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\Persistance\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\blade\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -93,8 +93,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Domain\\Domain.csproj"
+              "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\Domain\\Domain.csproj"
               }
             }
           }

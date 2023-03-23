@@ -10,7 +10,7 @@ namespace Persistance
 
     }
 
-    public DbSet<Product> Products { get; set; }
+    public DbSet<Movie> Movies { get; set; }
 
 
   }

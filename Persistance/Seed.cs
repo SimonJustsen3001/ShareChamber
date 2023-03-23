@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Domain;
 using Microsoft.AspNetCore.Identity;
 
@@ -22,15 +18,15 @@ namespace Persistance
               );
       }
 
-      if (!context.Products.Any())
+      if (!context.Movies.Any())
       {
-        context.Products.AddRange(
-                new Product
+        context.Movies.AddRange(
+                new Movie
                 {
                   Id = new Guid("0e72553d-b3b7-4563-8a90-eccf49d78633"),
                   Name = "Hoodie"
                 },
-                new Product
+                new Movie
                 {
                   Id = new Guid("8df2cd65-aadc-4d73-9c32-1a6d7e0de9fe"),
                   Name = "T-shirt"
