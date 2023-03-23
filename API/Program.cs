@@ -1,4 +1,9 @@
 using API.Extensions;
+using Domain;
+using Infrastructure.Security;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Persistance;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,5 +28,21 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+using var scope = app.Services.CreateScope();
+var services = scope.ServiceProvider;
+
+try
+{
+  var context = services.GetRequiredService<DataContext>();
+  var userManager = services.GetRequiredService<UserManager<AppUser>>();
+  await context.Database.MigrateAsync();
+  await Seed.SeedData(context, userManager);
+}
+catch (Exception ex)
+{
+  var logger = services.GetRequiredService<ILogger<Program>>();
+  logger.LogError(ex, "An error occurred during migration");
+}
 
 app.Run();

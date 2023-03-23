@@ -68,3 +68,5 @@ C:\Users\blade\Desktop\CSharp\ClothesShop\API\bin\Debug\net7.0\Microsoft.Identit
 C:\Users\blade\Desktop\CSharp\ClothesShop\API\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\blade\Desktop\CSharp\ClothesShop\API\bin\Debug\net7.0\Npgsql.dll
 C:\Users\blade\Desktop\CSharp\ClothesShop\API\bin\Debug\net7.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+C:\Users\blade\Desktop\CSharp\ClothesShop\api\bin\Debug\net7.0\Newtonsoft.Json.dll
+C:\Users\blade\Desktop\CSharp\ClothesShop\api\bin\Debug\net7.0\IMDbApiLib.dll

@@ -31,8 +31,8 @@
               "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Domain\\Domain.csproj": {
                 "projectPath": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Domain\\Domain.csproj"
               },
-              "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\Persistance.csproj": {
-                "projectPath": "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\Persistance.csproj"
+              "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\Persistance.csproj": {
+                "projectPath": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\Persistance.csproj"
               }
             }
           }
@@ -141,14 +141,14 @@
         }
       }
     },
-    "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\Persistance.csproj": {
+    "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\Persistance.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\Persistance.csproj",
+        "projectUniqueName": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\Persistance.csproj",
         "projectName": "Persistance",
-        "projectPath": "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\Persistance.csproj",
+        "projectPath": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\Persistance.csproj",
         "packagesPath": "C:\\Users\\blade\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\obj\\",
+        "outputPath": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\blade\\AppData\\Roaming\\NuGet\\NuGet.Config",

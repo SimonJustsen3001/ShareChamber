@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\API\\API.csproj": {}
+    "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\API\\API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\API\\API.csproj": {
+    "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\API\\API.csproj",
+        "projectUniqueName": "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\API\\API.csproj",
+        "projectPath": "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\API\\API.csproj",
         "packagesPath": "C:\\Users\\blade\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\API\\obj\\",
+        "outputPath": "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\blade\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -21,15 +21,14 @@
           "net7.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Application\\Application.csproj": {
-                "projectPath": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Application\\Application.csproj"
+              "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Application\\Application.csproj": {
+                "projectPath": "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Application\\Application.csproj"
               },
               "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Infrastructure\\Infrastructure.csproj": {
                 "projectPath": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Infrastructure\\Infrastructure.csproj"
@@ -47,6 +46,10 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "IMDbApiLib": {
+              "target": "Package",
+              "version": "[1.9.2, )"
+            },
             "Microsoft.AspNetCore.Authentication.Core": {
               "target": "Package",
               "version": "[2.2.0, )"
@@ -64,6 +67,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[7.0.4, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -97,14 +104,14 @@
         }
       }
     },
-    "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Application\\Application.csproj": {
+    "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Application\\Application.csproj",
+        "projectUniqueName": "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Application\\Application.csproj",
+        "projectPath": "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Application\\Application.csproj",
         "packagesPath": "C:\\Users\\blade\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Application\\obj\\",
+        "outputPath": "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\blade\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -121,11 +128,11 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Domain\\Domain.csproj"
+              "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Domain\\Domain.csproj": {
+                "projectPath": "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Domain\\Domain.csproj"
               },
-              "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\Persistance.csproj": {
-                "projectPath": "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\Persistance.csproj"
+              "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\Persistance.csproj": {
+                "projectPath": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\Persistance.csproj"
               }
             }
           }
@@ -169,14 +176,14 @@
         }
       }
     },
-    "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Domain\\Domain.csproj": {
+    "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Domain\\Domain.csproj",
+        "projectUniqueName": "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Domain\\Domain.csproj",
+        "projectPath": "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\blade\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Domain\\obj\\",
+        "outputPath": "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\blade\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -258,8 +265,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Application\\Application.csproj": {
-                "projectPath": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Application\\Application.csproj"
+              "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Application\\Application.csproj": {
+                "projectPath": "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Application\\Application.csproj"
               }
             }
           }
@@ -299,14 +306,14 @@
         }
       }
     },
-    "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\Persistance.csproj": {
+    "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\Persistance.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\Persistance.csproj",
+        "projectUniqueName": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\Persistance.csproj",
         "projectName": "Persistance",
-        "projectPath": "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\Persistance.csproj",
+        "projectPath": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\Persistance.csproj",
         "packagesPath": "C:\\Users\\blade\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\obj\\",
+        "outputPath": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Persistance\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\blade\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -323,8 +330,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Domain\\Domain.csproj"
+              "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Domain\\Domain.csproj": {
+                "projectPath": "c:\\Users\\blade\\Desktop\\CSharp\\ClothesShop\\Domain\\Domain.csproj"
               }
             }
           }
