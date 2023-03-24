@@ -11,7 +11,41 @@ namespace Persistance
     }
 
     public DbSet<Movie> Movies { get; set; }
+    public DbSet<MovieList> MovieList { get; set; }
+    public DbSet<MovieMovieList> MovieMovieList { get; set; }
+    public DbSet<AppUserMovieList> AppUserMovieList { get; set; }
 
+    protected override void OnModelCreating(ModelBuilder builder)
+    {
+
+      base.OnModelCreating(builder);
+
+      builder.Entity<AppUserMovieList>()
+        .HasKey(x => new { x.AppUserId, x.MovieListId });
+
+      builder.Entity<AppUserMovieList>()
+        .HasOne(x => x.AppUser)
+        .WithMany(x => x.AppUserMovieLists)
+        .HasForeignKey(x => x.AppUserId);
+
+      builder.Entity<AppUserMovieList>()
+        .HasOne(x => x.MovieList)
+        .WithMany(x => x.AppUserMovieLists)
+        .HasForeignKey(x => x.MovieListId);
+
+      builder.Entity<MovieMovieList>()
+        .HasKey(x => new { x.MovieId, x.MovieListId });
+
+      builder.Entity<MovieMovieList>()
+        .HasOne(x => x.Movie)
+        .WithMany(x => x.MovieMovieLists)
+        .HasForeignKey(x => x.MovieId);
+
+      builder.Entity<MovieMovieList>()
+        .HasOne(x => x.MovieList)
+        .WithMany(x => x.MovieMovieLists)
+        .HasForeignKey(x => x.MovieListId);
+    }
 
   }
 }

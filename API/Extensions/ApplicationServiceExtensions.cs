@@ -26,7 +26,7 @@ namespace API.Extensions
         });
       });
 
-      services.AddMediatR(typeof(GetProducts.Handler));
+      services.AddMediatR(typeof(CreateMovie.Handler));
       services.AddAutoMapper(typeof(Program).Assembly);
       services.AddHttpContextAccessor();
       services.AddScoped<IUserAccessor, UserAccessor>();

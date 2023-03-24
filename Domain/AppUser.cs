@@ -5,8 +5,7 @@ namespace Domain
   public class AppUser : IdentityUser
   {
     public string DisplayName { get; set; }
-
-    public ICollection<Movie> Movies { get; set; } = new List<Movie>();
+    public ICollection<AppUserMovieList> AppUserMovieLists { get; set; }
 
   }
 }

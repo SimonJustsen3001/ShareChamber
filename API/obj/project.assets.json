@@ -1078,6 +1078,7 @@
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.0",
           "Domain": "1.0.0",
           "MediatR.Extensions.Microsoft.DependencyInjection": "11.1.0",
+          "Newtonsoft.Json": "13.0.3",
           "Persistance": "1.0.0"
         },
         "compile": {
@@ -3029,7 +3030,6 @@
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 7.0.4",
       "Microsoft.AspNetCore.OpenApi >= 7.0.3",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.4",
-      "Newtonsoft.Json >= 13.0.3",
       "Swashbuckle.AspNetCore >= 6.4.0",
       "System.IdentityModel.Tokens.Jwt >= 6.27.0"
     ]
@@ -3101,10 +3101,6 @@
             "suppressParent": "All",
             "target": "Package",
             "version": "[7.0.4, )"
-          },
-          "Newtonsoft.Json": {
-            "target": "Package",
-            "version": "[13.0.3, )"
           },
           "Swashbuckle.AspNetCore": {
             "target": "Package",

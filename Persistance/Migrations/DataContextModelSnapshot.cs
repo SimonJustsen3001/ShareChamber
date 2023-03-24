@@ -89,23 +89,73 @@ namespace Persistance.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
+            modelBuilder.Entity("Domain.AppUserMovieList", b =>
+                {
+                    b.Property<string>("AppUserId")
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("MovieListId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("AppUserId", "MovieListId");
+
+                    b.HasIndex("MovieListId");
+
+                    b.ToTable("AppUserMovieList");
+                });
+
             modelBuilder.Entity("Domain.Movie", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Author")
+                        .HasColumnType("text");
+
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("text");
+
+                    b.Property<string>("TitleType")
+                        .HasColumnType("text");
+
+                    b.Property<int>("Year")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Movies");
+                });
+
+            modelBuilder.Entity("Domain.MovieList", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
-
-                    b.Property<string>("AppUserId")
-                        .HasColumnType("text");
 
                     b.Property<string>("Name")
                         .HasColumnType("text");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AppUserId");
+                    b.ToTable("MovieList");
+                });
 
-                    b.ToTable("Movies");
+            modelBuilder.Entity("Domain.MovieMovieList", b =>
+                {
+                    b.Property<string>("MovieId")
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("MovieListId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("MovieId", "MovieListId");
+
+                    b.HasIndex("MovieListId");
+
+                    b.ToTable("MovieMovieList");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -240,11 +290,42 @@ namespace Persistance.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Domain.Movie", b =>
+            modelBuilder.Entity("Domain.AppUserMovieList", b =>
                 {
-                    b.HasOne("Domain.AppUser", null)
-                        .WithMany("Movies")
-                        .HasForeignKey("AppUserId");
+                    b.HasOne("Domain.AppUser", "AppUser")
+                        .WithMany("AppUserMovieLists")
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.MovieList", "MovieList")
+                        .WithMany("AppUserMovieLists")
+                        .HasForeignKey("MovieListId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
+
+                    b.Navigation("MovieList");
+                });
+
+            modelBuilder.Entity("Domain.MovieMovieList", b =>
+                {
+                    b.HasOne("Domain.Movie", "Movie")
+                        .WithMany("MovieMovieLists")
+                        .HasForeignKey("MovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.MovieList", "MovieList")
+                        .WithMany("MovieMovieLists")
+                        .HasForeignKey("MovieListId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Movie");
+
+                    b.Navigation("MovieList");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -300,7 +381,19 @@ namespace Persistance.Migrations
 
             modelBuilder.Entity("Domain.AppUser", b =>
                 {
-                    b.Navigation("Movies");
+                    b.Navigation("AppUserMovieLists");
+                });
+
+            modelBuilder.Entity("Domain.Movie", b =>
+                {
+                    b.Navigation("MovieMovieLists");
+                });
+
+            modelBuilder.Entity("Domain.MovieList", b =>
+                {
+                    b.Navigation("AppUserMovieLists");
+
+                    b.Navigation("MovieMovieLists");
                 });
 #pragma warning restore 612, 618
         }
