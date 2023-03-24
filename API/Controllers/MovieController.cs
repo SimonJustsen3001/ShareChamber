@@ -9,7 +9,7 @@ namespace API.Controllers
     [HttpGet("{query}")]
     public async Task<IActionResult> GetMovies(string query)
     {
-      return HandleResult(await Mediator.Send(new GetMovie.Query { QueryString = query }));
+      return HandleResult(await Mediator.Send(new GetMovies.Query { QueryString = query }));
     }
 
     [HttpPost("{query}")]

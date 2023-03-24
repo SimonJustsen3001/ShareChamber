@@ -7,7 +7,7 @@ using Persistance;
 
 namespace Application.Handlers
 {
-  public class GetMovie
+  public class GetMovies
   {
     public class Query : IRequest<Result<List<Movie>>>
     {
