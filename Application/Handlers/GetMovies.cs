@@ -26,7 +26,7 @@ namespace Application.Handlers
       public async Task<Result<List<Movie>>> Handle(Query request, CancellationToken cancellationToken)
       {
         var query = request.QueryString.Replace("%", " ").Replace("'", "").ToLower();
-        var movies = await _context.Movies.Where(x => x.Title.ToLower().Replace("'", "").Contains(query)).ToListAsync();
+        var movies = await _context.Movies.Where(x => x.Title.ToLower().Replace("'", "").Contains(query)).OrderBy(x => x.ImageUrl == null ? 1 : 0).ThenBy(x => x.Title).ToListAsync();
 
         return Result<List<Movie>>.Success(movies);
       }
