@@ -2,15 +2,17 @@ import { ErrorMessage, Formik, Form, Field } from "formik";
 import { observer } from "mobx-react-lite";
 import { useStore } from "../../app/stores/store";
 import * as Yup from "yup";
-import { faLock, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faLock, faEnvelope, faUser } from "@fortawesome/free-solid-svg-icons";
 import TextInputStandard from "../../app/common/forms/TextInputStandard";
 import styles from "./LoginForm.module.css";
 import Button from "../../app/common/forms/Button";
 
-export default observer(function LoginForm() {
+export default observer(function RegisterForm() {
   const { userStore, modalStore } = useStore();
 
   const validationSchema = Yup.object({
+    displayName: Yup.string().required("Please enter a name for the site"),
+    username: Yup.string().required("Please enter a username"),
     email: Yup.string().required("Email cannot be empty").email(),
     password: Yup.string().required("Password cannot be empty"),
   });
@@ -20,13 +22,15 @@ export default observer(function LoginForm() {
       validationSchema={validationSchema}
       enableReinitialize
       initialValues={{
+        displayName: "",
+        username: "",
         email: "",
         password: "",
         error: null,
       }}
       onSubmit={async (value, { setErrors }) => {
         try {
-          await userStore.login(value);
+          await userStore.register(value);
           modalStore.closeModal();
         } catch (error) {
           setErrors({ error: "Invalid email or password" });
@@ -40,6 +44,18 @@ export default observer(function LoginForm() {
           autoComplete="off"
         >
           <p className={styles.formHeader}>Welcome to Movie List</p>
+          <TextInputStandard
+            name="username"
+            placeholder="Account Name"
+            label="Username"
+            icon={faUser}
+          />
+          <TextInputStandard
+            name="displayName"
+            placeholder="Name shown to other users"
+            label="DisplayName"
+            icon={faUser}
+          />
           <TextInputStandard
             name="email"
             placeholder="Email"
@@ -65,7 +81,7 @@ export default observer(function LoginForm() {
               isSubmitting={isSubmitting}
               type="submit"
               style="login"
-              content="LOGIN"
+              content="Create Account"
             />
           </div>
         </Form>
