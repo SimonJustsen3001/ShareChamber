@@ -1,15 +1,15 @@
 import { observer } from "mobx-react-lite";
 import { Outlet } from "react-router-dom";
 import NavBar from "./NavBar";
-import "./App.Module.css";
+import ModalContainer from "../common/modals/ModalContainer";
 
 function App() {
   return (
     <>
+      <ModalContainer />
       <NavBar />
-      <div className="content">
-        <Outlet />
-      </div>
+
+      <Outlet />
     </>
   );
 }

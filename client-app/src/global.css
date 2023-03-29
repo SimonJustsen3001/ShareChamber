@@ -1,3 +1,17 @@
 body {
   background-color: rgb(38, 38, 38);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.ui.modal {
+  border-radius: 50px !important;
+  width: 100% !important;
+  max-width: 500px !important;
+  margin: 0 auto !important;
+}
+
+.content {
+  background-color: rgb(61, 61, 61) !important;
+  border-radius: 20px !important;
+  margin: 0 auto !important;
 }

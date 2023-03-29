@@ -1,4 +1,5 @@
 import { createBrowserRouter, RouteObject } from "react-router-dom";
+import LoginForm from "../../features/form/LoginForm";
 import HomePage from "../../features/home/HomePage";
 import MoviePage from "../../features/movie/MoviePage";
 import App from "../layouts/App";
@@ -10,6 +11,7 @@ export const routes: RouteObject[] = [
     children: [
       { path: "", element: <HomePage /> },
       { path: "movie", element: <MoviePage /> },
+      { path: "login", element: <LoginForm /> },
     ],
   },
 ];

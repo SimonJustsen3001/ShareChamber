@@ -4,6 +4,7 @@ import { Movie } from "../interfaces/movieInterface";
 
 export default class MovieStore {
   movies: Movie[] = [];
+  moviesWithoutPoster: Movie[] = [];
   loadingInitial = false;
 
   constructor() {
@@ -16,7 +17,8 @@ export default class MovieStore {
       const movies = await agent.Movies.list(query);
       console.log(movies);
       movies.forEach((movie) => {
-        this.movies.push(movie);
+        if (movie.imageUrl) this.movies.push(movie);
+        else this.moviesWithoutPoster.push(movie);
       });
       this.setLoadingInitial(false);
     } catch (error) {

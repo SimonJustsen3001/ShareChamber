@@ -15,13 +15,14 @@ export default observer(function MoviePage() {
       <div className="movie-grid">
         {movieStore.movies.map((movie) => (
           <div className="movie-container">
-            {movie.imageUrl ? (
-              <img className="movie-image" src={movie.imageUrl} />
-            ) : (
-              <div className="not-found">No Image</div>
-            )}
-
-            <div>{movie.title}</div>
+            <div className="movie-title">{movie.title}</div>
+            <div className="image-container">
+              <img
+                className="movie-image"
+                src={movie.imageUrl}
+                alt="Movie Poster"
+              />
+            </div>
           </div>
         ))}
       </div>

@@ -1,7 +1,5 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
 import { RouterProvider } from "react-router-dom";
-import App from "./app/layouts/App";
 import { router } from "./app/routes/Routes";
 import { store, StoreContext } from "./app/stores/store";
 import "./global.css";
