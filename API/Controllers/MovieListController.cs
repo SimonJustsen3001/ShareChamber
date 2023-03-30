@@ -8,8 +8,15 @@ namespace API.Controllers
 {
   public class MovieListController : ApiBaseController
   {
+
+    [HttpGet()]
+    public async Task<IActionResult> GetUsersMovieList()
+    {
+      return HandleResult(await Mediator.Send(new GetMovieLists.Query { }));
+    }
+
     [HttpPost("{name}")]
-    public async Task<IActionResult> GetMovies(string name)
+    public async Task<IActionResult> GetMoviesOnList(string name)
     {
       return HandleResult(await Mediator.Send(new CreateMovieList.Command { Name = name }));
     }

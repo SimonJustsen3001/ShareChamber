@@ -18,6 +18,10 @@ const Movies = {
   list: (query: string) => requests.get<Movie[]>(`/movie/${query}`),
 };
 
+// const MovieLists = {
+//   list: (query: string) => requests.get<Movie[]>()
+// }
+
 const Account = {
   current: () => requests.get<User>("/account"),
   login: (user: UserFormValues) => requests.post<User>("/account/login", user),

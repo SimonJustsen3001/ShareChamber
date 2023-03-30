@@ -142,3 +142,6 @@ C:\Users\blade\Desktop\CSharp\IMDBList\API\obj\Debug\net7.0\refint\API.dll
 C:\Users\blade\Desktop\CSharp\IMDBList\API\obj\Debug\net7.0\API.pdb
 C:\Users\blade\Desktop\CSharp\IMDBList\API\obj\Debug\net7.0\API.genruntimeconfig.cache
 C:\Users\blade\Desktop\CSharp\IMDBList\API\obj\Debug\net7.0\ref\API.dll
+C:\Users\blade\Desktop\CSharp\IMDBList\API\bin\Debug\net7.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\blade\Desktop\CSharp\IMDBList\API\bin\Debug\net7.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\blade\Desktop\CSharp\IMDBList\API\bin\Debug\net7.0\Newtonsoft.Json.Bson.dll
