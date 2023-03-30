@@ -4,7 +4,7 @@ import Cookies from "js-cookie";
 
 export default class CommonStore {
   error: ServerError | null = null;
-  token: string | null = localStorage.getItem("jwt");
+  token: string | undefined = Cookies.get("jwt");
   appLoaded = false;
 
   constructor() {
@@ -28,7 +28,7 @@ export default class CommonStore {
     this.error = error;
   };
 
-  setToken = (token: string | null) => {
+  setToken = (token: string | undefined) => {
     this.token = token;
   };
 

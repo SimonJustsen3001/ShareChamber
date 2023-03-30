@@ -1,24 +1,22 @@
 import { makeAutoObservable } from "mobx";
 import agent from "../api/agent";
-import { Movie } from "../interfaces/movieInterface";
+import { MovieList } from "../interfaces/movieListInterface";
 
-export default class MovieStore {
-  movies: Movie[] = [];
-  moviesWithoutPoster: Movie[] = [];
+export default class MovieListStore {
+  movieLists: MovieList[] = [];
   loadingInitial = false;
 
   constructor() {
     makeAutoObservable(this);
   }
 
-  loadMovies = async (query: string) => {
+  loadMovieLists = async () => {
     this.setLoadingInitial(true);
     try {
-      const movies = await agent.Movies.list(query);
-      console.log(movies);
-      movies.forEach((movie) => {
-        if (movie.imageUrl) this.movies.push(movie);
-        else this.moviesWithoutPoster.push(movie);
+      const movieLists = await agent.MovieLists.list();
+      console.log(movieLists);
+      movieLists.forEach((movieList) => {
+        this.movieLists.push(movieList);
       });
       this.setLoadingInitial(false);
     } catch (error) {

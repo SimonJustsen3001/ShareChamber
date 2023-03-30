@@ -1,8 +1,16 @@
 import axios, { AxiosResponse } from "axios";
 import { Movie } from "../interfaces/movieInterface";
+import { MovieList } from "../interfaces/movieListInterface";
 import { User, UserFormValues } from "../interfaces/userInterface";
+import { store } from "../stores/store";
 
 axios.defaults.baseURL = "https://localhost:5000/api";
+
+axios.interceptors.request.use((config) => {
+  const token = store.commonStore.token;
+  if (token && config.headers) config.headers.Authorization = `Bearer ${token}`;
+  return config;
+});
 
 const responseBody = <T>(response: AxiosResponse<T>) => response.data;
 
@@ -18,9 +26,9 @@ const Movies = {
   list: (query: string) => requests.get<Movie[]>(`/movie/${query}`),
 };
 
-// const MovieLists = {
-//   list: (query: string) => requests.get<Movie[]>()
-// }
+const MovieLists = {
+  list: () => requests.get<MovieList[]>("/movielist"),
+};
 
 const Account = {
   current: () => requests.get<User>("/account"),
@@ -32,6 +40,7 @@ const Account = {
 const agent = {
   Account,
   Movies,
+  MovieLists,
 };
 
 export default agent;

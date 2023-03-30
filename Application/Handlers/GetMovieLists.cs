@@ -26,6 +26,8 @@ namespace Application.Handlers
       {
         var user = await _context.Users.SingleOrDefaultAsync(x => x.UserName == _userAccessor.GetUserName());
 
+        System.Console.WriteLine(user.UserName);
+        System.Console.WriteLine(_userAccessor.GetUserName());
         var userMovieList = await _context.AppUserMovieList
           .Include(x => x.MovieList)
           .Where(x => x.AppUserId == user.Id)
