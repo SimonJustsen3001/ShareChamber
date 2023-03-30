@@ -14,7 +14,7 @@ export default observer(function MoviePage() {
     <>
       <div className="movie-grid">
         {movieStore.movies.map((movie) => (
-          <div className="movie-container">
+          <div className="movie-container" key={movie.id}>
             <div className="movie-title">{movie.title}</div>
             <div className="image-container">
               <img
