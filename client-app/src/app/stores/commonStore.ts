@@ -13,7 +13,12 @@ export default class CommonStore {
     reaction(
       () => this.token,
       (token) => {
-        if (token) Cookies.set("jwt", token, { secure: true, expires: 1 / 48 });
+        if (token)
+          Cookies.set("jwt", token, {
+            sameSite: "none",
+            secure: true,
+            expires: 1 / 48,
+          });
         else Cookies.remove("jwt");
       }
     );
