@@ -4,6 +4,7 @@ import { MovieList } from "../interfaces/movieListInterface";
 
 export default class MovieListStore {
   movieLists: MovieList[] = [];
+  selectedMovieList: MovieList | null = null;
   loadingInitial = false;
 
   constructor() {
