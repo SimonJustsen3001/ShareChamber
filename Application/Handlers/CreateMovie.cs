@@ -1,10 +1,12 @@
 using Application.Core;
 using Application.Interfaces;
+using Application.JsonDTOs;
 using Domain;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using Persistance;
+
 
 namespace Application.Handlers
 {
@@ -37,11 +39,13 @@ namespace Application.Handlers
       {
 
         var movies = new List<Movie>();
+        var genres = new List<Genre>();
+        var movieIds = "";
 
         var requestUri = $"https://imdb8.p.rapidapi.com/auto-complete?q={request.Query}";
 
         var client = new HttpClient();
-        var IMDBrequest = new HttpRequestMessage
+        var movieIdRequest = new HttpRequestMessage
         {
           Method = HttpMethod.Get,
           RequestUri = new Uri(requestUri),
@@ -51,22 +55,47 @@ namespace Application.Handlers
             { "X-RapidAPI-Host", "imdb8.p.rapidapi.com" },
           },
         };
-        using (var response = await client.SendAsync(IMDBrequest))
+        using (var response = await client.SendAsync(movieIdRequest))
         {
           response.EnsureSuccessStatusCode();
           var body = await response.Content.ReadAsStringAsync();
 
           dynamic movieObject = JsonConvert.DeserializeObject(body);
 
-          movies = ParseMovie(movieObject.d);
+          movieIds = GetMovieIds(movieObject.d);
 
+          // movies = ParseMovie(movieObject.d);
+        }
+
+        var getMoviesUri = new Uri($"https://moviesdatabase.p.rapidapi.com/titles/x/titles-by-ids?idsList={movieIds}&info=base_info");
+
+        System.Console.WriteLine($"https://moviesdatabase.p.rapidapi.com/titles/x/titles-by-ids?idsList={movieIds}&info=base_info");
+
+
+        var movieRequest = new HttpRequestMessage
+        {
+          Method = HttpMethod.Get,
+          RequestUri = getMoviesUri,
+          Headers =
+          {
+            { "X-RapidAPI-Key", "20fa404be5msh445f68288872167p1a35a9jsn7bc985aea709" },
+            { "X-RapidAPI-Host", "moviesdatabase.p.rapidapi.com" },
+          },
+        };
+        using (var response = await client.SendAsync(movieRequest))
+        {
+          response.EnsureSuccessStatusCode();
+          var body = await response.Content.ReadAsStringAsync();
+          System.Console.WriteLine("before deserialize");
+          var movieObject = JsonConvert.DeserializeObject<MovieResponse>(body);
+          System.Console.WriteLine("after deserialize");
+          movies = ParseMovie(movieObject);
         }
 
         foreach (var movie in movies)
         {
-          if (_context.Movies.AsNoTracking().Any(x => x.Id == movie.Id))
-            continue;
-          _context.Movies.Add(movie);
+          if (!_context.Movies.AsNoTracking().Any(x => x.Id == movie.Id))
+            _context.Movies.Add(movie);
         }
 
         var result = await _context.SaveChangesAsync() > 0;
@@ -76,40 +105,47 @@ namespace Application.Handlers
         return Result<Unit>.Success(Unit.Value);
       }
 
-      private List<Movie> ParseMovie(dynamic movieObject)
+      private string GetMovieIds(dynamic movieObject)
       {
-        List<Movie> movies = new List<Movie>();
+        string movieIds = "";
 
         foreach (var movie in movieObject)
         {
-          var movieEntity = new Movie();
-          if (!string.IsNullOrEmpty(Convert.ToString(movie.id)))
+          if (string.IsNullOrEmpty(Convert.ToString(movie.id)))
           {
-            movieEntity.Id = movie.id;
+            continue;
           }
-          if (!string.IsNullOrEmpty(Convert.ToString(movie.l)))
-          {
-            movieEntity.Title = movie.l;
-          }
-          if (!string.IsNullOrEmpty(Convert.ToString(movie.qid)))
-          {
-            movieEntity.TitleType = movie.qid;
-          }
-          if (!string.IsNullOrEmpty(Convert.ToString(movie.s)))
-          {
-            movieEntity.Author = movie.s;
-          }
-          if (!string.IsNullOrEmpty(Convert.ToString(movie.y)))
-          {
-            movieEntity.Year = movie.y;
-          }
-          if (!string.IsNullOrEmpty(Convert.ToString(movie.i)))
-          {
-            if (!string.IsNullOrEmpty(Convert.ToString(movie.i.imageUrl)))
-              movieEntity.ImageUrl = movie.i.imageUrl;
-          }
-          movies.Add(movieEntity);
+          if (movieIds == "")
+            movieIds = Convert.ToString(movie.id);
+          else
+            movieIds = $"{movieIds}%2C{Convert.ToString(movie.id)}";
         }
+
+        return movieIds;
+      }
+
+      private List<Movie> ParseMovie(MovieResponse movieObject)
+      {
+        List<Movie> movies = new List<Movie>();
+
+        foreach (var movie in movieObject.Movies)
+        {
+          if (movie.Title.Text == null)
+            continue;
+          movies.Add(new Movie
+          {
+            Title = movie.Title?.Text ?? string.Empty,
+            TitleType = movie.TitleType?.Text ?? string.Empty,
+            Description = movie.Plot?.PlotTextObj?.PlainText ?? string.Empty,
+            Rating = Convert.ToDecimal(movie.RatingsSummary?.AggregateRating ?? 0),
+            Voters = movie.RatingsSummary?.VoteCount ?? 0,
+            Year = movie.ReleaseDate?.Year ?? 0,
+            RunTime = movie.Runtime?.Seconds ?? 0,
+            Id = movie.Id,
+            ImageUrl = movie.PrimaryImage?.Url ?? string.Empty
+          });
+        }
+
         return movies;
       }
     }
