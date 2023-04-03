@@ -16,9 +16,13 @@ export default class MovieStore {
     try {
       const movies = await agent.Movies.list(query);
       console.log(movies);
+
+      this.movies = [];
+      this.moviesWithoutPoster = [];
+
       movies.forEach((movie) => {
-        if (movie.imageUrl) this.movies.push(movie);
-        else this.moviesWithoutPoster.push(movie);
+        if (movie.imageUrl) this.movies = [...this.movies, movie];
+        else this.moviesWithoutPoster = [...this.moviesWithoutPoster, movie];
       });
       this.setLoadingInitial(false);
     } catch (error) {

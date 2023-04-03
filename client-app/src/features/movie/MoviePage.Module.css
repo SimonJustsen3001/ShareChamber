@@ -1,15 +1,43 @@
+.search-bar-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 120px;
+}
+
+.search-bar {
+  background-color: rgb(63, 63, 63);
+  box-shadow: 0px 0px 10px 4px rgba(255, 255, 255, 0.5);
+  color: white;
+  border: none;
+  flex: 1;
+  width: 0;
+  max-width: 700px;
+  font-size: 30px;
+  padding: 10px 10px 10px 20px;
+  border-radius: 12px;
+  outline: none;
+}
+
+.search-bar:focus {
+  box-shadow: 0px 0px 10px 4px rgb(1, 136, 225);
+}
+
+.movie-grid-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+}
+
 .movie-grid {
   display: grid;
   position: absolute;
-  margin-top: 100px;
   padding: 20px;
-  inset: 6% 20% auto 20%;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   background-color: rgb(63, 63, 63);
   column-gap: 40px;
   row-gap: 40px;
   font-size: 20px;
-  min-width: 0;
+  min-width: 1200px;
 }
 
 .movie-container {
@@ -20,18 +48,22 @@
   height: auto;
   align-items: center;
   min-width: 0;
+  width: 200px;
   box-shadow: 0px 0px 10px 4px rgba(0, 0, 0, 0.5);
   border-radius: 12px;
+  cursor: pointer;
 }
 
 .movie-title {
   color: white;
   padding: 12px 10px;
-  width: 90%;
+  width: 100%;
+  max-width: 100%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   font-weight: bold;
+  box-sizing: border-box;
 }
 
 .image-container {
@@ -63,27 +95,30 @@
   width: 100%;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 699px) {
   .movie-grid {
     grid-template-columns: 1fr;
+    min-width: 200px;
   }
   .movie-title {
     padding: 16px 0px;
   }
 }
 
-@media ((min-width: 501px) and (max-width: 699px)) {
+@media ((min-width: 700px) and (max-width: 899px)) {
   .movie-grid {
     grid-template-columns: 1fr 1fr;
+    min-width: 600px;
   }
   .movie-title {
     padding: 15px 0px;
   }
 }
 
-@media ((min-width: 700px) and (max-width: 1099px)) {
+@media ((min-width: 900px) and (max-width: 1099px)) {
   .movie-grid {
     grid-template-columns: 1fr 1fr 1fr;
+    min-width: 800px;
   }
   .movie-title {
     padding: 14px 0px;
@@ -93,6 +128,7 @@
 @media ((min-width: 1100px) and (max-width: 1500px)) {
   .movie-grid {
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    min-width: 1000px;
   }
   .movie-title {
     padding: 13px 0px;

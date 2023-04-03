@@ -61,6 +61,7 @@ namespace Application.Handlers
           var body = await response.Content.ReadAsStringAsync();
 
           dynamic movieObject = JsonConvert.DeserializeObject(body);
+          Console.WriteLine(movieObject);
 
           movieIds = GetMovieIds(movieObject.d);
 
