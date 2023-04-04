@@ -6,6 +6,7 @@ export default class MovieStore {
   movies: Movie[] = [];
   moviesWithoutPoster: Movie[] = [];
   loadingInitial = false;
+  loading = false;
 
   constructor() {
     makeAutoObservable(this);
@@ -30,7 +31,21 @@ export default class MovieStore {
     }
   };
 
+  submitMovies = async (query: string) => {
+    this.setLoadingInitial(true);
+    try {
+      await agent.Movies.createMovie(query.replace(" ", "%20"));
+      this.setLoadingInitial(false);
+    } catch (error) {
+      this.setLoadingInitial(false);
+    }
+  };
+
   setLoadingInitial = (state: boolean) => {
     this.loadingInitial = state;
+  };
+
+  setLoading = (state: boolean) => {
+    this.loading = state;
   };
 }

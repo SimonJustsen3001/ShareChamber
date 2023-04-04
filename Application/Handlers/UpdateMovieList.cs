@@ -27,7 +27,7 @@ namespace Application.Handlers
 
       public async Task<Result<Unit>> Handle(Command request, CancellationToken cancellationToken)
       {
-        var user = await _context.Users.SingleOrDefaultAsync(x => x.UserName == "miav123"); //_userAccessor.GetUserName()
+        var user = await _context.Users.SingleOrDefaultAsync(x => x.UserName == _userAccessor.GetUserName());
 
         var userMovieList = await _context.AppUserMovieList
           .Include(x => x.MovieList)
@@ -44,9 +44,7 @@ namespace Application.Handlers
         // Ensuring Movie and List exist in database
         if (!await _context.Movies.AnyAsync(x => x.Id == request.MovieId))
         {
-          System.Console.WriteLine("hey");
           System.Console.WriteLine(request.MovieId);
-          System.Console.WriteLine("ho");
           return Result<Unit>.Failure("Failed to find movie");
         }
 

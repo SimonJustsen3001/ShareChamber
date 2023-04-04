@@ -24,10 +24,13 @@ const requests = {
 
 const Movies = {
   list: (query: string) => requests.get<Movie[]>(`/movie/${query}`),
+  createMovie: (query: string) => requests.post<Movie[]>(`/movie/${query}`, []),
 };
 
 const MovieLists = {
   list: () => requests.get<MovieList[]>("/movielist"),
+  createList: (movieList: MovieList) =>
+    requests.post<MovieList>(`/movielist/${movieList.id}`, movieList),
 };
 
 const Account = {

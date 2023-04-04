@@ -1,6 +1,7 @@
 import { makeAutoObservable } from "mobx";
 import agent from "../api/agent";
 import { MovieList } from "../interfaces/movieListInterface";
+import { store } from "./store";
 
 export default class MovieListStore {
   movieLists: MovieList[] = [];
@@ -23,6 +24,11 @@ export default class MovieListStore {
     } catch (error) {
       this.setLoadingInitial(false);
     }
+  };
+
+  createMovieList = async (creds: MovieList) => {
+    await agent.MovieLists.createList(creds);
+    store.modalStore.closeModal();
   };
 
   setLoadingInitial = (state: boolean) => {
