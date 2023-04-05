@@ -17,8 +17,11 @@ export default class MovieListStore {
     try {
       const movieLists = await agent.MovieLists.list();
       console.log(movieLists);
+
+      this.movieLists = [];
+
       movieLists.forEach((movieList) => {
-        this.movieLists.push(movieList);
+        this.movieLists = [...this.movieLists, movieList];
       });
       this.setLoadingInitial(false);
     } catch (error) {
@@ -33,5 +36,10 @@ export default class MovieListStore {
 
   setLoadingInitial = (state: boolean) => {
     this.loadingInitial = state;
+  };
+
+  setSelectedMovieList = (movieList: MovieList) => {
+    this.selectedMovieList = movieList;
+    console.log(movieList);
   };
 }

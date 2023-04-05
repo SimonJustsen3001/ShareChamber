@@ -41,6 +41,8 @@ namespace Application.Handlers
         var movies = new List<Movie>();
         var genres = new List<Genre>();
         var movieIds = "";
+        Dictionary<string, string> titleFeaturedActors = new Dictionary<string, string>();
+        Dictionary<string, string> titleDirector = new Dictionary<string, string>();
 
         var requestUri = $"https://imdb8.p.rapidapi.com/auto-complete?q={request.Query}";
 
@@ -59,19 +61,52 @@ namespace Application.Handlers
         {
           response.EnsureSuccessStatusCode();
           var body = await response.Content.ReadAsStringAsync();
+          var movieObject = JsonConvert.DeserializeObject<MovieSearchResponse>(body);
 
-          dynamic movieObject = JsonConvert.DeserializeObject(body);
-          Console.WriteLine(movieObject);
+          foreach (var movie in movieObject.D)
+          {
+            titleFeaturedActors[movie.Id] = movie.S;
+            if (movieIds != "")
+            {
+              movieIds = $"{movieIds}%2C{movie.Id}";
+              continue;
+            }
+            movieIds = movie.Id;
+          }
+        }
 
-          movieIds = GetMovieIds(movieObject.d);
 
-          // movies = ParseMovie(movieObject.d);
+
+        var directorRequest = new HttpRequestMessage
+        {
+          Method = HttpMethod.Get,
+          RequestUri = new Uri($"https://moviesdatabase.p.rapidapi.com/titles/x/titles-by-ids?idsList={movieIds}&info=creators_directors_writers"),
+          Headers =
+          {
+            { "X-RapidAPI-Key", "20fa404be5msh445f68288872167p1a35a9jsn7bc985aea709" },
+            { "X-RapidAPI-Host", "moviesdatabase.p.rapidapi.com" },
+          },
+        };
+        using (var response = await client.SendAsync(directorRequest))
+        {
+          response.EnsureSuccessStatusCode();
+          var body = await response.Content.ReadAsStringAsync();
+          var movieObject = JsonConvert.DeserializeObject<DirectorResponse>(body);
+          foreach (var movieResult in movieObject.Results)
+          {
+            if (movieResult.Directors != null && movieResult.Directors.Count > 0)
+            {
+              var firstDirector = movieResult.Directors[0];
+              if (firstDirector.Credits != null && firstDirector.Credits.Count > 0)
+              {
+                string directorName = firstDirector.Credits[0].Name.Nametext.Text;
+                titleDirector[movieResult.Id] = directorName;
+              }
+            }
+          }
         }
 
         var getMoviesUri = new Uri($"https://moviesdatabase.p.rapidapi.com/titles/x/titles-by-ids?idsList={movieIds}&info=base_info");
-
-        System.Console.WriteLine($"https://moviesdatabase.p.rapidapi.com/titles/x/titles-by-ids?idsList={movieIds}&info=base_info");
-
 
         var movieRequest = new HttpRequestMessage
         {
@@ -87,10 +122,9 @@ namespace Application.Handlers
         {
           response.EnsureSuccessStatusCode();
           var body = await response.Content.ReadAsStringAsync();
-          System.Console.WriteLine("before deserialize");
           var movieObject = JsonConvert.DeserializeObject<MovieResponse>(body);
-          System.Console.WriteLine("after deserialize");
-          movies = ParseMovie(movieObject);
+          genres = ParseGenre(movieObject);
+          movies = ParseMovie(movieObject, titleFeaturedActors, titleDirector);
         }
 
         foreach (var movie in movies)
@@ -101,31 +135,19 @@ namespace Application.Handlers
 
         var result = await _context.SaveChangesAsync() > 0;
 
-        if (!result) return Result<Unit>.Failure("Failed to find movie");
+        if (!result) return Result<Unit>.Failure("No movies available");
 
         return Result<Unit>.Success(Unit.Value);
       }
 
-      private string GetMovieIds(dynamic movieObject)
+      private List<Genre> ParseGenre(MovieResponse movieObject)
       {
-        string movieIds = "";
+        List<Genre> genres = new List<Genre>();
 
-        foreach (var movie in movieObject)
-        {
-          if (string.IsNullOrEmpty(Convert.ToString(movie.id)))
-          {
-            continue;
-          }
-          if (movieIds == "")
-            movieIds = Convert.ToString(movie.id);
-          else
-            movieIds = $"{movieIds}%2C{Convert.ToString(movie.id)}";
-        }
-
-        return movieIds;
+        return genres;
       }
 
-      private List<Movie> ParseMovie(MovieResponse movieObject)
+      private List<Movie> ParseMovie(MovieResponse movieObject, Dictionary<string, string> titleFeaturedActors, Dictionary<string, string> titleDirector)
       {
         List<Movie> movies = new List<Movie>();
 
@@ -133,6 +155,10 @@ namespace Application.Handlers
         {
           if (movie.Title.Text == null)
             continue;
+
+          titleFeaturedActors.TryGetValue(movie.Id, out string featuredActors);
+          titleDirector.TryGetValue(movie.Id, out string director);
+
           movies.Add(new Movie
           {
             Title = movie.Title?.Text ?? string.Empty,
@@ -142,6 +168,8 @@ namespace Application.Handlers
             Voters = movie.RatingsSummary?.VoteCount ?? 0,
             Year = movie.ReleaseDate?.Year ?? 0,
             RunTime = movie.Runtime?.Seconds ?? 0,
+            FeaturedActors = featuredActors,
+            Director = director,
             Id = movie.Id,
             ImageUrl = movie.PrimaryImage?.Url ?? string.Empty
           });

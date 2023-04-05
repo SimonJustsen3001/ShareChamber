@@ -51,7 +51,8 @@ namespace Application.Handlers
               Voters = x.Movie.Voters,
               Year = x.Movie.Year,
               RunTime = x.Movie.RunTime,
-              Author = x.Movie.Author,
+              FeaturedActors = x.Movie.FeaturedActors,
+              Director = x.Movie.Director,
               ImageUrl = x.Movie.ImageUrl,
               MovieGenres = x.Movie.MovieGenres
             },

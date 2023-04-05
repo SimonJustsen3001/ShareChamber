@@ -44,7 +44,6 @@ namespace Application.Handlers
         // Ensuring Movie and List exist in database
         if (!await _context.Movies.AnyAsync(x => x.Id == request.MovieId))
         {
-          System.Console.WriteLine(request.MovieId);
           return Result<Unit>.Failure("Failed to find movie");
         }
 
