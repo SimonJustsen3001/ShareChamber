@@ -123,7 +123,6 @@ namespace Application.Handlers
           response.EnsureSuccessStatusCode();
           var body = await response.Content.ReadAsStringAsync();
           var movieObject = JsonConvert.DeserializeObject<MovieResponse>(body);
-          genres = ParseGenre(movieObject);
           movies = ParseMovie(movieObject, titleFeaturedActors, titleDirector);
         }
 
@@ -140,21 +139,33 @@ namespace Application.Handlers
         return Result<Unit>.Success(Unit.Value);
       }
 
-      private List<Genre> ParseGenre(MovieResponse movieObject)
-      {
-        List<Genre> genres = new List<Genre>();
-
-        return genres;
-      }
-
       private List<Movie> ParseMovie(MovieResponse movieObject, Dictionary<string, string> titleFeaturedActors, Dictionary<string, string> titleDirector)
       {
         List<Movie> movies = new List<Movie>();
 
         foreach (var movie in movieObject.Movies)
         {
+          List<MovieGenre> movieGenre = new List<MovieGenre>();
           if (movie.Title.Text == null)
             continue;
+
+          foreach (var genre in movie.Genres.GenreList)
+          {
+            var existingGenre = _context.Genres.AsNoTracking().FirstOrDefault(x => x.Id == genre.Id);
+            if (existingGenre == null)
+            {
+              existingGenre = new Genre { Id = genre.Id }; // Assuming your Genre class has a Name property
+              _context.Genres.Add(existingGenre);
+              _context.SaveChanges(); // Save the changes to create the new genre in the database
+            }
+
+            movieGenre.Add(new MovieGenre
+            {
+              MovieId = movie.Id,
+              GenreId = existingGenre.Id
+            });
+
+          }
 
           titleFeaturedActors.TryGetValue(movie.Id, out string featuredActors);
           titleDirector.TryGetValue(movie.Id, out string director);
@@ -171,7 +182,8 @@ namespace Application.Handlers
             FeaturedActors = featuredActors,
             Director = director,
             Id = movie.Id,
-            ImageUrl = movie.PrimaryImage?.Url ?? string.Empty
+            ImageUrl = movie.PrimaryImage?.Url ?? string.Empty,
+            MovieGenres = movieGenre,
           });
         }
 
