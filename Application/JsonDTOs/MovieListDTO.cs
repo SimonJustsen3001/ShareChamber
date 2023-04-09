@@ -15,7 +15,7 @@ namespace Application.JsonDTOs
     public string FeaturedActors { get; set; }
     public string Director { get; set; }
     public string ImageUrl { get; set; }
-    public ICollection<MovieGenre> MovieGenres { get; set; }
+    public ICollection<GenreListDTO> MovieGenres { get; set; }
   }
 
   public class MovieMovieListDTO
@@ -30,5 +30,10 @@ namespace Application.JsonDTOs
     public Guid Id { get; set; }
     public string Name { get; set; }
     public ICollection<MovieMovieListDTO> MovieMovieLists { get; set; }
+  }
+
+  public class GenreListDTO
+  {
+    public string Id { get; set; }
   }
 }

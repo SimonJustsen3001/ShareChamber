@@ -11,3 +11,12 @@ export interface MovieList {
   name: string;
   movieMovieLists: MovieMovieList[];
 }
+
+export interface MovieListCreateFormValues {
+  name: string;
+}
+
+export interface MovieListAddValues {
+  movieId: string;
+  listId: string;
+}

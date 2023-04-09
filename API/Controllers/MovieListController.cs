@@ -26,5 +26,11 @@ namespace API.Controllers
     {
       return HandleResult(await Mediator.Send(new UpdateMovieList.Command { MovieListId = movieListId, MovieId = movie.MovieId }));
     }
+
+    [HttpDelete("{movieListId}")]
+    public async Task<IActionResult> DeleteMovieList(Guid movieListId)
+    {
+      return HandleResult(await Mediator.Send(new DeleteMovieList.Command { MovieListId = movieListId }));
+    }
   }
 }

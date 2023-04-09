@@ -1,7 +1,6 @@
 using Application.Core;
 using Application.Interfaces;
 using Application.JsonDTOs;
-using Domain;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Persistance;
@@ -31,6 +30,8 @@ namespace Application.Handlers
           .Include(x => x.MovieList)
           .ThenInclude(x => x.MovieMovieLists)
           .ThenInclude(x => x.Movie)
+          .ThenInclude(x => x.MovieGenres)
+          .ThenInclude(x => x.Genre)
           .Where(x => x.AppUserId == user.Id)
           .ToListAsync();
 
@@ -54,7 +55,10 @@ namespace Application.Handlers
               FeaturedActors = x.Movie.FeaturedActors,
               Director = x.Movie.Director,
               ImageUrl = x.Movie.ImageUrl,
-              MovieGenres = x.Movie.MovieGenres
+              MovieGenres = x.Movie.MovieGenres.Select(x => new GenreListDTO
+              {
+                Id = x.Genre.Id
+              }).ToList()
             },
             MovieListId = x.MovieListId
           }).ToList()

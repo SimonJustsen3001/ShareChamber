@@ -62,7 +62,7 @@ namespace Application.Handlers
           response.EnsureSuccessStatusCode();
           var body = await response.Content.ReadAsStringAsync();
           var movieObject = JsonConvert.DeserializeObject<MovieSearchResponse>(body);
-
+          System.Console.WriteLine(body);
           foreach (var movie in movieObject.D)
           {
             titleFeaturedActors[movie.Id] = movie.S;

@@ -34,7 +34,6 @@ namespace Application.Handlers
           .ThenInclude(x => x.MovieMovieLists)
           .SingleOrDefaultAsync(x => x.AppUserId == user.Id && x.MovieListId == request.MovieListId);
 
-
         // Authentication (if user has access to the list)
         if (userMovieList == null)
           return Result<Unit>.Failure("Authorization failed: User does not have access to movie list");

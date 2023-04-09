@@ -3,7 +3,6 @@ using Application.Interfaces;
 using Domain;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
 using Persistance;
 
 namespace Application.Handlers

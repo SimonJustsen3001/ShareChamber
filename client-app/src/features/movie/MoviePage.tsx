@@ -4,6 +4,7 @@ import { useStore } from "../../app/stores/store";
 import "@fortawesome/fontawesome-free/css/all.css";
 import "./MoviePage.Module.css";
 import MovieStore from "../../app/stores/movieStore";
+import MovieListStore from "../../app/stores/movieListStore";
 
 const debounce = (func: (...args: any[]) => any, wait: number) => {
   let timeout: ReturnType<typeof setTimeout> | null = null;
@@ -14,7 +15,7 @@ const debounce = (func: (...args: any[]) => any, wait: number) => {
 };
 
 export default observer(function MoviePage() {
-  const { movieStore } = useStore();
+  const { movieStore, movieListStore } = useStore();
   const [searchTerm, setSearchTerm] = useState("");
   const debouncedLoadMovies = useDebounced(
     (term: string) => movieStore.loadMovies(term),
@@ -23,7 +24,8 @@ export default observer(function MoviePage() {
 
   useEffect(() => {
     movieStore.loadMovies("spirited");
-  }, [movieStore]);
+    movieListStore.loadMovieLists();
+  }, [movieStore, movieListStore]);
 
   const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
     movieStore.setLoading(true);
@@ -41,7 +43,7 @@ export default observer(function MoviePage() {
     movieStore.submitMovies(query);
     setTimeout(() => {
       movieStore.loadMovies(query);
-    }, 2000);
+    }, 3000);
   };
 
   function useDebounced(callback: (...args: any[]) => any, delay: number) {
@@ -88,6 +90,31 @@ export default observer(function MoviePage() {
                     src={movie.imageUrl}
                     alt="Movie Poster"
                   />
+                  <svg
+                    className="movie-add-to-list-svg"
+                    viewBox="0 0 100 100"
+                    preserveAspectRatio="none"
+                  >
+                    <polygon
+                      className="movie-add-to-list-polygon"
+                      points="0,0 0,101 101,101 101,0 50,20"
+                    ></polygon>
+                    <foreignObject x="30" y="40" width="40" height="40">
+                      <i className="fa fa-plus movie-add-to-list-icon" />
+                    </foreignObject>
+                  </svg>
+                  <div className="dropdown-menu-lists">
+                    {movieListStore.movieLists.map((list) => (
+                      <div
+                        className="list-item"
+                        onClick={() =>
+                          movieListStore.addMovieToList(list.id, movie.id)
+                        }
+                      >
+                        {list.name}
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             ))}

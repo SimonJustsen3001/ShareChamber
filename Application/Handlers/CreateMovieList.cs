@@ -3,7 +3,6 @@ using Application.Interfaces;
 using Domain;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
 using Persistance;
 
 namespace Application.Handlers
@@ -47,8 +46,10 @@ namespace Application.Handlers
           MovieList = new MovieList
           {
             Name = request.Name
-          }
+          },
+          isOwner = true
         });
+
 
         var result = await _context.SaveChangesAsync() > 0;
 

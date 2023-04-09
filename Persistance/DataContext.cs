@@ -33,7 +33,8 @@ namespace Persistance
       builder.Entity<AppUserMovieList>()
         .HasOne(x => x.MovieList)
         .WithMany(x => x.AppUserMovieLists)
-        .HasForeignKey(x => x.MovieListId);
+        .HasForeignKey(x => x.MovieListId)
+        .OnDelete(DeleteBehavior.Cascade);
 
       builder.Entity<MovieMovieList>()
         .HasKey(x => new { x.MovieId, x.MovieListId });
@@ -46,7 +47,8 @@ namespace Persistance
       builder.Entity<MovieMovieList>()
         .HasOne(x => x.MovieList)
         .WithMany(x => x.MovieMovieLists)
-        .HasForeignKey(x => x.MovieListId);
+        .HasForeignKey(x => x.MovieListId)
+        .OnDelete(DeleteBehavior.Cascade);
 
       builder.Entity<MovieGenre>()
         .HasKey(x => new { x.MovieId, x.GenreId });

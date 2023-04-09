@@ -1,7 +1,11 @@
 import { makeAutoObservable } from "mobx";
 import agent from "../api/agent";
-import { MovieList } from "../interfaces/movieListInterface";
+import {
+  MovieList,
+  MovieListCreateFormValues,
+} from "../interfaces/movieListInterface";
 import { store } from "./store";
+import { MovieId } from "../interfaces/movieInterface";
 
 export default class MovieListStore {
   movieLists: MovieList[] = [];
@@ -29,8 +33,20 @@ export default class MovieListStore {
     }
   };
 
-  createMovieList = async (creds: MovieList) => {
+  addMovieToList = async (listId: string, movieId: string) => {
+    const creds: MovieId = { movieId };
+    console.log(creds);
+    await agent.MovieLists.addMovieToList(listId, creds);
+  };
+
+  createMovieList = async (creds: MovieListCreateFormValues) => {
     await agent.MovieLists.createList(creds);
+    store.modalStore.closeModal();
+  };
+
+  deleteList = async (listId: string) => {
+    await agent.MovieLists.deleteList(listId);
+    this.selectedMovieList = null;
     store.modalStore.closeModal();
   };
 

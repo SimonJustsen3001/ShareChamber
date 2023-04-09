@@ -3,9 +3,11 @@ import { useEffect } from "react";
 import { useStore } from "../../app/stores/store";
 import "./MovieListPage.Module.css";
 import "@fortawesome/fontawesome-free/css/all.css";
+import CreateListForm from "../form/CreateListForm";
+import DeleteForm from "../form/DeleteForm";
 
 export default observer(function MovieListPage() {
-  const { movieListStore } = useStore();
+  const { movieListStore, modalStore } = useStore();
 
   useEffect(() => {
     movieListStore.loadMovieLists();
@@ -18,8 +20,16 @@ export default observer(function MovieListPage() {
           {movieListStore.selectedMovieList ? (
             <>
               <div className="list-selected-info">
-                <div className="selected-name">
-                  {movieListStore.selectedMovieList.name}
+                <div className="list-title-container">
+                  <div className="selected-name">
+                    {movieListStore.selectedMovieList.name}
+                  </div>
+                  <button
+                    className="delete-list-button"
+                    onClick={() => modalStore.openModal(<DeleteForm />)}
+                  >
+                    Delete List
+                  </button>
                 </div>
                 <div className="selected-author">
                   owned by <span className="author">{}</span>{" "}
@@ -40,17 +50,19 @@ export default observer(function MovieListPage() {
                             {movie.movie.title}
                           </div>
                           <div className="movie-list-metadata">
-                            PG &#124; 125 min &#124; Animation, Adventure,
-                            Family
+                            {movie.movie.runTime / 60} min &#124;
+                            {movie.movie.movieGenres.map((movieGenre) => (
+                              <> {movieGenre.id}, </>
+                            ))}
                           </div>
                           <div className="movie-description">
                             {movie.movie.description}
                           </div>
                           <div className="movie-list-director">
-                            Directed by Hayao Miyazaki
+                            Directed by {movie.movie.director}
                           </div>
                           <div className="movie-list-actors">
-                            Features Rumi Hiiragi, Mity Irino
+                            Features {movie.movie.featuredActors}
                           </div>
                         </div>
                         <div className="movie-list-ratings">
@@ -72,7 +84,12 @@ export default observer(function MovieListPage() {
           )}
         </div>
         <div className="list-overview">
-          <button className="create-list-button">Create New List</button>
+          <button
+            className="create-list-button"
+            onClick={() => modalStore.openModal(<CreateListForm />)}
+          >
+            Create New List
+          </button>
           <div className="movie-lists">
             <p>Lists you own</p>
             {movieListStore.movieLists.map((movieList) => (
