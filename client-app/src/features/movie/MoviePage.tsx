@@ -3,8 +3,6 @@ import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { useStore } from "../../app/stores/store";
 import "@fortawesome/fontawesome-free/css/all.css";
 import "./MoviePage.Module.css";
-import MovieStore from "../../app/stores/movieStore";
-import MovieListStore from "../../app/stores/movieListStore";
 
 const debounce = (func: (...args: any[]) => any, wait: number) => {
   let timeout: ReturnType<typeof setTimeout> | null = null;
@@ -39,11 +37,9 @@ export default observer(function MoviePage() {
     }
   };
 
-  const submitSearch = (query: string) => {
-    movieStore.submitMovies(query);
-    setTimeout(() => {
-      movieStore.loadMovies(query);
-    }, 3000);
+  const submitSearch = async (query: string) => {
+    await movieStore.submitMovies(query);
+    movieStore.loadMovies(query);
   };
 
   function useDebounced(callback: (...args: any[]) => any, delay: number) {
@@ -108,9 +104,26 @@ export default observer(function MoviePage() {
                       <div
                         className="list-item"
                         onClick={() =>
-                          movieListStore.addMovieToList(list.id, movie.id)
+                          movieListStore.toggleMovieInList(list.id, movie.id)
                         }
                       >
+                        {!movieListStore.loadingToggle ||
+                        movieListStore.loadingMovieId !== movie.id ||
+                        movieListStore.loadingListId !== list.id ? (
+                          <>
+                            {movieListStore.doesListHaveMovie(
+                              list.id,
+                              movie.id
+                            ) ? (
+                              <i className="fa fa-check" />
+                            ) : (
+                              <i className="fa fa-x" />
+                            )}
+                          </>
+                        ) : (
+                          <i className="fa fa-spinner fa-spin" />
+                        )}
+
                         {list.name}
                       </div>
                     ))}

@@ -31,13 +31,17 @@ export default class MovieStore {
     }
   };
 
-  submitMovies = async (query: string) => {
+  submitMovies = async (query: string): Promise<Boolean> => {
     this.setLoadingInitial(true);
     try {
-      await agent.Movies.createMovie(query.replace(" ", "%20"));
+      const response = await agent.Movies.createMovie(
+        query.replace(" ", "%20")
+      );
       this.setLoadingInitial(false);
+      return response.status === 200;
     } catch (error) {
       this.setLoadingInitial(false);
+      return false;
     }
   };
 

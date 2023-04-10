@@ -75,6 +75,8 @@ namespace Application.Handlers
           }
         }
 
+        System.Console.WriteLine("\n\n Got movie Ids\n\n");
+
 
 
         var directorRequest = new HttpRequestMessage
@@ -106,6 +108,8 @@ namespace Application.Handlers
           }
         }
 
+        System.Console.WriteLine("\n\n Got director name \n\n");
+
         var getMoviesUri = new Uri($"https://moviesdatabase.p.rapidapi.com/titles/x/titles-by-ids?idsList={movieIds}&info=base_info");
 
         var movieRequest = new HttpRequestMessage
@@ -124,6 +128,7 @@ namespace Application.Handlers
           var body = await response.Content.ReadAsStringAsync();
           var movieObject = JsonConvert.DeserializeObject<MovieResponse>(body);
           movies = ParseMovie(movieObject, titleFeaturedActors, titleDirector);
+          System.Console.WriteLine($"Printing body: {body}");
         }
 
         foreach (var movie in movies)
@@ -143,28 +148,39 @@ namespace Application.Handlers
       {
         List<Movie> movies = new List<Movie>();
 
+        if (movieObject?.Movies == null)
+        {
+          return movies;
+        }
+
         foreach (var movie in movieObject.Movies)
         {
           List<MovieGenre> movieGenre = new List<MovieGenre>();
           if (movie.Title.Text == null)
             continue;
 
-          foreach (var genre in movie.Genres.GenreList)
+          if (movie?.Genres?.GenreList != null)
           {
-            var existingGenre = _context.Genres.AsNoTracking().FirstOrDefault(x => x.Id == genre.Id);
-            if (existingGenre == null)
+
+            foreach (var genre in movie.Genres.GenreList)
             {
-              existingGenre = new Genre { Id = genre.Id }; // Assuming your Genre class has a Name property
-              _context.Genres.Add(existingGenre);
-              _context.SaveChanges(); // Save the changes to create the new genre in the database
+              var existingGenre = _context.Genres.AsNoTracking().FirstOrDefault(x => x.Id == genre.Id);
+              if (existingGenre == null)
+              {
+                existingGenre = new Genre { Id = genre.Id }; // Assuming your Genre class has a Name property
+                _context.Genres.Add(existingGenre);
+                _context.SaveChanges(); // Save the changes to create the new genre in the database
+              }
+
+              System.Console.WriteLine($"inside parse of movie {movie.Id} {existingGenre.Id}");
+
+              movieGenre.Add(new MovieGenre
+              {
+                MovieId = movie.Id,
+                GenreId = existingGenre.Id
+              });
+
             }
-
-            movieGenre.Add(new MovieGenre
-            {
-              MovieId = movie.Id,
-              GenreId = existingGenre.Id
-            });
-
           }
 
           titleFeaturedActors.TryGetValue(movie.Id, out string featuredActors);
@@ -179,8 +195,8 @@ namespace Application.Handlers
             Voters = movie.RatingsSummary?.VoteCount ?? 0,
             Year = movie.ReleaseDate?.Year ?? 0,
             RunTime = movie.Runtime?.Seconds ?? 0,
-            FeaturedActors = featuredActors,
-            Director = director,
+            FeaturedActors = featuredActors ?? "",
+            Director = director ?? "",
             Id = movie.Id,
             ImageUrl = movie.PrimaryImage?.Url ?? string.Empty,
             MovieGenres = movieGenre,

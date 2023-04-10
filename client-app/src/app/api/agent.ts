@@ -2,12 +2,10 @@ import axios, { AxiosResponse } from "axios";
 import { Movie, MovieId } from "../interfaces/movieInterface";
 import {
   MovieList,
-  MovieListAddValues,
   MovieListCreateFormValues,
 } from "../interfaces/movieListInterface";
 import { User, UserFormValues } from "../interfaces/userInterface";
 import { store } from "../stores/store";
-import { Advertisement } from "semantic-ui-react";
 
 axios.defaults.baseURL = "https://localhost:5000/api";
 
@@ -29,9 +27,14 @@ const requests = {
   del: <T>(url: string) => axios.delete<T>(url).then(responseBody),
 };
 
+const requestsNoBody = {
+  post: <T>(url: string, body: {}) => axios.post<Movie[]>(url, body),
+};
+
 const Movies = {
   list: (query: string) => requests.get<Movie[]>(`/movie/${query}`),
-  createMovie: (query: string) => requests.post<Movie[]>(`/movie/${query}`, []),
+  createMovie: (query: string) =>
+    requestsNoBody.post<Movie[]>(`/movie/${query}`, []),
 };
 
 const MovieLists = {
@@ -40,6 +43,11 @@ const MovieLists = {
     requests.post<MovieList>(`/movielist/${movieList.name}`, movieList),
   addMovieToList: (movieListId: string, movieId: MovieId) =>
     requests.patch<MovieId>(`/movielist/${movieListId}`, movieId),
+  removeMovieFromList: (movieListId: string, movieId: string) =>
+    requests.patch<MovieId>(
+      `/movielist/${movieListId}/removeMovie/${movieId}`,
+      []
+    ),
   deleteList: (movieListId: string) =>
     requests.del<MovieList>(`/movielist/${movieListId}`),
 };

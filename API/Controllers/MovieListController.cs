@@ -1,6 +1,5 @@
 using API.DTOs;
 using Application.Handlers;
-using Domain;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -24,7 +23,13 @@ namespace API.Controllers
     [HttpPatch("{movieListId}")]
     public async Task<IActionResult> AddMovieToList(Guid movieListId, MovieToListDto movie)
     {
-      return HandleResult(await Mediator.Send(new UpdateMovieList.Command { MovieListId = movieListId, MovieId = movie.MovieId }));
+      return HandleResult(await Mediator.Send(new AddMovieToMovieList.Command { MovieListId = movieListId, MovieId = movie.MovieId }));
+    }
+
+    [HttpPatch("{movieListId}/removeMovie/{movieId}")]
+    public async Task<IActionResult> RemoveMovieFromList(Guid movieListId, string movieId)
+    {
+      return HandleResult(await Mediator.Send(new RemoveMovieFromMovieList.Command { MovieListId = movieListId, MovieId = movieId }));
     }
 
     [HttpDelete("{movieListId}")]

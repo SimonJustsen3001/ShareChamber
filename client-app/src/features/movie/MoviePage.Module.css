@@ -161,9 +161,10 @@ foreignObject:hover .movie-add-to-list-icon {
   right: 0;
   align-items: end;
   background-color: rgba(0, 0, 0, 0.8);
-  width: 50%;
+  width: 100%;
   max-height: 0;
   overflow: hidden;
+  z-index: 2;
 }
 
 .dropdown-menu-lists:hover {
@@ -173,14 +174,15 @@ foreignObject:hover .movie-add-to-list-icon {
 }
 
 .list-item {
-  text-align: right;
+  display: flex;
+  justify-content: space-between;
   color: white;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  padding: 3px 2px 3px 2px;
+  padding: 5px 2px 5px 2px;
   width: 100%;
-  max-width: 100px;
+  max-width: 200px;
 }
 
 .list-item:hover {

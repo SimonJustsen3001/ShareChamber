@@ -25,9 +25,7 @@ export default observer(function CreateListForm() {
       onSubmit={async (value, { setErrors }) => {
         try {
           await movieListStore.createMovieList(value);
-          setTimeout(() => {
-            movieListStore.loadMovieLists();
-          }, 2000);
+          movieListStore.loadMovieLists();
           modalStore.closeModal();
         } catch (error) {
           setErrors({ error: "List name identical to other list you own" });

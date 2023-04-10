@@ -27,9 +27,7 @@ export default observer(function CreateListForm() {
           await movieListStore.deleteList(
             movieListStore.selectedMovieList?.id!
           );
-          setTimeout(() => {
-            movieListStore.loadMovieLists();
-          }, 2000);
+          movieListStore.loadMovieLists();
           modalStore.closeModal();
         } catch (error) {
           setErrors({ error: "You don't own the list" });
