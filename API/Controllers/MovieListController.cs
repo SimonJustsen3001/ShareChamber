@@ -31,6 +31,11 @@ namespace API.Controllers
     {
       return HandleResult(await Mediator.Send(new RemoveMovieFromMovieList.Command { MovieListId = movieListId, MovieId = movieId }));
     }
+    [HttpPatch("{movieListId}/addCollaborator/{collaboratorName}")]
+    public async Task<IActionResult> AddCollaborator(Guid movieListId, string collaboratorName)
+    {
+      return HandleResult(await Mediator.Send(new AddCollaborator.Command { MovieListId = movieListId, CollaboratorDisplayName = collaboratorName }));
+    }
 
     [HttpDelete("{movieListId}")]
     public async Task<IActionResult> DeleteMovieList(Guid movieListId)

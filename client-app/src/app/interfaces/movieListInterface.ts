@@ -10,6 +10,8 @@ export interface MovieList {
   id: string;
   name: string;
   movieMovieLists: MovieMovieList[];
+  ownerName: string;
+  collaboratorNames: string[];
 }
 
 export interface MovieListCreateFormValues {

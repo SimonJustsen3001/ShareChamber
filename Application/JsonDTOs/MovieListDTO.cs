@@ -27,6 +27,8 @@ namespace Application.JsonDTOs
 
   public class MovieListDTO
   {
+    public string OwnerName { get; set; }
+    public List<string> CollaboratorNames { get; set; }
     public Guid Id { get; set; }
     public string Name { get; set; }
     public ICollection<MovieMovieListDTO> MovieMovieLists { get; set; }

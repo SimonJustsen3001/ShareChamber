@@ -4,7 +4,7 @@ import { useStore } from "../../app/stores/store";
 import * as Yup from "yup";
 import { faLock, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import TextInputStandard from "../../app/common/forms/TextInputStandard";
-import "./CreateListForm.Module.css";
+import "./Form.Module.css";
 import Button from "../../app/common/forms/Button";
 
 export default observer(function CreateListForm() {

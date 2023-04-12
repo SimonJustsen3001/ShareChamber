@@ -14,10 +14,6 @@ interface Props {
 export default function Button(props: Props) {
   const buttonClass = `${styles[props.style + "Button"]}`;
 
-  const handleClick = async () => {
-    
-  }
-
   return (
     <button type={props.type} className={buttonClass}>
       {!props.isSubmitting ? (

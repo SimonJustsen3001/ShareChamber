@@ -2,18 +2,16 @@ import { ErrorMessage, Formik, Form, Field } from "formik";
 import { observer } from "mobx-react-lite";
 import { useStore } from "../../app/stores/store";
 import * as Yup from "yup";
-import { faLock, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 import TextInputStandard from "../../app/common/forms/TextInputStandard";
 import "./Form.Module.css";
 import Button from "../../app/common/forms/Button";
 
-export default observer(function CreateListForm() {
+export default observer(function AddCollaboratorForm() {
   const { movieListStore, modalStore } = useStore();
 
   const validationSchema = Yup.object({
-    verify: Yup.string()
-      .matches(/^Delete$/, "You must type 'Delete' to confirm")
-      .required("Name cannot be empty"),
+    name: Yup.string().required("Name cannot be empty"),
   });
 
   return (
@@ -21,13 +19,14 @@ export default observer(function CreateListForm() {
       validationSchema={validationSchema}
       enableReinitialize
       initialValues={{
-        verify: "",
+        name: "",
         error: null,
       }}
       onSubmit={async (value, { setErrors }) => {
         try {
-          await movieListStore.deleteList(
-            movieListStore.selectedMovieList?.id!
+          await movieListStore.addCollaborator(
+            movieListStore.selectedMovieList?.id!,
+            value.name
           );
           movieListStore.loadMovieLists();
           modalStore.closeModal();
@@ -40,10 +39,10 @@ export default observer(function CreateListForm() {
         <Form className="form" onSubmit={handleSubmit} autoComplete="off">
           <p className="form-header">Welcome to Movie List</p>
           <TextInputStandard
-            name="verify"
-            placeholder="Delete"
-            label="Type delete to confirm deletion"
-            icon={faEnvelope}
+            name="name"
+            placeholder="Name"
+            label="Type name of person you wish to share the list with"
+            icon={faUser}
           />
           <ErrorMessage
             name="error"
@@ -55,7 +54,7 @@ export default observer(function CreateListForm() {
               isSubmitting={isSubmitting}
               type="submit"
               style={isValid ? "login" : "invalid"}
-              content="Delete List"
+              content="Add person"
             />
           </div>
         </Form>

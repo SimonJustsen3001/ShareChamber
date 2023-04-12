@@ -1,10 +1,19 @@
 import { observer } from "mobx-react-lite";
 import { useStore } from "../../app/stores/store";
-import DeleteForm from "../form/DeleteForm";
+import AddCollaboratorForm from "../form/AddCollaboratorForm";
 import "./MovieList.Module.css";
+import DeleteForm from "../form/DeleteForm";
 
 export default observer(function MovieList() {
   const { modalStore, movieListStore } = useStore();
+
+  const handleRemove = async (listId: string, movieId: string) => {
+    await movieListStore.removeMovieFromList(listId, movieId);
+    await movieListStore.loadMovieLists();
+    movieListStore.setSelectedMovieList(
+      movieListStore.getCurrentMovieList(listId)
+    );
+  };
 
   return (
     <div className="list-selected">
@@ -15,18 +24,38 @@ export default observer(function MovieList() {
               <div className="selected-name">
                 {movieListStore.selectedMovieList.name}
               </div>
-              <button
-                className="delete-list-button"
-                onClick={() => modalStore.openModal(<DeleteForm />)}
-              >
-                Delete List
-              </button>
+              <div className="selected-button-container">
+                <button
+                  className="add-collab-button"
+                  onClick={() => modalStore.openModal(<AddCollaboratorForm />)}
+                >
+                  Add Collaborator
+                </button>
+                <button
+                  className="delete-list-button"
+                  onClick={() => modalStore.openModal(<DeleteForm />)}
+                >
+                  Delete List
+                </button>
+              </div>
             </div>
             <div className="selected-author">
-              owned by <span className="author">{}</span>{" "}
-              <span className="other-collaborators">
-                | no other collaborators
-              </span>
+              owned by{" "}
+              <span className="author">
+                {movieListStore.selectedMovieList.ownerName}
+              </span>{" "}
+              {movieListStore.selectedMovieList.collaboratorNames.length > 0 ? (
+                <span className="other-collaborators">
+                  |{" "}
+                  {movieListStore.getCollaboratorNames(
+                    movieListStore.selectedMovieList.collaboratorNames
+                  )}
+                </span>
+              ) : (
+                <span className="other-collaborators">
+                  | no other collaborators
+                </span>
+              )}
             </div>
             <div className="selected-list-overview">
               {movieListStore.selectedMovieList.movieMovieLists.map((movie) => (
@@ -61,6 +90,14 @@ export default observer(function MovieList() {
                       <i className="fa fa-star" />?
                     </div>
                   </div>
+                  <button
+                    className="remove-movie-button"
+                    onClick={() =>
+                      handleRemove(movie.movieListId, movie.movie.id)
+                    }
+                  >
+                    Remove
+                  </button>
                 </div>
               ))}
             </div>

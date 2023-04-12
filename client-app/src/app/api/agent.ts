@@ -50,6 +50,11 @@ const MovieLists = {
     ),
   deleteList: (movieListId: string) =>
     requests.del<MovieList>(`/movielist/${movieListId}`),
+  addCollaborator: (movieListId: string, collaboratorName: string) =>
+    requests.patch<MovieId>(
+      `/movielist/${movieListId}/addCollaborator/${collaboratorName}`,
+      []
+    ),
 };
 
 const Account = {

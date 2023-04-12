@@ -38,13 +38,21 @@ export default class MovieListStore {
 
   addMovieToList = async (listId: string, movieId: string) => {
     const creds: MovieId = { movieId };
-    console.log(creds);
     await agent.MovieLists.addMovieToList(listId, creds);
+  };
+
+  addCollaborator = async (listId: string, displayName: string) => {
+    await agent.MovieLists.addCollaborator(listId, displayName);
+    store.modalStore.closeModal();
   };
 
   createMovieList = async (creds: MovieListCreateFormValues) => {
     await agent.MovieLists.createList(creds);
     store.modalStore.closeModal();
+  };
+
+  removeMovieFromList = async (listId: string, movieId: string) => {
+    await agent.MovieLists.removeMovieFromList(listId, movieId);
   };
 
   deleteList = async (listId: string) => {
@@ -76,6 +84,15 @@ export default class MovieListStore {
     return movieList.movieMovieLists.some((movie) => movie.movie.id == movieId);
   };
 
+  getCollaboratorNames = (collaboratorNames: string[]) => {
+    var names = "";
+    collaboratorNames.forEach((name) => {
+      if (names == "") names = name;
+      else names = `${names}, ${name}`;
+    });
+    return names;
+  };
+
   setLoadingToggle = (
     state: boolean,
     movieId: string | null = null,
@@ -93,5 +110,9 @@ export default class MovieListStore {
   setSelectedMovieList = (movieList: MovieList) => {
     this.selectedMovieList = movieList;
     console.log(movieList);
+  };
+
+  getCurrentMovieList = (listId: string): MovieList => {
+    return this.movieLists.find((list) => list.id === listId)!;
   };
 }

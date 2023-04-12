@@ -1,0 +1,83 @@
+.overview {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: rgb(63, 63, 63);
+  overflow: hidden;
+}
+
+.info-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  line-height: 40px;
+  padding: 50px;
+  background-color: rgb(63, 63, 63);
+  color: white;
+  animation: cloudCorners 8s infinite ease-in-out;
+  font-size: 30px;
+  margin-bottom: 200px;
+}
+
+.welcome-message {
+  font-weight: 600;
+  font-size: 100px;
+  margin-bottom: 100px;
+}
+
+.info-message {
+  max-width: 500px;
+}
+
+.overview::before,
+.overview::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  min-width: 200vw;
+  min-height: 200vw;
+  background-color: rgb(38, 38, 38);
+  animation-name: rotate;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.overview::before {
+  bottom: 10%;
+  border-radius: 40%;
+  animation-duration: 40s;
+}
+
+.overview::after {
+  bottom: 8%;
+  border-radius: 35%;
+  opacity: 0.5;
+  animation-duration: 40s;
+}
+
+@keyframes rotate {
+  0% {
+    transform: translate(-50%, 0) rotateZ(0deg);
+  }
+  50% {
+    transform: translate(-50%, 2) rotateZ(180deg);
+  }
+  100% {
+    transform: translate(-50%, 0) rotateZ(360deg);
+  }
+}
+
+@keyframes cloudCorners {
+  0%,
+  100% {
+    border-radius: 70px 100px 100px 70px;
+  }
+  50% {
+    border-radius: 100px 70px 70px 100px;
+  }
+}
