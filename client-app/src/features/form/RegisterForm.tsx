@@ -4,7 +4,7 @@ import { useStore } from "../../app/stores/store";
 import * as Yup from "yup";
 import { faLock, faEnvelope, faUser } from "@fortawesome/free-solid-svg-icons";
 import TextInputStandard from "../../app/common/forms/TextInputStandard";
-import styles from "./LoginForm.module.css";
+import "./RegisterForm.Module.css";
 import Button from "../../app/common/forms/Button";
 
 export default observer(function RegisterForm() {
@@ -38,12 +38,8 @@ export default observer(function RegisterForm() {
       }}
     >
       {({ handleSubmit, isSubmitting, errors }) => (
-        <Form
-          className={styles.form}
-          onSubmit={handleSubmit}
-          autoComplete="off"
-        >
-          <p className={styles.formHeader}>Welcome to Movie List</p>
+        <Form className="form" onSubmit={handleSubmit} autoComplete="off">
+          <p className="form-header">Welcome to Movie List</p>
           <TextInputStandard
             name="username"
             placeholder="Account Name"
@@ -53,7 +49,7 @@ export default observer(function RegisterForm() {
           <TextInputStandard
             name="displayName"
             placeholder="Name shown to other users"
-            label="DisplayName"
+            label="Display Name"
             icon={faUser}
           />
           <TextInputStandard
@@ -65,17 +61,15 @@ export default observer(function RegisterForm() {
           <TextInputStandard
             name="password"
             placeholder="Password"
-            label="password"
+            label="Password"
             type="password"
             icon={faLock}
           />
           <ErrorMessage
             name="error"
-            render={() => (
-              <label className={styles.errorLabel}>{errors.error}</label>
-            )}
+            render={() => <label className="error-label">{errors.error}</label>}
           />
-          <div className={styles.buttonContainer}>
+          <div className="button-container">
             <Button
               clickButton={modalStore.closeModal}
               isSubmitting={isSubmitting}

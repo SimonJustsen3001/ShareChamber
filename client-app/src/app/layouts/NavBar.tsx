@@ -3,40 +3,40 @@ import { Link } from "react-router-dom";
 import LoginForm from "../../features/form/LoginForm";
 import RegisterForm from "../../features/form/RegisterForm";
 import { useStore } from "../stores/store";
-import styles from "./NavBar.module.css";
+import "./NavBar.Module.css";
 
 export default observer(function NavBar() {
   const { userStore, modalStore } = useStore();
   return (
-    <div className={styles.navbar}>
-      <div className={styles.leftNavbarMenu}>
-        <Link to={"/"} className={styles.menuElement}>
+    <div className="navbar">
+      <div className="left-navbar-menu">
+        <Link to={"/"} className="menu-element">
           Home
         </Link>
       </div>
       {userStore.isLoggedIn ? (
         <>
-          <div className={styles.middleNavbarMenu}>
-            <Link to={"/movie"} className={styles.menuElement}>
+          <div className="middle-navbar-menu">
+            <Link to={"/movie"} className="menu-element">
               Movies
             </Link>
-            <Link to={"/list"} className={styles.menuElement}>
+            <Link to={"/list"} className="menu-element">
               Movie Lists
             </Link>
           </div>
-          <div className={styles.rightNavbarMenu}>
-            <div className={styles.profileElement}>
+          <div className="right-navbar-menu">
+            <div className="profile-element">
               {userStore.user?.displayName}
-              <div className={styles.dropdownMenu}>
-                <Link to="/settings" className={styles.dropdownLink}>
+              <div className="dropdown-menu">
+                <Link to="/settings" className="dropdown-link">
                   Settings
                 </Link>
-                <Link to="/profile" className={styles.dropdownLink}>
+                <Link to="/profile" className="dropdown-link">
                   Profile
                 </Link>
                 <div
                   onClick={() => userStore.logout()}
-                  className={styles.dropdownLink}
+                  className="dropdown-link"
                 >
                   Logout
                 </div>
@@ -46,24 +46,24 @@ export default observer(function NavBar() {
         </>
       ) : (
         <>
-          <div className={styles.middleNavbarMenu}>
-            <Link to={"/movie"} className={styles.menuElement}>
+          <div className="middle-navbar-menu">
+            <Link to={"/movie"} className="menu-element">
               Movies
             </Link>
-            <Link to={"/list"} className={styles.menuElement}>
+            <Link to={"/list"} className="menu-element">
               Movie Lists
             </Link>
           </div>
-          <div className={styles.rightNavbarMenu}>
+          <div className="right-navbar-menu">
             <div
               onClick={() => modalStore.openModal(<LoginForm />)}
-              className={styles.menuElement}
+              className="menu-element"
             >
               Login
             </div>
             <div
               onClick={() => modalStore.openModal(<RegisterForm />)}
-              className={styles.menuElement}
+              className="menu-element"
             >
               Register
             </div>

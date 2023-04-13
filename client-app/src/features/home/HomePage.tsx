@@ -1,7 +1,15 @@
 import { observer } from "mobx-react-lite";
-import Layout from "../../app/layouts/Layout";
-import styles from "./HomePage.module.css";
+import "./HomePage.Module.css";
 
 export default observer(function HomePage() {
-  return <></>;
+  return (
+    <div className="overview">
+      <div className="info-container">
+        <div className="welcome-message">Welcome to Movie List</div>
+        <div className="info-message">
+          In order to enjoy full usage of the website, please register or login
+        </div>
+      </div>
+    </div>
+  );
 });

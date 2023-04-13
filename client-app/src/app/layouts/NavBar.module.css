@@ -2,13 +2,15 @@
   position: fixed;
   background-color: rgb(33, 33, 33);
   color: black;
-  inset: 0px 0px 92% 0px;
+  height: 100px;
+  left: 0;
+  right: 0;
   display: flex;
   justify-content: space-between;
   z-index: 50;
 }
 
-.leftNavbarMenu {
+.left-navbar-menu {
   width: 10%;
   height: 100%;
   display: flex;
@@ -16,7 +18,7 @@
   align-items: center;
 }
 
-.middleNavbarMenu {
+.middle-navbar-menu {
   width: 20%;
   height: 100%;
   display: flex;
@@ -25,7 +27,7 @@
   min-width: 300px;
 }
 
-.rightNavbarMenu {
+.right-navbar-menu {
   width: 10%;
   height: 100%;
   display: flex;
@@ -33,8 +35,8 @@
   align-items: center;
 }
 
-.menuElement,
-.profileElement {
+.menu-element,
+.profile-element {
   cursor: pointer;
   position: relative;
   background-color: rgb(33, 33, 33);
@@ -49,20 +51,20 @@
   font-size: 20px;
 }
 
-.menuElement:hover,
-.profileElement:hover {
+.menu-element:hover,
+.profile-element:hover {
   color: white;
   box-shadow: inset 0px -2px 3px 1px rgba(255, 255, 255, 0.5);
 }
 
-.profileElement:hover .dropdownMenu {
+.profile-element:hover .dropdown-menu {
   display: flex;
   flex-direction: column;
   max-height: 800px;
   transition: max-height 0.5s ease-in-out;
 }
 
-.dropdownMenu {
+.dropdown-menu {
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -74,13 +76,13 @@
   transition: max-height 0.5s ease-in-out;
 }
 
-.dropdownLink {
+.dropdown-link {
   text-align: right;
   color: white;
   padding: 20px 20px 20px 0px;
 }
 
-.dropdownLink:hover {
+.dropdown-link:hover {
   color: white;
   box-shadow: inset 0px 0px 3px 1px rgba(156, 156, 156, 0.5);
 }

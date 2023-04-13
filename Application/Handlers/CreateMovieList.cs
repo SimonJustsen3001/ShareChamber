@@ -3,7 +3,6 @@ using Application.Interfaces;
 using Domain;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
 using Persistance;
 
 namespace Application.Handlers
@@ -35,8 +34,7 @@ namespace Application.Handlers
 
       public async Task<Result<Unit>> Handle(Command request, CancellationToken cancellationToken)
       {
-        var user = await _context.Users.SingleOrDefaultAsync(x => x.UserName == "miav123"); //_userAccessor.GetUserName()
-
+        var user = await _context.Users.SingleOrDefaultAsync(x => x.UserName == _userAccessor.GetUserName());
         if (await _context.AppUserMovieList.AsNoTracking().Where(x => x.AppUserId == user.Id).AnyAsync(x => x.MovieList.Name == request.Name))
         {
           return Result<Unit>.Failure("Failed to create List, name already exists");
@@ -48,8 +46,10 @@ namespace Application.Handlers
           MovieList = new MovieList
           {
             Name = request.Name
-          }
+          },
+          isOwner = true
         });
+
 
         var result = await _context.SaveChangesAsync() > 0;
 

@@ -1,0 +1,27 @@
+.list-setup {
+  display: flex;
+  position: absolute;
+  margin-top: 100px;
+  padding: 20px;
+  inset: 6% 20% auto 20%;
+  background-color: rgb(63, 63, 63);
+  font-size: 20px;
+  min-width: 0;
+  transition: inset 0.1s ease-in-out;
+}
+
+@media (max-width: 1600px) {
+  .list-setup {
+    flex-direction: column-reverse;
+    align-items: center;
+    inset: 6% 10% auto 10%;
+  }
+
+  .list-overview {
+    width: 60%;
+  }
+
+  .list-selected {
+    width: 90%;
+  }
+}

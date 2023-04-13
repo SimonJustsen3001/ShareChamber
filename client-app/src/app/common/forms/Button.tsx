@@ -1,6 +1,5 @@
-import { useState } from "react";
-import styles from "./Button.module.css";
 import "@fortawesome/fontawesome-free/css/all.css";
+import "./Button.Module.css";
 
 interface Props {
   clickButton: () => void;
@@ -12,11 +11,8 @@ interface Props {
 }
 
 export default function Button(props: Props) {
-  const buttonClass = `${styles[props.style + "Button"]}`;
-
-  const handleClick = async () => {
-    
-  }
+  const buttonClass = `button-${props.style}`;
+  console.log(buttonClass);
 
   return (
     <button type={props.type} className={buttonClass}>

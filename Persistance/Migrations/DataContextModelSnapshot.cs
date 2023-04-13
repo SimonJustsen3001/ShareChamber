@@ -97,6 +97,9 @@ namespace Persistance.Migrations
                     b.Property<Guid>("MovieListId")
                         .HasColumnType("uuid");
 
+                    b.Property<bool>("isOwner")
+                        .HasColumnType("boolean");
+
                     b.HasKey("AppUserId", "MovieListId");
 
                     b.HasIndex("MovieListId");
@@ -104,16 +107,38 @@ namespace Persistance.Migrations
                     b.ToTable("AppUserMovieList");
                 });
 
+            modelBuilder.Entity("Domain.Genre", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Genres");
+                });
+
             modelBuilder.Entity("Domain.Movie", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("text");
 
-                    b.Property<string>("Author")
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Director")
+                        .HasColumnType("text");
+
+                    b.Property<string>("FeaturedActors")
                         .HasColumnType("text");
 
                     b.Property<string>("ImageUrl")
                         .HasColumnType("text");
+
+                    b.Property<decimal>("Rating")
+                        .HasColumnType("numeric");
+
+                    b.Property<int>("RunTime")
+                        .HasColumnType("integer");
 
                     b.Property<string>("Title")
                         .HasColumnType("text");
@@ -121,12 +146,30 @@ namespace Persistance.Migrations
                     b.Property<string>("TitleType")
                         .HasColumnType("text");
 
+                    b.Property<int>("Voters")
+                        .HasColumnType("integer");
+
                     b.Property<int>("Year")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
 
                     b.ToTable("Movies");
+                });
+
+            modelBuilder.Entity("Domain.MovieGenre", b =>
+                {
+                    b.Property<string>("MovieId")
+                        .HasColumnType("text");
+
+                    b.Property<string>("GenreId")
+                        .HasColumnType("text");
+
+                    b.HasKey("MovieId", "GenreId");
+
+                    b.HasIndex("GenreId");
+
+                    b.ToTable("MovieGenres");
                 });
 
             modelBuilder.Entity("Domain.MovieList", b =>
@@ -309,6 +352,25 @@ namespace Persistance.Migrations
                     b.Navigation("MovieList");
                 });
 
+            modelBuilder.Entity("Domain.MovieGenre", b =>
+                {
+                    b.HasOne("Domain.Genre", "Genre")
+                        .WithMany("MovieGenres")
+                        .HasForeignKey("GenreId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Movie", "Movie")
+                        .WithMany("MovieGenres")
+                        .HasForeignKey("MovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Genre");
+
+                    b.Navigation("Movie");
+                });
+
             modelBuilder.Entity("Domain.MovieMovieList", b =>
                 {
                     b.HasOne("Domain.Movie", "Movie")
@@ -384,8 +446,15 @@ namespace Persistance.Migrations
                     b.Navigation("AppUserMovieLists");
                 });
 
+            modelBuilder.Entity("Domain.Genre", b =>
+                {
+                    b.Navigation("MovieGenres");
+                });
+
             modelBuilder.Entity("Domain.Movie", b =>
                 {
+                    b.Navigation("MovieGenres");
+
                     b.Navigation("MovieMovieLists");
                 });
 

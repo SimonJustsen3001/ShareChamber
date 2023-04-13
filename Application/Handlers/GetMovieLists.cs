@@ -1,0 +1,78 @@
+using Application.Core;
+using Application.Interfaces;
+using Application.JsonDTOs;
+using MediatR;
+using Microsoft.EntityFrameworkCore;
+using Persistance;
+
+namespace Application.Handlers
+{
+  public class GetMovieLists
+  {
+    public class Query : IRequest<Result<List<MovieListDTO>>>
+    {
+    }
+
+    public class Handler : IRequestHandler<Query, Result<List<MovieListDTO>>>
+    {
+      private readonly DataContext _context;
+      private readonly IUserAccessor _userAccessor;
+      public Handler(DataContext context, IUserAccessor userAccessor)
+      {
+        _userAccessor = userAccessor;
+        _context = context;
+      }
+      public async Task<Result<List<MovieListDTO>>> Handle(Query request, CancellationToken cancellationToken)
+      {
+        var user = await _context.Users.SingleOrDefaultAsync(x => x.UserName == _userAccessor.GetUserName());
+
+        var userMovieList = await _context.AppUserMovieList
+          .Include(x => x.MovieList)
+            .ThenInclude(x => x.MovieMovieLists)
+            .ThenInclude(x => x.Movie)
+            .ThenInclude(x => x.MovieGenres)
+            .ThenInclude(x => x.Genre)
+          .Include(x => x.MovieList)
+            .ThenInclude(x => x.AppUserMovieLists)
+            .ThenInclude(x => x.AppUser)
+          .Include(x => x.AppUser)
+          .Where(x => x.AppUserId == user.Id)
+          .ToListAsync();
+
+
+        var movieLists = userMovieList.Select(x => x.MovieList).Select(x => new MovieListDTO
+        {
+          Id = x.Id,
+          Name = x.Name,
+          OwnerName = _context.AppUserMovieList.SingleOrDefault(y => y.MovieListId == x.Id && y.isOwner).AppUser.DisplayName,
+          CollaboratorNames = x.AppUserMovieLists.Where(y => y.MovieListId == x.Id && !y.isOwner).Select(z => z.AppUser.DisplayName).Where(dn => dn != null).ToList(),
+          MovieMovieLists = x.MovieMovieLists.Select(x => new MovieMovieListDTO
+          {
+            MovieId = x.MovieId,
+            MovieListId = x.MovieListId,
+            Movie = new MovieWithoutMovieMovieListsDTO
+            {
+              Id = x.Movie.Id,
+              Title = x.Movie.Title,
+              TitleType = x.Movie.TitleType,
+              Description = x.Movie.Description,
+              Rating = x.Movie.Rating,
+              Voters = x.Movie.Voters,
+              Year = x.Movie.Year,
+              RunTime = x.Movie.RunTime,
+              FeaturedActors = x.Movie.FeaturedActors,
+              Director = x.Movie.Director,
+              ImageUrl = x.Movie.ImageUrl,
+              MovieGenres = x.Movie.MovieGenres.Select(x => new GenreListDTO
+              {
+                Id = x.Genre.Id
+              }).ToList()
+            },
+          }).ToList()
+        }).ToList();
+
+        return Result<List<MovieListDTO>>.Success(movieLists);
+      }
+    }
+  }
+}

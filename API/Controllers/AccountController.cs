@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using API.DTOs;
 using API.Services;
 using Domain;
@@ -21,6 +22,15 @@ namespace API.Controllers
       _userManager = userManager;
       _tokenService = tokenService;
       _logger = logger;
+    }
+
+    [Authorize]
+    [HttpGet]
+    public async Task<ActionResult<UserDto>> GetCurrentUser()
+    {
+      var user = await _userManager.FindByEmailAsync(User.FindFirstValue(ClaimTypes.Email));
+
+      return CreateUserObject(user);
     }
 
     [AllowAnonymous]

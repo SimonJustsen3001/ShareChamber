@@ -1,4 +1,4 @@
-.formInputContainer {
+.form-input-container {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -8,7 +8,7 @@
   align-items: center;
 }
 
-.fieldLabel {
+.field-label {
   color: rgb(144, 144, 144);
   position: absolute;
   top: 8px;
@@ -16,8 +16,8 @@
   font-size: 8px;
 }
 
-.normalField,
-.missingField {
+.normal-field,
+.missing-field {
   font-size: 16px;
   color: rgb(255, 255, 255);
   border: none;
@@ -30,25 +30,25 @@
   transition: box-shadow 0.3s;
 }
 
-.normalField:focus,
-.missingField:focus {
+.normal-field:focus,
+.missing-field:focus {
   outline: none;
   box-shadow: 0px 0px 2px 2px rgb(1, 136, 225);
 }
 
-.normalField::selection,
-.missingField::selection {
+.normal-field::selection,
+.missing-field::selection {
   background-color: #3e70bb;
   color: white;
 }
 
-.normalField:not(:focus)::selection,
-.missingField:not(:focus)::selection {
+.normal-field:not(:focus)::selection,
+.missing-field:not(:focus)::selection {
   background-color: #9da7b7;
   color: white;
 }
 
-.missingField {
+.missing-field {
   box-shadow: 0px 0px 2px 2px rgb(225, 1, 1);
 }
 
@@ -59,7 +59,7 @@
   right: 15px;
 }
 
-.errorLabel {
+.error-label {
   font-size: 12px;
   color: red;
   margin: 4px 0px 4px 10px;

@@ -1,5 +1,5 @@
 import { ErrorMessage, useField } from "formik";
-import styles from "./TextInputStandard.module.css";
+import "./TextInputStandard.Module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { useState } from "react";
@@ -17,20 +17,18 @@ export default function TextInputStandard(props: Props) {
 
   return (
     <>
-      <div className={styles.formInputContainer}>
-        <label className={styles.fieldLabel}>{props.label}</label>
+      <div className="form-input-container">
+        <label className="field-label">{props.label}</label>
         <input
           className={`${
-            meta.touched && meta.error
-              ? styles.missingField
-              : styles.normalField
+            meta.touched && meta.error ? "missing-field" : "normal-field"
           }`}
           {...field}
           {...props}
         />
-        <FontAwesomeIcon className={styles.icon} icon={props.icon} />
+        <FontAwesomeIcon className="icon" icon={props.icon} />
         {meta.touched && meta.error ? (
-          <label className={styles.errorLabel}>{meta.error}</label>
+          <label className="error-label">{meta.error}</label>
         ) : null}
       </div>
     </>

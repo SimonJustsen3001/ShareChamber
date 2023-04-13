@@ -1,0 +1,182 @@
+.list-selected {
+  height: 100%;
+  width: 70%;
+  margin-right: 50px;
+  padding-right: 20px;
+  box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.15);
+}
+
+.list-selected-info {
+  margin-top: 20px;
+  margin-left: 20px;
+  color: white;
+}
+
+.list-title-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.selected-name {
+  font-weight: 600;
+  font-size: 30px;
+  padding: 10px 0px;
+}
+
+.selected-button-container {
+  display: flex;
+  justify-content: space-between;
+  min-width: 400px;
+}
+
+.add-collab-button,
+.delete-list-button {
+  color: white;
+  box-shadow: 0px 0px 2px 2px rgba(255, 255, 255, 0.4);
+  border: none;
+  padding: 10px 0px;
+  width: 100%;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.add-collab-button {
+  background-color: #0277bd;
+  margin-right: 10px;
+}
+
+.delete-list-button {
+  background-color: #bd022bc6;
+}
+
+.selected-author {
+  font-size: 16px;
+}
+.author {
+  font-weight: bold;
+}
+.other-collaborators {
+  color: rgb(183, 183, 183);
+}
+
+.selected-list-overview {
+  position: relative;
+  margin-top: 20px;
+  height: auto;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.selected-list-container {
+  position: relative;
+  display: flex;
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 2px 2px rgba(255, 255, 255, 0.4);
+}
+
+.movie-list-image {
+  width: 200px;
+}
+
+.movie-list-info {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  width: 60%;
+  height: auto;
+  margin-left: 30px;
+}
+
+.movie-list-title {
+  margin-bottom: 5px;
+  font-weight: 600;
+  font-size: 28px;
+  padding: 8px 0px;
+  max-height: 70px;
+  max-width: 75%;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-height: 30px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.movie-list-metadata {
+  color: rgb(183, 183, 183);
+  max-width: 75%;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.movie-description {
+  margin-top: 40px;
+  margin-bottom: 20px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  line-height: 30px;
+  height: 120px;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.movie-list-director,
+.movie-list-actors {
+  color: rgb(183, 183, 183);
+  margin-bottom: 6px;
+  font-size: 18px;
+}
+
+.movie-list-ratings {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 30px;
+}
+
+.personal-rating,
+.imdb-rating {
+  display: flex;
+  align-items: center;
+  font-size: 30px;
+  margin-left: 10px;
+  margin-bottom: 20px;
+}
+
+.personal-rating i,
+.imdb-rating i {
+  margin-bottom: 2px;
+  margin-right: 10px;
+}
+
+.imdb-rating i {
+  color: gold;
+}
+
+.personal-rating i {
+  color: #0277bd;
+}
+
+.remove-movie-button {
+  position: absolute;
+  color: white;
+  background-color: #bd022bc6;
+  box-shadow: 0px 0px 2px 2px rgba(255, 255, 255, 0.4);
+  border: none;
+  padding: 10px 0px;
+  width: 20%;
+  border-radius: 10px;
+  cursor: pointer;
+  right: 30px;
+  bottom: 25px;
+  z-index: 3;
+}
