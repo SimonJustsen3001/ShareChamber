@@ -3,6 +3,7 @@
   background-color: rgb(33, 33, 33);
   color: black;
   height: 100px;
+  top: 0;
   left: 0;
   right: 0;
   display: flex;
