@@ -4,7 +4,7 @@ import { useStore } from "../../app/stores/store";
 import * as Yup from "yup";
 import { faLock, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import TextInputStandard from "../../app/common/forms/TextInputStandard";
-import "./LoginForm.Module.css";
+import "./Form.Module.css";
 import Button from "../../app/common/forms/Button";
 
 export default observer(function LoginForm() {
@@ -33,7 +33,7 @@ export default observer(function LoginForm() {
         }
       }}
     >
-      {({ handleSubmit, isSubmitting, errors }) => (
+      {({ handleSubmit, isSubmitting, errors, isValid }) => (
         <Form className="form" onSubmit={handleSubmit} autoComplete="off">
           <p className="form-header">Welcome to Movie List</p>
           <TextInputStandard
@@ -58,7 +58,7 @@ export default observer(function LoginForm() {
               clickButton={modalStore.closeModal}
               isSubmitting={isSubmitting}
               type="submit"
-              style="login"
+              style={isValid ? "positive" : "positive-invalid"}
               content="LOGIN"
             />
           </div>

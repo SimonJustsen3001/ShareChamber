@@ -53,7 +53,7 @@ export default observer(function AddCollaboratorForm() {
               clickButton={modalStore.closeModal}
               isSubmitting={isSubmitting}
               type="submit"
-              style={isValid ? "login" : "invalid"}
+              style={isValid ? "positive" : "positive-invalid"}
               content="Add person"
             />
           </div>

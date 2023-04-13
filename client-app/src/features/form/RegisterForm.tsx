@@ -4,7 +4,7 @@ import { useStore } from "../../app/stores/store";
 import * as Yup from "yup";
 import { faLock, faEnvelope, faUser } from "@fortawesome/free-solid-svg-icons";
 import TextInputStandard from "../../app/common/forms/TextInputStandard";
-import "./RegisterForm.Module.css";
+import "./Form.Module.css";
 import Button from "../../app/common/forms/Button";
 
 export default observer(function RegisterForm() {
@@ -37,7 +37,7 @@ export default observer(function RegisterForm() {
         }
       }}
     >
-      {({ handleSubmit, isSubmitting, errors }) => (
+      {({ handleSubmit, isSubmitting, errors, isValid }) => (
         <Form className="form" onSubmit={handleSubmit} autoComplete="off">
           <p className="form-header">Welcome to Movie List</p>
           <TextInputStandard
@@ -74,7 +74,7 @@ export default observer(function RegisterForm() {
               clickButton={modalStore.closeModal}
               isSubmitting={isSubmitting}
               type="submit"
-              style="login"
+              style={isValid ? "positive" : "positive-invalid"}
               content="Create Account"
             />
           </div>

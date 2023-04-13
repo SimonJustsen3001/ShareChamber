@@ -2,7 +2,7 @@ import { ErrorMessage, Formik, Form, Field } from "formik";
 import { observer } from "mobx-react-lite";
 import { useStore } from "../../app/stores/store";
 import * as Yup from "yup";
-import { faLock, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import TextInputStandard from "../../app/common/forms/TextInputStandard";
 import "./Form.Module.css";
 import Button from "../../app/common/forms/Button";
@@ -42,8 +42,8 @@ export default observer(function CreateListForm() {
           <TextInputStandard
             name="verify"
             placeholder="Delete"
-            label="Type delete to confirm deletion"
-            icon={faEnvelope}
+            label='Type "Delete" to confirm deletion'
+            icon={faTrash}
           />
           <ErrorMessage
             name="error"
@@ -54,7 +54,7 @@ export default observer(function CreateListForm() {
               clickButton={modalStore.closeModal}
               isSubmitting={isSubmitting}
               type="submit"
-              style={isValid ? "login" : "invalid"}
+              style={isValid ? "negative" : "negative-invalid"}
               content="Delete List"
             />
           </div>
