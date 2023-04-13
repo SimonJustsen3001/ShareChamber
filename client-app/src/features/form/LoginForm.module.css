@@ -8,18 +8,18 @@
   background-color: rgb(61, 61, 61);
 }
 
-.formHeader {
+.form-header {
   text-align: center;
   font-size: 28px;
   font-weight: 700px;
 }
 
-.errorLabel {
+.error-label {
   text-align: center;
   color: red;
 }
 
-.buttonContainer {
+.button-container {
   display: flex;
   margin-top: 30px;
   width: 100%;
