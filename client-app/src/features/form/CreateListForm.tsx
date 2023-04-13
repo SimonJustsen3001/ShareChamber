@@ -2,7 +2,7 @@ import { ErrorMessage, Formik, Form, Field } from "formik";
 import { observer } from "mobx-react-lite";
 import { useStore } from "../../app/stores/store";
 import * as Yup from "yup";
-import { faLock, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faList } from "@fortawesome/free-solid-svg-icons";
 import TextInputStandard from "../../app/common/forms/TextInputStandard";
 import "./Form.Module.css";
 import Button from "../../app/common/forms/Button";
@@ -32,14 +32,14 @@ export default observer(function CreateListForm() {
         }
       }}
     >
-      {({ handleSubmit, isSubmitting, errors }) => (
+      {({ handleSubmit, isSubmitting, errors, isValid }) => (
         <Form className="form" onSubmit={handleSubmit} autoComplete="off">
           <p className="form-header">Welcome to Movie List</p>
           <TextInputStandard
             name="name"
             placeholder="Name"
             label="Name"
-            icon={faEnvelope}
+            icon={faList}
           />
           <ErrorMessage
             name="error"
@@ -50,7 +50,7 @@ export default observer(function CreateListForm() {
               clickButton={modalStore.closeModal}
               isSubmitting={isSubmitting}
               type="submit"
-              style="login"
+              style={isValid ? "positive" : "positive-invalid"}
               content="Create List"
             />
           </div>
