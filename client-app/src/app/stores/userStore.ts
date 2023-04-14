@@ -5,6 +5,7 @@ import { store } from "./store";
 
 export default class UserStore {
   user: User | null = null;
+  searchAnonymous: boolean = false;
 
   constructor() {
     makeAutoObservable(this);
@@ -51,5 +52,9 @@ export default class UserStore {
       console.log(error);
       throw error;
     }
+  };
+
+  setSearchAnonymous = (state: boolean) => {
+    this.searchAnonymous = state;
   };
 }

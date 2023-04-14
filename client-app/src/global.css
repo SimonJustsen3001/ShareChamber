@@ -1,6 +1,8 @@
 body {
   background-color: rgb(38, 38, 38);
   font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 .ui.modal {
@@ -14,4 +16,24 @@ body {
   background-color: rgb(61, 61, 61) !important;
   border-radius: 20px !important;
   margin: 0 auto !important;
+}
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(155, 155, 155, 0.5) rgba(255, 255, 255, 0.1);
+}
+
+/* For Webkit-based browsers (e.g., Chrome, Safari) */
+::-webkit-scrollbar {
+  width: 12px; /* Width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1); /* Background color of the track */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(155, 155, 155, 0.5); /* Color of the thumb */
+  border-radius: 6px; /* Roundness of the thumb */
+  border: 3px solid rgba(255, 255, 255, 0.1); /* Border of the thumb */
 }
