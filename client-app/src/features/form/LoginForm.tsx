@@ -1,19 +1,19 @@
-import { ErrorMessage, Formik, Form, Field } from "formik";
+import { ErrorMessage, Formik, Form } from "formik";
 import { observer } from "mobx-react-lite";
 import { useStore } from "../../app/stores/store";
 import * as Yup from "yup";
 import { faLock, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import TextInputStandard from "../../app/common/forms/TextInputStandard";
-import "./Form.Module.css";
+import "./SharedFormStyles.Module.css";
 import Button from "../../app/common/forms/Button";
 
-export default observer(function LoginForm() {
-  const { userStore, movieListStore, modalStore } = useStore();
+const validationSchema = Yup.object({
+  email: Yup.string().required("Email cannot be empty").email(),
+  password: Yup.string().required("Password cannot be empty"),
+});
 
-  const validationSchema = Yup.object({
-    email: Yup.string().required("Email cannot be empty").email(),
-    password: Yup.string().required("Password cannot be empty"),
-  });
+const LoginForm = observer(() => {
+  const { userStore, movieListStore, modalStore } = useStore();
 
   return (
     <Formik
@@ -68,3 +68,5 @@ export default observer(function LoginForm() {
     </Formik>
   );
 });
+
+export default LoginForm;

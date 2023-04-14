@@ -1,10 +1,10 @@
-import { ErrorMessage, Formik, Form, Field } from "formik";
+import { ErrorMessage, Formik, Form } from "formik";
 import { observer } from "mobx-react-lite";
 import { useStore } from "../../app/stores/store";
 import * as Yup from "yup";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import TextInputStandard from "../../app/common/forms/TextInputStandard";
-import "./Form.Module.css";
+import "./SharedFormStyles.Module.css";
 import Button from "../../app/common/forms/Button";
 
 export default observer(function AddCollaboratorForm() {
