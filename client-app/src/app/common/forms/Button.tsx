@@ -12,8 +12,6 @@ interface Props {
 
 export default function Button(props: Props) {
   const buttonClass = `button-${props.style}`;
-  console.log(buttonClass);
-
   return (
     <button type={props.type} className={buttonClass}>
       {!props.isSubmitting ? (

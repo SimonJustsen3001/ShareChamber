@@ -4,9 +4,15 @@ import LoginForm from "../../features/form/LoginForm";
 import RegisterForm from "../../features/form/RegisterForm";
 import { useStore } from "../stores/store";
 import "./NavBar.Module.css";
+import { useEffect, useState } from "react";
 
 export default observer(function NavBar() {
-  const { userStore, modalStore } = useStore();
+  const { userStore, modalStore, movieListStore } = useStore();
+  const [currentPath, setCurrentPath] = useState("");
+  useEffect(() => {
+    setCurrentPath(window.location.pathname);
+  }, []);
+
   return (
     <div className="navbar">
       <div className="left-navbar-menu">
@@ -14,16 +20,16 @@ export default observer(function NavBar() {
           Home
         </Link>
       </div>
-      {userStore.isLoggedIn ? (
-        <>
-          <div className="middle-navbar-menu">
-            <Link to={"/movie"} className="menu-element">
-              Movies
-            </Link>
-            <Link to={"/list"} className="menu-element">
-              Movie Lists
-            </Link>
-          </div>
+      <>
+        <div className="middle-navbar-menu">
+          <Link to={"/movie"} className="menu-element">
+            Movies
+          </Link>
+          <Link to={"/list"} className="menu-element">
+            Movie Lists
+          </Link>
+        </div>
+        {userStore.isLoggedIn ? (
           <div className="right-navbar-menu">
             <div className="profile-element">
               {userStore.user?.displayName}
@@ -34,17 +40,46 @@ export default observer(function NavBar() {
                 <Link to="/profile" className="dropdown-link">
                   Profile
                 </Link>
-                <div
-                  onClick={() => userStore.logout()}
+                <Link
+                  to={currentPath}
+                  onClick={() => {
+                    userStore.logout();
+                    movieListStore.setSelectedMovieList(null);
+                  }}
                   className="dropdown-link"
                 >
                   Logout
-                </div>
+                </Link>
               </div>
             </div>
           </div>
-        </>
-      ) : (
+        ) : (
+          <div className="right-navbar-menu">
+            <Link
+              to={currentPath}
+              onClick={() => {
+                modalStore.openModal(<LoginForm />);
+              }}
+              className="menu-element"
+            >
+              Login
+            </Link>
+            <Link
+              to={currentPath}
+              onClick={() => modalStore.openModal(<RegisterForm />)}
+              className="menu-element"
+            >
+              Register
+            </Link>
+          </div>
+        )}
+      </>
+    </div>
+  );
+});
+
+/*
+
         <>
           <div className="middle-navbar-menu">
             <Link to={"/movie"} className="menu-element">
@@ -69,7 +104,5 @@ export default observer(function NavBar() {
             </div>
           </div>
         </>
-      )}
-    </div>
-  );
-});
+
+*/
