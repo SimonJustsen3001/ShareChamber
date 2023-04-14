@@ -21,7 +21,6 @@ export default class UserStore {
       store.commonStore.setToken(user.token);
       runInAction(() => (this.user = user));
     } catch (error) {
-      console.log(error);
       throw error;
     }
   };
@@ -31,8 +30,8 @@ export default class UserStore {
       const user = await agent.Account.register(creds);
       store.commonStore.setToken(user.token);
       runInAction(() => (this.user = user));
+      store.modalStore.closeModal();
     } catch (error) {
-      console.log(error);
       throw error;
     }
   };
@@ -44,14 +43,9 @@ export default class UserStore {
 
   getUser = async () => {
     try {
-      console.log("hey");
       const user = await agent.Account.current();
-      console.log(user);
       runInAction(() => (this.user = user));
-    } catch (error) {
-      console.log(error);
-      throw error;
-    }
+    } catch (error) {}
   };
 
   setSearchAnonymous = (state: boolean) => {

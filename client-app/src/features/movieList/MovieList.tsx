@@ -4,7 +4,7 @@ import AddCollaboratorForm from "../form/AddCollaboratorForm";
 import "./MovieList.Module.css";
 import DeleteForm from "../form/DeleteForm";
 
-export default observer(function MovieList() {
+const MovieList = observer(() => {
   const { modalStore, movieListStore } = useStore();
 
   const handleRemove = async (listId: string, movieId: string) => {
@@ -109,3 +109,5 @@ export default observer(function MovieList() {
     </div>
   );
 });
+
+export default MovieList;

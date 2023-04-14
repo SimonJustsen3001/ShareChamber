@@ -6,15 +6,16 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import TextInputStandard from "../../app/common/forms/TextInputStandard";
 import "./SharedFormStyles.Module.css";
 import Button from "../../app/common/forms/Button";
+import { ErrorResponse } from "../../app/interfaces/errorInterface";
 
-export default observer(function CreateListForm() {
+const validationSchema = Yup.object({
+  verify: Yup.string()
+    .matches(/^Delete$/, "You must type 'Delete' to confirm")
+    .required("You must type 'Delete' to confirm deletion"),
+});
+
+const DeleteForm = observer(() => {
   const { movieListStore, modalStore } = useStore();
-
-  const validationSchema = Yup.object({
-    verify: Yup.string()
-      .matches(/^Delete$/, "You must type 'Delete' to confirm")
-      .required("Name cannot be empty"),
-  });
 
   return (
     <Formik
@@ -29,16 +30,21 @@ export default observer(function CreateListForm() {
           await movieListStore.deleteList(
             movieListStore.selectedMovieList?.id!
           );
+
           movieListStore.loadMovieLists();
           modalStore.closeModal();
         } catch (error) {
-          setErrors({ error: "You don't own the list" });
+          const errorResponse = error as ErrorResponse;
+          setErrors({
+            error:
+              errorResponse.response.data.errorMessage || "An error occurred",
+          });
         }
       }}
     >
       {({ handleSubmit, isSubmitting, errors, isValid }) => (
         <Form className="form" onSubmit={handleSubmit} autoComplete="off">
-          <p className="form-header">Welcome to Movie List</p>
+          <p className="form-header">Delete list?</p>
           <TextInputStandard
             name="verify"
             placeholder="Delete"
@@ -47,7 +53,9 @@ export default observer(function CreateListForm() {
           />
           <ErrorMessage
             name="error"
-            render={() => <label className="error-label">{errors.error}</label>}
+            render={() => (
+              <label className="form-error-label">{errors.error}</label>
+            )}
           />
           <div className="button-container">
             <Button
@@ -63,3 +71,5 @@ export default observer(function CreateListForm() {
     </Formik>
   );
 });
+
+export default DeleteForm;

@@ -5,7 +5,7 @@ import "@fortawesome/fontawesome-free/css/all.css";
 import "./MoviePage.Module.css";
 import Unauthenticated from "../unauthenticated/Unauthenticated";
 
-export default observer(function MoviePage() {
+const MoviePage = observer(() => {
   const { movieStore, movieListStore, userStore } = useStore();
   const [searchTerm, setSearchTerm] = useState("");
   const debouncedLoadMovies = useDebounced(
@@ -14,8 +14,8 @@ export default observer(function MoviePage() {
   );
 
   useEffect(() => {
-    movieStore.loadMovies("spirited");
-    movieListStore.loadMovieLists();
+    if (userStore.searchAnonymous) movieStore.loadMovies("");
+    if (userStore.user) movieListStore.loadMovieLists();
   }, [movieStore, movieListStore]);
 
   const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -139,3 +139,5 @@ export default observer(function MoviePage() {
     />
   );
 });
+
+export default MoviePage;

@@ -23,8 +23,6 @@ export default class MovieListStore {
     this.setLoadingInitial(true);
     try {
       const movieLists = await agent.MovieLists.list();
-      console.log(movieLists);
-
       this.movieLists = [];
 
       movieLists.forEach((movieList) => {
@@ -109,7 +107,6 @@ export default class MovieListStore {
 
   setSelectedMovieList = (movieList: MovieList | null) => {
     this.selectedMovieList = movieList;
-    console.log(movieList);
   };
 
   getCurrentMovieList = (listId: string): MovieList => {

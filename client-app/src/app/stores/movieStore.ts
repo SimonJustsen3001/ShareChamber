@@ -13,11 +13,10 @@ export default class MovieStore {
   }
 
   loadMovies = async (query: string) => {
+    
     this.setLoadingInitial(true);
     try {
       const movies = await agent.Movies.list(query);
-      console.log(movies);
-
       this.movies = [];
       this.moviesWithoutPoster = [];
 

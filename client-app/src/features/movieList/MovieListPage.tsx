@@ -7,11 +7,11 @@ import MovieListOverview from "./MovieListOverview";
 import MovieList from "./MovieList";
 import Unauthenticated from "../unauthenticated/Unauthenticated";
 
-export default observer(function MovieListPage() {
+const MovieListPage = observer(() => {
   const { movieListStore, userStore } = useStore();
 
   useEffect(() => {
-    movieListStore.loadMovieLists();
+    if (userStore.user) movieListStore.loadMovieLists();
   }, [movieListStore, userStore]);
 
   return (
@@ -30,3 +30,5 @@ export default observer(function MovieListPage() {
     </>
   );
 });
+
+export default MovieListPage;

@@ -6,6 +6,7 @@ import { faLock, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import TextInputStandard from "../../app/common/forms/TextInputStandard";
 import "./SharedFormStyles.Module.css";
 import Button from "../../app/common/forms/Button";
+import { ErrorResponse } from "../../app/interfaces/errorInterface";
 
 const validationSchema = Yup.object({
   email: Yup.string().required("Email cannot be empty").email(),
@@ -30,7 +31,11 @@ const LoginForm = observer(() => {
           await movieListStore.loadMovieLists();
           modalStore.closeModal();
         } catch (error) {
-          setErrors({ error: "Invalid email or password" });
+          const errorResponse = error as ErrorResponse;
+          setErrors({
+            error:
+              errorResponse.response.data.errorMessage || "An error occurred",
+          });
         }
       }}
     >

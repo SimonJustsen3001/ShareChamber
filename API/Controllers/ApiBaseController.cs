@@ -21,6 +21,7 @@ namespace API.Controllers
       if (result.IsSuccess && result.Value == null)
         return NotFound();
       return BadRequest(result.Error);
+      //return BadRequest(new { errorMessage = result.Error });
     }
   }
 }

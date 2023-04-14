@@ -1,7 +1,7 @@
 import { observer } from "mobx-react-lite";
 import "./HomePage.Module.css";
 
-export default observer(function HomePage() {
+const HomePage = observer(() => {
   return (
     <div className="overview">
       <div className="info-container">
@@ -13,3 +13,5 @@ export default observer(function HomePage() {
     </div>
   );
 });
+
+export default HomePage;

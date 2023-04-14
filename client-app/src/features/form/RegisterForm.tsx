@@ -6,35 +6,31 @@ import { faLock, faEnvelope, faUser } from "@fortawesome/free-solid-svg-icons";
 import TextInputStandard from "../../app/common/forms/TextInputStandard";
 import "./SharedFormStyles.Module.css";
 import Button from "../../app/common/forms/Button";
+import { ErrorResponse } from "../../app/interfaces/errorInterface";
 
-export default observer(function RegisterForm() {
+const validationSchema = Yup.object({
+  displayName: Yup.string().required("Please enter a name for the site"),
+  username: Yup.string().required("Please enter a username"),
+  email: Yup.string().required("Email cannot be empty").email(),
+  password: Yup.string().required("Password cannot be empty"),
+});
+
+const RegisterForm = observer(() => {
   const { userStore, modalStore } = useStore();
-
-  const validationSchema = Yup.object({
-    displayName: Yup.string().required("Please enter a name for the site"),
-    username: Yup.string().required("Please enter a username"),
-    email: Yup.string().required("Email cannot be empty").email(),
-    password: Yup.string().required("Password cannot be empty"),
-  });
 
   return (
     <Formik
       validationSchema={validationSchema}
       enableReinitialize
       initialValues={{
-        displayName: "",
-        username: "",
-        email: "",
-        password: "",
+        displayName: "test2",
+        username: "test2",
+        email: "test2@hotmail.com",
+        password: "Pa$$w0rd",
         error: null,
       }}
-      onSubmit={async (value, { setErrors }) => {
-        try {
-          await userStore.register(value);
-          modalStore.closeModal();
-        } catch (error) {
-          setErrors({ error: "Invalid email or password" });
-        }
+      onSubmit={async (value) => {
+        await userStore.register(value);
       }}
     >
       {({ handleSubmit, isSubmitting, errors, isValid }) => (
@@ -83,3 +79,5 @@ export default observer(function RegisterForm() {
     </Formik>
   );
 });
+
+export default RegisterForm;

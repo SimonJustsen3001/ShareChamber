@@ -3,7 +3,7 @@ import { useStore } from "../../app/stores/store";
 import CreateListForm from "../form/CreateListForm";
 import "./MovieListOverview.Module.css";
 
-export default observer(function MovieListPage() {
+const MovieListPage = observer(() => {
   const { modalStore, movieListStore } = useStore();
 
   return (
@@ -53,3 +53,5 @@ export default observer(function MovieListPage() {
     </div>
   );
 });
+
+export default MovieListPage;
