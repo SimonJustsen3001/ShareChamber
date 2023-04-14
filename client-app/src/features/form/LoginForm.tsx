@@ -8,7 +8,7 @@ import "./Form.Module.css";
 import Button from "../../app/common/forms/Button";
 
 export default observer(function LoginForm() {
-  const { userStore, modalStore } = useStore();
+  const { userStore, movieListStore, modalStore } = useStore();
 
   const validationSchema = Yup.object({
     email: Yup.string().required("Email cannot be empty").email(),
@@ -27,6 +27,7 @@ export default observer(function LoginForm() {
       onSubmit={async (value, { setErrors }) => {
         try {
           await userStore.login(value);
+          await movieListStore.loadMovieLists();
           modalStore.closeModal();
         } catch (error) {
           setErrors({ error: "Invalid email or password" });

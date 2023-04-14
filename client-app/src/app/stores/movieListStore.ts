@@ -107,7 +107,7 @@ export default class MovieListStore {
     this.loadingInitial = state;
   };
 
-  setSelectedMovieList = (movieList: MovieList) => {
+  setSelectedMovieList = (movieList: MovieList | null) => {
     this.selectedMovieList = movieList;
     console.log(movieList);
   };
