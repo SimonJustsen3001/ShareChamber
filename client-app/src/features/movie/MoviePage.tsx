@@ -3,17 +3,10 @@ import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { useStore } from "../../app/stores/store";
 import "@fortawesome/fontawesome-free/css/all.css";
 import "./MoviePage.Module.css";
-
-const debounce = (func: (...args: any[]) => any, wait: number) => {
-  let timeout: ReturnType<typeof setTimeout> | null = null;
-  return (...args: any[]) => {
-    if (timeout) clearTimeout(timeout);
-    timeout = setTimeout(() => func(...args), wait);
-  };
-};
+import Unauthenticated from "../unauthenticated/Unauthenticated";
 
 export default observer(function MoviePage() {
-  const { movieStore, movieListStore } = useStore();
+  const { movieStore, movieListStore, userStore } = useStore();
   const [searchTerm, setSearchTerm] = useState("");
   const debouncedLoadMovies = useDebounced(
     (term: string) => movieStore.loadMovies(term),
@@ -56,7 +49,7 @@ export default observer(function MoviePage() {
     };
   }
 
-  return (
+  return userStore.isLoggedIn || userStore.searchAnonymous ? (
     <>
       <div className="search-bar-container">
         <input
@@ -139,5 +132,10 @@ export default observer(function MoviePage() {
         )}
       </div>
     </>
+  ) : (
+    <Unauthenticated
+      message="Please login to enjoy a better search experience"
+      loginRequired={false}
+    />
   );
 });

@@ -1,4 +1,5 @@
 using Application.Handlers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -6,6 +7,7 @@ namespace API.Controllers
 {
   public class MovieController : ApiBaseController
   {
+    [AllowAnonymous]
     [HttpGet("{query}")]
     public async Task<IActionResult> GetMovies(string query)
     {

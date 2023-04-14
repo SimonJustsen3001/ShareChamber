@@ -32,6 +32,7 @@
 
 .info-message {
   max-width: 500px;
+  text-align: center;
 }
 
 .overview::before,
