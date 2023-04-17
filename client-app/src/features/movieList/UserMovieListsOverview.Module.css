@@ -65,9 +65,9 @@
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 90%;
-  margin-bottom: 6px;
   font-size: 22px;
   font-weight: 600;
+  height: 25px;
 }
 
 .list-movie-count {
