@@ -1,9 +1,9 @@
 import { observer } from "mobx-react-lite";
 import { useStore } from "../../app/stores/store";
 import CreateListForm from "../form/CreateListForm";
-import "./MovieListOverview.Module.css";
+import "./UserMovieListsOverview.Module.css";
 
-const MovieListPage = observer(() => {
+const UserMovieListsOverview = observer(() => {
   const { modalStore, movieListStore } = useStore();
 
   return (
@@ -54,4 +54,4 @@ const MovieListPage = observer(() => {
   );
 });
 
-export default MovieListPage;
+export default UserMovieListsOverview;

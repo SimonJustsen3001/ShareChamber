@@ -3,8 +3,8 @@ import { useEffect } from "react";
 import { useStore } from "../../app/stores/store";
 import "./MovieListPage.Module.css";
 import "@fortawesome/fontawesome-free/css/all.css";
-import MovieListOverview from "./MovieListOverview";
-import MovieList from "./MovieList";
+import UserMovieListsOverview from "./UserMovieListsOverview";
+import SelectedMovieList from "./SelectedMovieList";
 import Unauthenticated from "../unauthenticated/Unauthenticated";
 
 const MovieListPage = observer(() => {
@@ -18,8 +18,8 @@ const MovieListPage = observer(() => {
     <>
       {userStore.isLoggedIn ? (
         <div className="list-setup">
-          <MovieList />
-          <MovieListOverview />
+          <SelectedMovieList />
+          <UserMovieListsOverview />
         </div>
       ) : (
         <Unauthenticated
