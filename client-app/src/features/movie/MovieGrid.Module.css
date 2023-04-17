@@ -8,12 +8,13 @@
   display: grid;
   position: absolute;
   padding: 20px;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(5, 1fr);
   background-color: rgb(63, 63, 63);
   column-gap: 40px;
   row-gap: 40px;
   font-size: 20px;
-  min-width: 1200px;
+  min-width: 1400px;
+  justify-items: center;
 }
 
 .movie-container {
@@ -148,7 +149,7 @@ foreignObject:hover .movie-add-to-list-icon {
   padding: 20px;
   background-color: rgb(63, 63, 63);
   height: 380px;
-  min-width: 1200px;
+  min-width: 1400px;
 }
 
 .loading-icon {
@@ -156,42 +157,43 @@ foreignObject:hover .movie-add-to-list-icon {
   color: white;
 }
 
-@media (max-width: 699px) {
+@media ((min-width: 1030px) and (max-width: 1430px)) {
   .movie-grid {
-    grid-template-columns: 1fr;
-    min-width: 200px;
-  }
-  .movie-title {
-    padding: 16px 0px;
-  }
-}
-
-@media ((min-width: 700px) and (max-width: 899px)) {
-  .movie-grid {
-    grid-template-columns: 1fr 1fr;
-    min-width: 600px;
-  }
-  .movie-title {
-    padding: 15px 0px;
-  }
-}
-
-@media ((min-width: 900px) and (max-width: 1099px)) {
-  .movie-grid {
-    grid-template-columns: 1fr 1fr 1fr;
-    min-width: 800px;
-  }
-  .movie-title {
-    padding: 14px 0px;
-  }
-}
-
-@media ((min-width: 1100px) and (max-width: 1500px)) {
-  .movie-grid {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(4, 1fr);
     min-width: 1000px;
   }
-  .movie-title {
-    padding: 13px 0px;
+}
+
+@media ((min-width: 830px) and (max-width: 1029px)) {
+  .movie-grid {
+    grid-template-columns: repeat(3, 1fr);
+    min-width: 800px;
+  }
+}
+
+@media ((min-width: 630px) and (max-width: 829px)) {
+  .movie-grid {
+    grid-template-columns: repeat(2, 1fr);
+    min-width: 600px;
+  }
+  .movie-container {
+    width: 250px;
+  }
+
+  .list-item {
+    max-width: 250px;
+  }
+}
+
+@media (max-width: 629px) {
+  .movie-grid {
+    grid-template-columns: repeat(1, 1fr);
+    min-width: 300px;
+  }
+  .movie-container {
+    width: 250px;
+  }
+  .list-item {
+    max-width: 250px;
   }
 }

@@ -18,6 +18,7 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  overflow: hidden;
 }
 
 .middle-navbar-menu {
@@ -36,6 +37,7 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  overflow: hidden;
 }
 
 .menu-element,
@@ -89,4 +91,37 @@
 .dropdown-link:hover {
   color: white;
   box-shadow: inset 0px 0px 3px 1px rgba(156, 156, 156, 0.5);
+}
+
+@media (min-width: 500px) and (max-width: 700px) {
+  .left-navbar-menu {
+    width: 0;
+    min-width: 0;
+  }
+
+  .left-navbar-menu .menu-element {
+    width: 0;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 499px) {
+  .left-navbar-menu {
+    width: 0;
+    min-width: 0;
+  }
+
+  .left-navbar-menu .menu-element {
+    width: 0;
+    min-width: 0;
+  }
+  .right-navbar-menu {
+    width: 0;
+    min-width: 0;
+  }
+
+  .right-navbar-menu .menu-element {
+    width: 0;
+    min-width: 0;
+  }
 }
