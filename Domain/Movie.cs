@@ -15,5 +15,6 @@ namespace Domain
     public string ImageUrl { get; set; }
     public ICollection<MovieGenre> MovieGenres { get; set; }
     public ICollection<MovieMovieList> MovieMovieLists { get; set; }
+    public ICollection<MovieRating> MovieRatings { get; set; }
   }
 }
