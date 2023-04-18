@@ -1,10 +1,10 @@
 import { observer } from "mobx-react-lite";
 import { useStore } from "../../app/stores/store";
 import AddCollaboratorForm from "../form/AddCollaboratorForm";
-import "./MovieList.Module.css";
+import "./SelectedMovieList.Module.css";
 import DeleteForm from "../form/DeleteForm";
 
-export default observer(function MovieList() {
+const SelectedMovieList = observer(() => {
   const { modalStore, movieListStore } = useStore();
 
   const handleRemove = async (listId: string, movieId: string) => {
@@ -65,18 +65,23 @@ export default observer(function MovieList() {
                     src={movie.movie.imageUrl}
                   />
                   <div className="movie-list-info">
-                    <div className="movie-list-title">{movie.movie.title}</div>
-                    <div className="movie-list-metadata">
-                      {movie.movie.runTime / 60} min &#124;
-                      {movie.movie.movieGenres.map((movieGenre) => (
-                        <> {movieGenre.id}, </>
-                      ))}
+                    <div className="movie-title-genre-container">
+                      <div className="movie-list-title">
+                        {movie.movie.title}
+                      </div>
+                      <div className="movie-list-metadata">
+                        {movie.movie.runTime / 60} min &#124;
+                        {movie.movie.movieGenres.map((movieGenre) => (
+                          <> {movieGenre.id}, </>
+                        ))}
+                      </div>
                     </div>
                     <div className="movie-description">
                       {movie.movie.description}
                     </div>
                     <div className="movie-list-director">
-                      Directed by {movie.movie.director}
+                      Directed by{" "}
+                      {movie.movie.director ? movie.movie.director : "unknown"}
                     </div>
                     <div className="movie-list-actors">
                       Features {movie.movie.featuredActors}
@@ -109,3 +114,5 @@ export default observer(function MovieList() {
     </div>
   );
 });
+
+export default SelectedMovieList;

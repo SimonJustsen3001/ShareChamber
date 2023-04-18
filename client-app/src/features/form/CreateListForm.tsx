@@ -6,13 +6,14 @@ import { faList } from "@fortawesome/free-solid-svg-icons";
 import TextInputStandard from "../../app/common/forms/TextInputStandard";
 import "./SharedFormStyles.Module.css";
 import Button from "../../app/common/forms/Button";
+import { ErrorResponse } from "../../app/interfaces/errorInterface";
+
+const validationSchema = Yup.object({
+  name: Yup.string().required("Name cannot be empty"),
+});
 
 export default observer(function CreateListForm() {
   const { movieListStore, modalStore } = useStore();
-
-  const validationSchema = Yup.object({
-    name: Yup.string().required("Name cannot be empty"),
-  });
 
   return (
     <Formik
@@ -22,14 +23,12 @@ export default observer(function CreateListForm() {
         name: "",
         error: null,
       }}
-      onSubmit={async (value, { setErrors }) => {
+      onSubmit={async (value) => {
         try {
           await movieListStore.createMovieList(value);
           movieListStore.loadMovieLists();
           modalStore.closeModal();
-        } catch (error) {
-          setErrors({ error: "List name identical to other list you own" });
-        }
+        } catch (error) {}
       }}
     >
       {({ handleSubmit, isSubmitting, errors, isValid }) => (

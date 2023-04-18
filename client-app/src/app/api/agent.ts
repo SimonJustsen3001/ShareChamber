@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from "axios";
+import axios, { AxiosError, AxiosResponse } from "axios";
 import { Movie, MovieId } from "../interfaces/movieInterface";
 import {
   MovieList,
@@ -6,6 +6,8 @@ import {
 } from "../interfaces/movieListInterface";
 import { User, UserFormValues } from "../interfaces/userInterface";
 import { store } from "../stores/store";
+import { router } from "../routes/Routes";
+import { toast } from "react-toastify";
 
 axios.defaults.baseURL = "https://localhost:5000/api";
 
@@ -14,6 +16,48 @@ axios.interceptors.request.use((config) => {
   if (token && config.headers) config.headers.Authorization = `Bearer ${token}`;
   return config;
 });
+
+axios.interceptors.response.use(
+  async (response) => {
+    return response;
+  },
+  (error: AxiosError) => {
+    const { data, status, config } = error.response as AxiosResponse;
+    switch (status) {
+      case 400:
+        if (config.method === "get" && data.errors.hasOwnProperty("id"))
+          router.navigate("/not-found");
+        if (data.errors) {
+          const modalStateErrors = [];
+          for (const key in data.errors) {
+            console.log(key);
+            if (data.errors[key]) {
+              modalStateErrors.push(data.errors[key]);
+              console.log(data.errors[key]);
+              toast.error(data.errors[key][0]);
+            }
+          }
+          throw modalStateErrors.flat();
+        } else {
+          toast.error(data);
+        }
+        break;
+      case 401:
+        toast.error("unauthorized");
+        break;
+      case 403:
+        toast.error("forbidden");
+        break;
+      case 404:
+        router.navigate("/not-found");
+        break;
+      case 500:
+        router.navigate("/server-error");
+        break;
+    }
+    return Promise.reject(error);
+  }
+);
 
 const responseBody = <T>(response: AxiosResponse<T>) => response.data;
 

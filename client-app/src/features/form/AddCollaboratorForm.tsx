@@ -7,12 +7,12 @@ import TextInputStandard from "../../app/common/forms/TextInputStandard";
 import "./SharedFormStyles.Module.css";
 import Button from "../../app/common/forms/Button";
 
-export default observer(function AddCollaboratorForm() {
-  const { movieListStore, modalStore } = useStore();
+const validationSchema = Yup.object({
+  name: Yup.string().required("Name cannot be empty"),
+});
 
-  const validationSchema = Yup.object({
-    name: Yup.string().required("Name cannot be empty"),
-  });
+const AddCollaboratorForm = observer(() => {
+  const { movieListStore, modalStore } = useStore();
 
   return (
     <Formik
@@ -22,7 +22,7 @@ export default observer(function AddCollaboratorForm() {
         name: "",
         error: null,
       }}
-      onSubmit={async (value, { setErrors }) => {
+      onSubmit={async (value) => {
         try {
           await movieListStore.addCollaborator(
             movieListStore.selectedMovieList?.id!,
@@ -30,14 +30,12 @@ export default observer(function AddCollaboratorForm() {
           );
           movieListStore.loadMovieLists();
           modalStore.closeModal();
-        } catch (error) {
-          setErrors({ error: "You don't own the list" });
-        }
+        } catch (error) {}
       }}
     >
       {({ handleSubmit, isSubmitting, errors, isValid }) => (
         <Form className="form" onSubmit={handleSubmit} autoComplete="off">
-          <p className="form-header">Welcome to Movie List</p>
+          <p className="form-header">Add Collaborator</p>
           <TextInputStandard
             name="name"
             placeholder="Name"
@@ -62,3 +60,5 @@ export default observer(function AddCollaboratorForm() {
     </Formik>
   );
 });
+
+export default AddCollaboratorForm;

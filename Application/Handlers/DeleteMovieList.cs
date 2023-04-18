@@ -32,10 +32,10 @@ namespace Application.Handlers
             x.AppUserId == user.Id);
 
         if (appUserMovieListEntry == null)
-          return Result<Unit>.Failure("User has no connection to the list");
+          return Result<Unit>.Failure("Movielist not found");
 
         if (!appUserMovieListEntry.isOwner)
-          return Result<Unit>.Failure("User does not own the list");
+          return Result<Unit>.Failure("You don't own the list");
 
         var movieList = await _context.MovieList.FindAsync(request.MovieListId);
 

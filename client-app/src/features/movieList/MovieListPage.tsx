@@ -3,23 +3,23 @@ import { useEffect } from "react";
 import { useStore } from "../../app/stores/store";
 import "./MovieListPage.Module.css";
 import "@fortawesome/fontawesome-free/css/all.css";
-import MovieListOverview from "./MovieListOverview";
-import MovieList from "./MovieList";
+import UserMovieListsOverview from "./UserMovieListsOverview";
+import SelectedMovieList from "./SelectedMovieList";
 import Unauthenticated from "../unauthenticated/Unauthenticated";
 
-export default observer(function MovieListPage() {
+const MovieListPage = observer(() => {
   const { movieListStore, userStore } = useStore();
 
   useEffect(() => {
-    movieListStore.loadMovieLists();
+    if (userStore.user) movieListStore.loadMovieLists();
   }, [movieListStore, userStore]);
 
   return (
     <>
       {userStore.isLoggedIn ? (
         <div className="list-setup">
-          <MovieList />
-          <MovieListOverview />
+          <SelectedMovieList />
+          <UserMovieListsOverview />
         </div>
       ) : (
         <Unauthenticated
@@ -30,3 +30,5 @@ export default observer(function MovieListPage() {
     </>
   );
 });
+
+export default MovieListPage;

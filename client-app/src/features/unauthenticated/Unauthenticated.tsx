@@ -9,7 +9,7 @@ interface Props {
   loginRequired: boolean;
 }
 
-export default observer(function Unauthenticated(props: Props) {
+const Unauthenticated = observer((props: Props) => {
   const { modalStore, userStore } = useStore();
   return (
     <div className="unauthorized-overview">
@@ -54,3 +54,5 @@ export default observer(function Unauthenticated(props: Props) {
     </div>
   );
 });
+
+export default Unauthenticated;
