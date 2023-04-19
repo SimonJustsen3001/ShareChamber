@@ -3,6 +3,7 @@ export interface Movie {
   titleType: string;
   description: string;
   rating: number;
+  personalRating: number;
   voters: number;
   year: number;
   runTime: number;

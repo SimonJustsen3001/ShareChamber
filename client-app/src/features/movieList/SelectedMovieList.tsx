@@ -105,7 +105,9 @@ const SelectedMovieList = observer(() => {
                       }
                     >
                       <i className="fa fa-star" />
-                      &#63;
+                      {movie.movie.personalRating != 0
+                        ? movie.movie.personalRating
+                        : "Rate"}
                     </div>
                   </div>
                   <button

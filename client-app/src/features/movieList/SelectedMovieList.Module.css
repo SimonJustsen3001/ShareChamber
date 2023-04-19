@@ -141,6 +141,7 @@
   flex-direction: column;
   position: absolute;
   right: 30px;
+  width: 100px;
 }
 
 .personal-rating,
@@ -236,7 +237,7 @@
   .movie-title-genre-container {
     position: absolute;
     top: -150px;
-    left: 120px;
+    left: 110px;
     width: 300px;
   }
   .movie-list-metadata {
@@ -315,6 +316,10 @@
     -webkit-line-clamp: 4;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+
+  .movie-list-ratings {
+    right: 10px;
   }
 
   .remove-movie-button {
