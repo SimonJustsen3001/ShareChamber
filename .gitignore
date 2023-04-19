@@ -63,7 +63,7 @@ BenchmarkDotNet.Artifacts/
 project.lock.json
 project.fragment.lock.json
 artifacts/
-**/obj/Debug/**/*.cache
+**/obj/Debug/
 
 # Tye
 .tye/
@@ -478,3 +478,28 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+
+# Ignore obj/Debug files
+**/obj/Debug/
+
+# Ignore API.GeneratedMSBuildEditorConfig.editorconfig
+API.GeneratedMSBuildEditorConfig.editorconfig
+
+# Ignore API.assets.cache
+API.assets.cache
+
+# Ignore API.csproj.AssemblyReference.cache
+API.csproj.AssemblyReference.cache
+
+# Ignore API.dll
+API.dll
+
+# Ignore API.genruntimeconfig.cache
+API.genruntimeconfig.cache
+
+# Ignore Application.csproj.AssemblyReference.cache
+Application.csproj.AssemblyReference.cache
+
+# Ignore Persistance.csproj.AssemblyReference.cache
+Persistance.csproj.AssemblyReference.cache
