@@ -1,6 +1,7 @@
 import { makeAutoObservable } from "mobx";
 import agent from "../api/agent";
 import { Movie } from "../interfaces/movieInterface";
+import { Rating } from "../interfaces/ratingInterface";
 
 export default class MovieStore {
   movies: Movie[] = [];
@@ -13,7 +14,6 @@ export default class MovieStore {
   }
 
   loadMovies = async (query: string) => {
-    
     this.setLoadingInitial(true);
     try {
       const movies = await agent.Movies.list(query);
@@ -28,6 +28,13 @@ export default class MovieStore {
     } catch (error) {
       this.setLoadingInitial(false);
     }
+  };
+
+  setMovieRating = async (rating: Rating) => {
+    try {
+      console.log(rating);
+      await agent.Movies.updateMovieRating(rating);
+    } catch (error) {}
   };
 
   submitMovies = async (query: string): Promise<Boolean> => {

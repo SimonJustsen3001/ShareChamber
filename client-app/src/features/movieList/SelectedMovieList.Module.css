@@ -148,11 +148,12 @@
   display: flex;
   align-items: center;
   font-size: 30px;
-  margin-left: 10px;
+}
+
+.imdb-rating {
   margin-bottom: 20px;
 }
 
-.personal-rating i,
 .imdb-rating i {
   margin-bottom: 2px;
   margin-right: 10px;
@@ -163,7 +164,8 @@
 }
 
 .personal-rating i {
-  color: #0277bd;
+  margin-right: 10px;
+  color: rgb(2, 119, 189);
 }
 
 .remove-movie-button {

@@ -1,0 +1,20 @@
+.testing-environment {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+}
+
+.stars {
+  display: flex;
+}
+
+.star-item-blue {
+  font-size: 35px;
+  color: rgb(2, 119, 189);
+}
+
+.star-item-gold {
+  font-size: 35px;
+  color: gold;
+}

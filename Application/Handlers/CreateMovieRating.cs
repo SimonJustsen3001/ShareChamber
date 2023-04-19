@@ -44,8 +44,13 @@ namespace Application.Handlers
 
         if (existingRating != null)
         {
+          System.Console.WriteLine($"\n\n{existingRating.Rating}: {request.Rating}\n\n");
           if (existingRating.Rating != request.Rating)
+          {
             existingRating.Rating = request.Rating;
+            await _context.SaveChangesAsync();
+          }
+
           return Result<Unit>.Success(Unit.Value);
         }
         else

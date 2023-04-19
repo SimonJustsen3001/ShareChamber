@@ -3,6 +3,7 @@ import { useStore } from "../../app/stores/store";
 import AddCollaboratorForm from "../form/AddCollaboratorForm";
 import "./SelectedMovieList.Module.css";
 import DeleteForm from "../form/DeleteForm";
+import RateForm from "../form/RateForm";
 
 const SelectedMovieList = observer(() => {
   const { modalStore, movieListStore } = useStore();
@@ -91,8 +92,20 @@ const SelectedMovieList = observer(() => {
                     <div className="imdb-rating">
                       <i className="fa fa-star " /> {movie.movie.rating}
                     </div>
-                    <div className="personal-rating">
-                      <i className="fa fa-star" />?
+                    <div
+                      className="personal-rating"
+                      onClick={() =>
+                        modalStore.openModal(
+                          <RateForm
+                            listId={movie.movieListId}
+                            movieId={movie.movie.id}
+                            movieTitle={movie.movie.title}
+                          />
+                        )
+                      }
+                    >
+                      <i className="fa fa-star" />
+                      &#63;
                     </div>
                   </div>
                   <button
