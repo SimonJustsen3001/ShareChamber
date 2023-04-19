@@ -24,6 +24,7 @@
   font-weight: 600;
   font-size: 30px;
   padding: 10px 0px;
+  line-height: 30px;
 }
 
 .selected-button-container {
@@ -140,7 +141,8 @@
   display: flex;
   flex-direction: column;
   position: absolute;
-  right: 30px;
+  right: 5px;
+  width: 110px;
 }
 
 .personal-rating,
@@ -148,11 +150,17 @@
   display: flex;
   align-items: center;
   font-size: 30px;
-  margin-left: 10px;
+}
+
+.personal-rating:hover {
+  cursor: pointer;
+  box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.15);
+}
+
+.imdb-rating {
   margin-bottom: 20px;
 }
 
-.personal-rating i,
 .imdb-rating i {
   margin-bottom: 2px;
   margin-right: 10px;
@@ -163,7 +171,8 @@
 }
 
 .personal-rating i {
-  color: #0277bd;
+  margin-right: 10px;
+  color: rgb(2, 119, 189);
 }
 
 .remove-movie-button {
@@ -234,7 +243,7 @@
   .movie-title-genre-container {
     position: absolute;
     top: -150px;
-    left: 120px;
+    left: 110px;
     width: 300px;
   }
   .movie-list-metadata {
@@ -313,6 +322,18 @@
     -webkit-line-clamp: 4;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+
+  .movie-title-genre-container {
+    width: 100%;
+  }
+
+  .movie-list-title {
+    max-width: 100%;
+  }
+
+  .movie-list-metadata {
+    max-width: 100%;
   }
 
   .remove-movie-button {

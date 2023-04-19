@@ -40,30 +40,31 @@ namespace Application.Handlers
           .ToListAsync();
 
 
-        var movieLists = userMovieList.Select(x => x.MovieList).Select(x => new MovieListDTO
+        var movieLists = userMovieList.Select(uml => uml.MovieList).Select(ml => new MovieListDTO
         {
-          Id = x.Id,
-          Name = x.Name,
-          OwnerName = _context.AppUserMovieList.SingleOrDefault(y => y.MovieListId == x.Id && y.isOwner).AppUser.DisplayName,
-          CollaboratorNames = x.AppUserMovieLists.Where(y => y.MovieListId == x.Id && !y.isOwner).Select(z => z.AppUser.DisplayName).Where(dn => dn != null).ToList(),
-          MovieMovieLists = x.MovieMovieLists.Select(x => new MovieMovieListDTO
+          Id = ml.Id,
+          Name = ml.Name,
+          OwnerName = _context.AppUserMovieList.SingleOrDefault(auml => auml.MovieListId == ml.Id && auml.isOwner).AppUser.DisplayName,
+          CollaboratorNames = ml.AppUserMovieLists.Where(auml => auml.MovieListId == ml.Id && !auml.isOwner).Select(z => z.AppUser.DisplayName).Where(dn => dn != null).ToList(),
+          MovieMovieLists = ml.MovieMovieLists.Select(mml => new MovieMovieListDTO
           {
-            MovieId = x.MovieId,
-            MovieListId = x.MovieListId,
+            MovieId = mml.MovieId,
+            MovieListId = mml.MovieListId,
             Movie = new MovieWithoutMovieMovieListsDTO
             {
-              Id = x.Movie.Id,
-              Title = x.Movie.Title,
-              TitleType = x.Movie.TitleType,
-              Description = x.Movie.Description,
-              Rating = x.Movie.Rating,
-              Voters = x.Movie.Voters,
-              Year = x.Movie.Year,
-              RunTime = x.Movie.RunTime,
-              FeaturedActors = x.Movie.FeaturedActors,
-              Director = x.Movie.Director,
-              ImageUrl = x.Movie.ImageUrl,
-              MovieGenres = x.Movie.MovieGenres.Select(x => new GenreListDTO
+              Id = mml.Movie.Id,
+              Title = mml.Movie.Title,
+              TitleType = mml.Movie.TitleType,
+              Description = mml.Movie.Description,
+              Rating = mml.Movie.Rating,
+              PersonalRating = _context.MovieRatings.SingleOrDefault(mr => mr.AppUserId == user.Id && mml.MovieId == mr.MovieId)?.Rating ?? 0,
+              Voters = mml.Movie.Voters,
+              Year = mml.Movie.Year,
+              RunTime = mml.Movie.RunTime,
+              FeaturedActors = mml.Movie.FeaturedActors,
+              Director = mml.Movie.Director,
+              ImageUrl = mml.Movie.ImageUrl,
+              MovieGenres = mml.Movie.MovieGenres.Select(x => new GenreListDTO
               {
                 Id = x.Genre.Id
               }).ToList()

@@ -8,6 +8,7 @@ import { User, UserFormValues } from "../interfaces/userInterface";
 import { store } from "../stores/store";
 import { router } from "../routes/Routes";
 import { toast } from "react-toastify";
+import { Rating } from "../interfaces/ratingInterface";
 
 axios.defaults.baseURL = "https://localhost:5000/api";
 
@@ -79,6 +80,8 @@ const Movies = {
   list: (query: string) => requests.get<Movie[]>(`/movie/${query}`),
   createMovie: (query: string) =>
     requestsNoBody.post<Movie[]>(`/movie/${query}`, []),
+  updateMovieRating: (rating: Rating) =>
+    requests.post<MovieId>(`/movie/${rating.movieId}/rating`, rating),
 };
 
 const MovieLists = {

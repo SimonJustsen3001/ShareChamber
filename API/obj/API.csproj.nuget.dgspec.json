@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\API\\API.csproj": {}
+    "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\api\\API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\API\\API.csproj": {
+    "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\api\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\API\\API.csproj",
+        "projectUniqueName": "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\api\\API.csproj",
         "projectName": "API",
-        "projectPath": "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\API\\API.csproj",
+        "projectPath": "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\api\\API.csproj",
         "packagesPath": "C:\\Users\\blade\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\API\\obj\\",
+        "outputPath": "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\blade\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -132,8 +132,8 @@
               "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\Domain\\Domain.csproj": {
                 "projectPath": "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\Domain\\Domain.csproj"
               },
-              "c:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\Persistance\\Persistance.csproj": {
-                "projectPath": "c:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\Persistance\\Persistance.csproj"
+              "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\Persistance\\Persistance.csproj": {
+                "projectPath": "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\Persistance\\Persistance.csproj"
               }
             }
           }
@@ -315,14 +315,14 @@
         }
       }
     },
-    "c:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\Persistance\\Persistance.csproj": {
+    "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\Persistance\\Persistance.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\Persistance\\Persistance.csproj",
+        "projectUniqueName": "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\Persistance\\Persistance.csproj",
         "projectName": "Persistance",
-        "projectPath": "c:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\Persistance\\Persistance.csproj",
+        "projectPath": "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\Persistance\\Persistance.csproj",
         "packagesPath": "C:\\Users\\blade\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\Persistance\\obj\\",
+        "outputPath": "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\Persistance\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\blade\\AppData\\Roaming\\NuGet\\NuGet.Config",

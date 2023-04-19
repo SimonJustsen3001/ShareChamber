@@ -16,6 +16,7 @@ namespace Persistance
     public DbSet<AppUserMovieList> AppUserMovieList { get; set; }
     public DbSet<Genre> Genres { get; set; }
     public DbSet<MovieGenre> MovieGenres { get; set; }
+    public DbSet<MovieRating> MovieRatings { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
@@ -63,6 +64,15 @@ namespace Persistance
         .WithMany(x => x.MovieGenres)
         .HasForeignKey(x => x.GenreId);
 
+      builder.Entity<MovieRating>()
+        .HasOne(mr => mr.AppUser)
+        .WithMany(au => au.MovieRatings)
+        .HasForeignKey(mr => mr.AppUserId);
+
+      builder.Entity<MovieRating>()
+        .HasOne(mr => mr.Movie)
+        .WithMany(m => m.MovieRatings)
+        .HasForeignKey(mr => mr.MovieId);
 
     }
 

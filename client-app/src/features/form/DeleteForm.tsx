@@ -30,7 +30,6 @@ const DeleteForm = observer(() => {
           await movieListStore.deleteList(
             movieListStore.selectedMovieList?.id!
           );
-
           movieListStore.loadMovieLists();
           modalStore.closeModal();
         } catch (error) {

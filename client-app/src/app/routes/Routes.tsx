@@ -4,6 +4,8 @@ import HomePage from "../../features/home/HomePage";
 import MoviePage from "../../features/movie/MoviePage";
 import MovieListPage from "../../features/movieList/MovieListPage";
 import App from "../layouts/App";
+import TestPage from "../../features/testingPage/TestPage";
+import RateForm from "../../features/form/RateForm";
 
 export const routes: RouteObject[] = [
   {
@@ -13,6 +15,7 @@ export const routes: RouteObject[] = [
       { path: "", element: <HomePage /> },
       { path: "movie", element: <MoviePage /> },
       { path: "list", element: <MovieListPage /> },
+      { path: "test", element: <TestPage /> },
     ],
   },
 ];

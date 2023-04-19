@@ -9,6 +9,7 @@ namespace Application.JsonDTOs
     public string TitleType { get; set; }
     public string Description { get; set; }
     public decimal Rating { get; set; }
+    public int PersonalRating { get; set; }
     public int Voters { get; set; }
     public int Year { get; set; }
     public int RunTime { get; set; }
