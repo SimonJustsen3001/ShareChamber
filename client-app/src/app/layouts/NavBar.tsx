@@ -77,32 +77,3 @@ export default observer(function NavBar() {
     </div>
   );
 });
-
-/*
-
-        <>
-          <div className="middle-navbar-menu">
-            <Link to={"/movie"} className="menu-element">
-              Movies
-            </Link>
-            <Link to={"/list"} className="menu-element">
-              Movie Lists
-            </Link>
-          </div>
-          <div className="right-navbar-menu">
-            <div
-              onClick={() => modalStore.openModal(<LoginForm />)}
-              className="menu-element"
-            >
-              Login
-            </div>
-            <div
-              onClick={() => modalStore.openModal(<RegisterForm />)}
-              className="menu-element"
-            >
-              Register
-            </div>
-          </div>
-        </>
-
-*/

@@ -22,7 +22,7 @@ namespace API.Extensions
       {
         opt.AddPolicy(name: "CorsPolicy", policy =>
         {
-          policy.AllowAnyMethod().AllowAnyHeader().WithOrigins("http://localhost:3000");
+          policy.AllowAnyMethod().AllowAnyHeader().WithOrigins("https://sharechamber.com", "http://localhost:3000");
         });
       });
 

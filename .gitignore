@@ -8,6 +8,7 @@ appsettings.Development.json
 # Personal preference
 
 *.sh
+.env
 
 # User-specific files
 *.rsuser
