@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\api\\API.csproj": {}
+    "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\API\\API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\api\\API.csproj": {
+    "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\api\\API.csproj",
+        "projectUniqueName": "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\api\\API.csproj",
+        "projectPath": "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\API\\API.csproj",
         "packagesPath": "C:\\Users\\blade\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\api\\obj\\",
+        "outputPath": "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\blade\\AppData\\Roaming\\NuGet\\NuGet.Config",

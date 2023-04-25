@@ -147,3 +147,4 @@ C:\Users\blade\Desktop\CSharp\IMDBList\API\obj\Debug\net7.0\API.genruntimeconfig
 C:\Users\blade\Desktop\CSharp\IMDBList\API\obj\Debug\net7.0\ref\API.dll
 C:\Users\blade\Desktop\CSharp\IMDBList\API\bin\Debug\net7.0\Microsoft.AspNetCore.Server.Kestrel.Https.dll
 C:\Users\blade\Desktop\CSharp\IMDBList\API\bin\Debug\net7.0\Microsoft.AspNetCore.Server.Kestrel.Transport.Abstractions.dll
+C:\Users\blade\Desktop\CSharp\IMDBList\API\bin\Debug\net7.0\appsettings.Production.json

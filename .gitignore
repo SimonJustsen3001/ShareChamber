@@ -5,6 +5,10 @@
 
 appsettings.Development.json
 
+# Personal preference
+
+*.sh
+
 # User-specific files
 *.rsuser
 *.suo
