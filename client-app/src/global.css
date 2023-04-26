@@ -1,20 +1,16 @@
 body {
-  background-color: rgb(38, 38, 38);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-4);
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  /* font-family: Arial, Helvetica, sans-serif; */
   margin: 0;
   padding: 0;
+  font-size: 18px;
 }
 
 .ui.modal {
   border-radius: 50px !important;
   width: 100% !important;
   max-width: 500px !important;
-  margin: 0 auto !important;
-}
-
-.content {
-  background-color: rgb(61, 61, 61) !important;
-  border-radius: 20px !important;
   margin: 0 auto !important;
 }
 
@@ -26,24 +22,19 @@ html {
 :root {
   --toastify-toast-width: 400px;
   --toastify-toast-min-height: 100px;
-  --navbar-height: 200px;
+  --navbar-height: 100px;
+  --color-1: rgb(99, 89, 133);
+  --color-2: rgb(68, 60, 104);
+  --color-3: rgb(57, 48, 83);
+  --color-4: rgb(24, 18, 43);
+  --font-size-1: 18px;
+  --font-size-2: 24px;
+  --font-size-3: 30px;
+  --font-size-4: 36px;
+  --font-size-5: 50px;
+  --font-size-6: 80px;
 }
 
 .Toastify__toast {
   font-size: 24px;
-}
-
-/* For Webkit-based browsers (e.g., Chrome, Safari) */
-::-webkit-scrollbar {
-  width: 12px; /* Width of the scrollbar */
-}
-
-::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.1); /* Background color of the track */
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: rgba(155, 155, 155, 0.5); /* Color of the thumb */
-  border-radius: 6px; /* Roundness of the thumb */
-  border: 3px solid rgba(255, 255, 255, 0.1); /* Border of the thumb */
 }

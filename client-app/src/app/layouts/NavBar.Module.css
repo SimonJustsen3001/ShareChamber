@@ -1,8 +1,8 @@
 .navbar {
   position: fixed;
-  background-color: rgb(33, 33, 33);
+  background-color: var(--color-4);
   color: black;
-  height: 100px;
+  height: var(--navbar-height);
   top: 0;
   left: 0;
   right: 0;
@@ -37,14 +37,13 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  overflow: hidden;
 }
 
 .menu-element,
 .profile-element {
   cursor: pointer;
   position: relative;
-  background-color: rgb(33, 33, 33);
+  background-color: var(--color-4);
   color: white;
   height: 100%;
   display: flex;
@@ -60,7 +59,7 @@
 .menu-element:hover,
 .profile-element:hover {
   color: white;
-  box-shadow: inset 0px -2px 3px 1px rgba(255, 255, 255, 0.5);
+  box-shadow: inset 0px -2px 3px 1px var(--color-1);
 }
 
 .profile-element:hover .dropdown-menu {
@@ -74,7 +73,7 @@
   display: flex;
   flex-direction: column;
   position: absolute;
-  background-color: rgb(33, 33, 33);
+  background-color: var(--color-4);
   width: 100%;
   top: 100%;
   max-height: 0;
@@ -90,7 +89,7 @@
 
 .dropdown-link:hover {
   color: white;
-  box-shadow: inset 0px 0px 3px 1px rgba(156, 156, 156, 0.5);
+  box-shadow: inset 0px 0px 3px 1px var(--color-1);
 }
 
 @media (min-width: 500px) and (max-width: 700px) {

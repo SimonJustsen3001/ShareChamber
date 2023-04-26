@@ -1,18 +1,6 @@
-.test-page {
+.test {
+  margin-top: var(--navbar-height);
+  height: 200px;
+  width: 200px;
   background-color: lightblue;
-  position: fixed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  top: 50%;
-  left: 50%;
-  width: 400px;
-  height: 400px;
-  translate: -50% -50%;
-}
-
-.test-square {
-  width: 90%;
-  height: 90%;
-  background-color: lightpink;
 }

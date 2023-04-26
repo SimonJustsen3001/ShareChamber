@@ -1,13 +1,36 @@
 import { observer } from "mobx-react-lite";
 import "./HomePage.Module.css";
+import { gsap } from "gsap";
+import { useEffect, useLayoutEffect, useRef } from "react";
 
 const HomePage = observer(() => {
+  const screenRef = useRef<HTMLDivElement>(null);
+
+  useLayoutEffect(() => {
+    let ctx = gsap.context(() => {
+      gsap.to(".welcome", { y:-50, duration: 2});
+      gsap.from(".welcome", { opacity: 0, duration: 2})
+    }, screenRef);
+
+    return () => ctx.revert();
+  }, []);
+
+
   return (
-    <div className="overview">
-      <div className="info-container">
-        <div className="welcome-message">Welcome to Movie List</div>
-        <div className="info-message">
-          In order to enjoy full usage of the website, please register or login
+    <div className="whole-screen" ref={screenRef}>
+      <div className="introduction-screen">
+        <div  className="welcome">
+          Welcome
+        </div>
+        <div className="custom-shape-divider-top-1682491957">
+          <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+              <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" className="shape-fill"></path>
+          </svg>
+        </div>
+      </div>
+      <div className="next-screen">
+        <div>
+          Text
         </div>
       </div>
     </div>
