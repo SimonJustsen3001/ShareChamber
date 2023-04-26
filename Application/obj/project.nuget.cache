@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/DlsrWYIK5XMhSCo1BByJKL3IpT1iruyyYGr5ftvGCqBn6WacF4iibaDq3gzlTeQ+9mgN0NHtMxajr3GfgzOTQ==",
+  "dgSpecHash": "Dc7dsq2uwb0c0HHUFHTE8EKF4OxRLkAsDRqWIL3uCXd16E5Z+fsCaTIoqcLND0sFPmtI5VR3NwF+NucUyeNDLA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\blade\\Desktop\\CSharp\\IMDBList\\Application\\Application.csproj",
+  "projectFilePath": "C:\\Users\\blade\\Desktop\\github\\IMDBList\\Application\\Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\blade\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
     "C:\\Users\\blade\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",

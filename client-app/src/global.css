@@ -26,6 +26,7 @@ html {
 :root {
   --toastify-toast-width: 400px;
   --toastify-toast-min-height: 100px;
+  --navbar-height: 200px;
 }
 
 .Toastify__toast {
