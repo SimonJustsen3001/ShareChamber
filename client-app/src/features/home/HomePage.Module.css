@@ -5,10 +5,9 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  color: white;
 }
 
-.introduction-screen {
+.section {
   height: 800px;
   width: 100vw;
   display: flex;
@@ -16,7 +15,14 @@
   align-items: center;  
   position: relative;
   overflow: hidden;
+}
 
+.section-1 {
+  background-color: var(--color-4);
+}
+
+.section-2 {
+  background-color: var(--color-3);
 }
 
 .next-screen {
@@ -27,14 +33,20 @@
   align-items: center;  
   position: relative;
   overflow: hidden;
-  background-color: var(--color-2);
+
+}
+
+.fade-in-message {
+  height: 50px;
+  width: 300px;
+  position: absolute;
+  text-align: center;
 }
 
 .welcome {
   font-size: var(--font-size-6);
   position: absolute;
   top: 10vw;
-  /* animation: appear-bottom 2s; */
 }
 
 
@@ -56,16 +68,9 @@
 }
 
 .custom-shape-divider-top-1682491957 .shape-fill {
-  fill: var(--color-2);
+  fill: var(--color-3);
 }
 
-@keyframes appear-bottom {
-  from {
-    transform: translateY(100px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  } 
+.next-screen-text {
+  font-size: var(--font-size-4);
 }

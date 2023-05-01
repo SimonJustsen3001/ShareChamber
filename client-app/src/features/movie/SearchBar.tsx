@@ -4,7 +4,7 @@ import { useStore } from "../../app/stores/store";
 import "./Searchbar.Module.css";
 
 const SearchBar = observer(() => {
-  const { movieStore, movieListStore, userStore } = useStore();
+  const { movieStore } = useStore();
   const [searchTerm, setSearchTerm] = useState("");
   const debouncedLoadMovies = useDebounced(
     (term: string) => movieStore.loadMovies(term),

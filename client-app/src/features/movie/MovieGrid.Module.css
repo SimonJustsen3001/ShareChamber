@@ -9,7 +9,7 @@
   position: absolute;
   padding: 20px;
   grid-template-columns: repeat(5, 1fr);
-  background-color: rgb(63, 63, 63);
+  background-color: var(--color-3);
   column-gap: 40px;
   row-gap: 40px;
   font-size: 20px;
@@ -147,7 +147,7 @@ foreignObject:hover .movie-add-to-list-icon {
   justify-content: center;
   align-items: center;
   padding: 20px;
-  background-color: rgb(63, 63, 63);
+  background-color: var(--color-3);
   height: 380px;
   min-width: 1400px;
 }
