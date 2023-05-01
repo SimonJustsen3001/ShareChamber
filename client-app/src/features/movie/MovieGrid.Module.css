@@ -12,9 +12,10 @@
   background-color: var(--color-3);
   column-gap: 40px;
   row-gap: 40px;
-  font-size: 20px;
+  font-size: var(--font-size-1);
   min-width: 1400px;
   justify-items: center;
+  border-radius: var(--border-radius);
 }
 
 .movie-container {
@@ -27,7 +28,7 @@
   min-width: 0;
   width: 200px;
   box-shadow: 0px 0px 10px 4px rgba(0, 0, 0, 0.5);
-  border-radius: 12px;
+  border-radius: var(--border-radius);
   cursor: pointer;
 }
 
@@ -98,7 +99,7 @@
 
 .movie-add-to-list-icon {
   color: white;
-  font-size: 40px;
+  font-size: var(--font-size-4);
 }
 
 foreignObject:hover .movie-add-to-list-icon {
@@ -153,7 +154,7 @@ foreignObject:hover .movie-add-to-list-icon {
 }
 
 .loading-icon {
-  font-size: 50px;
+  font-size: var(--font-size-5);
   color: white;
 }
 

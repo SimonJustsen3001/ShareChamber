@@ -22,7 +22,7 @@
 
 .selected-name {
   font-weight: 600;
-  font-size: 30px;
+  font-size: var(--font-size-3);
   padding: 10px 0px;
   line-height: 30px;
 }
@@ -40,7 +40,7 @@
   border: none;
   padding: 10px 0px;
   width: 100%;
-  border-radius: 10px;
+  border-radius: var(--border-radius);
   cursor: pointer;
 }
 
@@ -54,7 +54,7 @@
 }
 
 .selected-author {
-  font-size: 16px;
+  font-size: var(--font-size-1);
 }
 .author {
   font-weight: bold;
@@ -76,7 +76,7 @@
   aspect-ratio: 20 / 8;
   margin-bottom: 20px;
   padding: 20px;
-  border-radius: 2px;
+  border-radius: var(--border-radius);
   box-shadow: 0px 0px 2px 2px rgba(255, 255, 255, 0.4);
 }
 
@@ -96,7 +96,7 @@
 .movie-list-title {
   margin-bottom: 5px;
   font-weight: 600;
-  font-size: 28px;
+  font-size: var(--font-size-3);
   padding: 8px 0px;
   max-height: 70px;
   max-width: 75%;
@@ -134,7 +134,7 @@
 .movie-list-actors {
   color: rgb(183, 183, 183);
   margin-bottom: 6px;
-  font-size: 18px;
+  font-size: var(--font-size-1);
 }
 
 .movie-list-ratings {
@@ -149,7 +149,7 @@
 .imdb-rating {
   display: flex;
   align-items: center;
-  font-size: 30px;
+  font-size: var(--font-size-3);
 }
 
 .personal-rating:hover {
@@ -183,7 +183,7 @@
   border: none;
   padding: 10px 0px;
   width: 20%;
-  border-radius: 10px;
+  border-radius: var(--border-radius);
   cursor: pointer;
   right: 30px;
   bottom: 25px;
@@ -235,7 +235,7 @@
     aspect-ratio: 20 / 8;
     margin-bottom: 20px;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: var(--border-radius);
     box-shadow: 0px 0px 2px 2px rgba(255, 255, 255, 0.4);
     flex-direction: column;
   }
@@ -279,7 +279,7 @@
     margin-bottom: 20px;
     padding: 20px;
     padding-bottom: 60px;
-    border-radius: 10px;
+    border-radius: var(--border-radius);
     box-shadow: 0px 0px 2px 2px rgba(255, 255, 255, 0.4);
     flex-direction: column;
   }
@@ -295,7 +295,7 @@
   .remove-movie-button {
     padding: 10px 0px;
     width: 35%;
-    border-radius: 10px;
+    border-radius: var(--border-radius);
     cursor: pointer;
     right: 10px;
     bottom: 25px;
@@ -344,7 +344,7 @@
     border: none;
     padding: 10px 0px;
     width: 80%;
-    border-radius: 10px;
+    border-radius: var(--border-radius);
     cursor: pointer;
     right: 10%;
     bottom: 10px;
