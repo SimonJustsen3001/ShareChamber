@@ -12,11 +12,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 function App() {
   const { userStore, commonStore } = useStore();
-  const navColors = ["#00BFFF", "#FFA07A", "#90EE90", "#EE82EE", "#FF6347"];
-
-  useLayoutEffect(() => {
-    // const sections: HTMLElement[] = gsap.utils.toArray(".section");
-  });
 
   useEffect(() => {
     if (commonStore.token) {
@@ -37,16 +32,3 @@ function App() {
 }
 
 export default observer(App);
-
-// gsap
-//           .timeline({ repeat: 0, repeatDelay: 1 })
-//           .to(".navbar", { opacity: 0.5, duration: 1 })
-//           .to(
-//             ".navbar",
-//             {
-//               opacity: 1,
-//               backgroundColor: navColors[index],
-//               immediateRender: false,
-//             },
-//             ">"
-//           ),
