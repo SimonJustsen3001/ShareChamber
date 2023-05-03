@@ -68,7 +68,8 @@ BenchmarkDotNet.Artifacts/
 project.lock.json
 project.fragment.lock.json
 artifacts/
-**/obj/Debug/
+**/obj/
+**/bin/
 
 # Tye
 .tye/
