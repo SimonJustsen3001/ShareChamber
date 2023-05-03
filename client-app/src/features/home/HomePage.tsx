@@ -56,5 +56,3 @@ const HomePage = observer(() => {
 });
 
 export default HomePage;
-
-// slider.current?.offsetWidth
