@@ -5,7 +5,7 @@ const TestPage = observer(() => {
 
  
   return (
-    <></>
+    <div className="test">yes</div>
   );
 });
 

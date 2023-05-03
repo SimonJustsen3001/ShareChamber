@@ -5,7 +5,7 @@
   align-items: center;
   max-width: 500px;
   color: white;
-  background-color: rgb(61, 61, 61);
+  background-color: var(--color-4);
 }
 
 .form-header {
@@ -22,7 +22,6 @@
 
 .button-container {
   display: flex;
-
   width: 100%;
   justify-content: center;
   align-items: center;

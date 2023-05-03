@@ -1,16 +1,21 @@
 import { observer } from "mobx-react-lite";
 import "./MovieGrid.Module.css";
 import { useStore } from "../../app/stores/store";
+import { Link } from "react-router-dom";
 
 const MovieGrid = observer(() => {
-  const { movieStore, movieListStore, userStore } = useStore();
+  const { movieStore, movieListStore } = useStore();
 
   return (
     <div className="movie-grid-container">
       {!movieStore.loadingInitial && !movieStore.loading ? (
         <div className="movie-grid">
           {movieStore.movies.map((movie) => (
-            <div className="movie-container" key={movie.id}>
+            <Link
+              className="movie-container"
+              key={movie.id}
+              to={`/details?id=${movie.id}`}
+            >
               <div className="movie-title">{movie.title}</div>
               <div className="image-container">
                 <img
@@ -61,7 +66,7 @@ const MovieGrid = observer(() => {
                   ))}
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       ) : (

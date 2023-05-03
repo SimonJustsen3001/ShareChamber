@@ -1,0 +1,13 @@
+.movie-details-container {
+  margin-top: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 100vw;
+  background-color: lightblue;
+}
+
+.movie-details-content {
+  width: 200px;
+}
