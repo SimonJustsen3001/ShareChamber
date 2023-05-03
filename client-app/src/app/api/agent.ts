@@ -83,6 +83,7 @@ const Movies = {
     requestsNoBody.post<Movie[]>(`/movie/${query}`, []),
   updateMovieRating: (rating: Rating) =>
     requests.post<MovieId>(`/movie/${rating.movieId}/rating`, rating),
+  single: (movieId: string) => requests.get<Movie>(`/movie/${movieId}/details`),
 };
 
 const MovieLists = {

@@ -6,12 +6,25 @@ import { Rating } from "../interfaces/ratingInterface";
 export default class MovieStore {
   movies: Movie[] = [];
   moviesWithoutPoster: Movie[] = [];
+  selectedMovie: Movie | null = null;
   loadingInitial = false;
   loading = false;
 
   constructor() {
     makeAutoObservable(this);
   }
+
+  loadMovieDetails = async (movieId: string) => {
+    this.setLoading(true);
+    try {
+      const movie = await agent.Movies.single(movieId);
+      console.log(movie);
+      this.selectedMovie = movie;
+      this.setLoading(false);
+    } catch {
+      this.setLoading(false);
+    }
+  };
 
   loadMovies = async (query: string) => {
     this.setLoadingInitial(true);
@@ -32,7 +45,6 @@ export default class MovieStore {
 
   setMovieRating = async (rating: Rating) => {
     try {
-      console.log(rating);
       await agent.Movies.updateMovieRating(rating);
     } catch (error) {}
   };

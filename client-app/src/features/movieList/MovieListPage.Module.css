@@ -5,7 +5,7 @@
   padding: 20px;
   inset: 6% auto auto auto;
   min-width: 1400px;
-  background-color: rgb(63, 63, 63);
+  background-color: var(--color-3);
   font-size: 20px;
   margin-left: calc((100% - 1400px) / 2);
   margin-right: calc((100% - 1400px) / 2);

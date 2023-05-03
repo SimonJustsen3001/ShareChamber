@@ -11,7 +11,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgb(63, 63, 63);
+  background-color: var(--color-3);
   border-radius: 6px;
   padding: 40px;
   width: 1000px;
