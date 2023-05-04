@@ -1,6 +1,5 @@
 .navbar {
   position: fixed;
-
   color: black;
   height: var(--navbar-height);
   top: 0;

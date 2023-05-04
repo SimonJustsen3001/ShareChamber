@@ -28,7 +28,6 @@
 
 .about-container {
   display: flex;
-  max-width: 550px;
   justify-content: space-between;
   align-items: center;
 }
@@ -76,6 +75,7 @@
     padding-bottom: 400px;
     margin-top: 100px;
     height: 80%;
+    max-width: 380px;
   }
 
   .info-text {
