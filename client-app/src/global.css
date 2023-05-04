@@ -9,6 +9,17 @@ body {
   overflow-x: hidden;
 }
 
+.burger-menu {
+  display: none;
+  position: fixed;
+  inset: 20px 20px auto auto;
+  border: none;
+  background-color: transparent;
+  color: white;
+  font-size: var(--font-size-3);
+  cursor: pointer;
+}
+
 .content {
   background-color: var(--color-4) !important;
 }
@@ -47,4 +58,11 @@ html {
 
 .Toastify__toast {
   font-size: 24px;
+}
+
+@media (max-width: 768px) {
+  .burger-menu {
+    display: inline;
+    z-index: 51;
+  }
 }

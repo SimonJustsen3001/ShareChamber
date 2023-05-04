@@ -21,7 +21,7 @@ const HomePage = observer(() => {
           scrub: true,
           snap: 1 / (panels.length - 1),
           end: () => `+=${slider.current!.offsetHeight / 2}`,
-          markers: true,
+          // markers: true,
         },
       });
       gsap
@@ -29,11 +29,13 @@ const HomePage = observer(() => {
         .to(".arrow-animation", { duration: 1, y: 150 })
         .to(".arrow-animation", { duration: 1, y: 0 });
     }, component);
+
     return () => ctx.revert();
   });
 
   return (
     <div ref={component}>
+      <button className="fa fa-bars burger-menu"></button>
       <div ref={slider} className="container">
         <div className="panel panel-1">
           <div className="information-container">
