@@ -7,6 +7,7 @@ import { useStore } from "../stores/store";
 import { ToastContainer } from "react-toastify";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import "@fortawesome/fontawesome-free/css/all.css";
 
 gsap.registerPlugin(ScrollTrigger);
 

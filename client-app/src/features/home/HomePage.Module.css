@@ -1,6 +1,6 @@
 .container {
-  width: 600vw;
-  height: 100vh;
+  width: 100vw;
+  height: 300vh;
   display: flex;
   flex-wrap: wrap;
 }
@@ -16,10 +16,11 @@
 .information-container {
   position: absolute;
   display: flex;
-  justify-content: space-between;
-  margin-top: 250px;
+  flex-direction: column;
+  margin-top: 150px;
   height: 70%;
   width: 90%;
+  max-width: 1200px;
   background-color: var(--color-3);
   border-radius: var(--border-radius);
   padding: 50px;
@@ -27,18 +28,20 @@
 
 .about-container {
   display: flex;
-  flex-direction: column;
   max-width: 550px;
-}
-
-.about-name {
-  font-size: var(--font-size-6);
-  line-height: var(--font-size-6);
+  justify-content: space-between;
+  align-items: center;
 }
 
 .about-text {
   font-size: var(--font-size-3);
-  line-height: var(--font-size-3);
+  line-height: var(--font-size-4);
+}
+
+.info-text {
+}
+
+.text-for-replacement {
 }
 
 .scrollable-container {
@@ -64,4 +67,50 @@
 
 .panel-3 {
   background-color: var(--color-3);
+}
+
+@media (max-width: 768px) {
+  .information-container {
+    padding: 10px;
+    align-items: center;
+    padding-bottom: 400px;
+    margin-top: 100px;
+    height: 80%;
+  }
+
+  .info-text {
+    margin-top: 40px;
+    padding: 10px;
+    border-radius: var(--border-radius);
+    background-color: var(--color-other);
+    text-align: center;
+  }
+
+  .scrollable-container {
+    display: none;
+  }
+
+  .about-container {
+    width: 100%;
+  }
+
+  .about-text {
+    font-size: var(--font-size-3);
+    margin-left: 15px;
+  }
+
+  .about-icon {
+    font-size: var(--font-size-3);
+    margin-right: 15px;
+  }
+
+  .text-for-replacement {
+    margin-top: 40px;
+    font-size: var(--font-size-2);
+  }
+
+  .arrow-animation {
+    margin-top: 50px;
+    font-size: var(--font-size-6);
+  }
 }
