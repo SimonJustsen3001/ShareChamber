@@ -88,7 +88,7 @@
 @media (max-width: 768px) {
   .navbar {
     height: auto;
-    width: 0;
+    width: 100;
     inset: 0 0 0 auto;
     flex-direction: column;
     background-color: var(--color-4);
@@ -119,7 +119,9 @@
     flex-direction: column;
   }
 
-  .menu-element {
+  .menu-element,
+  .profile-element {
     text-align: center;
+    min-width: 150px;
   }
 }

@@ -1,7 +1,6 @@
 import { observer } from "mobx-react-lite";
 import { useEffect } from "react";
 import { useStore } from "../../app/stores/store";
-
 import Unauthenticated from "../unauthenticated/Unauthenticated";
 import SearchBar from "./SearchBar";
 import MovieGrid from "./MovieGrid";

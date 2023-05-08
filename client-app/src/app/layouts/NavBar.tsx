@@ -11,6 +11,7 @@ export default observer(function NavBar() {
   const [currentPath, setCurrentPath] = useState("");
   useEffect(() => {
     setCurrentPath(window.location.pathname);
+    console.log(currentPath);
   }, []);
 
   return (

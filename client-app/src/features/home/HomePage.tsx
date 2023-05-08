@@ -20,7 +20,7 @@ const HomePage = observer(() => {
           pin: true,
           scrub: true,
           snap: 1 / (panels.length - 1),
-          end: () => `+=${slider.current!.offsetHeight / 2}`,
+
           // markers: true,
         },
       });
@@ -35,7 +35,6 @@ const HomePage = observer(() => {
 
   return (
     <div ref={component}>
-      <button className="fa fa-bars burger-menu"></button>
       <div ref={slider} className="container">
         <div className="panel panel-1">
           <div className="information-container">
