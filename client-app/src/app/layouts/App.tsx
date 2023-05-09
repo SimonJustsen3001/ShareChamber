@@ -13,20 +13,20 @@ gsap.registerPlugin(ScrollTrigger);
 
 function App() {
   const { userStore, commonStore } = useStore();
-  const [isSmallScreen, setIsSmallScreen] = useState(false);
   const burger = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const mediaWatcher = window.matchMedia("(max-width: 768px)");
-    setIsSmallScreen(mediaWatcher.matches);
+    userStore.setIsSmallScreen(mediaWatcher.matches);
     mediaWatcher.addEventListener("change", (change) => {
-      setIsSmallScreen(change.matches);
+      userStore.setIsSmallScreen(change.matches);
     });
   });
 
   useLayoutEffect(() => {
     let ctx = gsap.context(() => {
-      if (isSmallScreen) {
+      console.log(userStore.isSmallScreen);
+      if (userStore.isSmallScreen) {
         const tl = gsap
           .timeline()
           .to(".navbar", { delay: 0, xPercent: 100 })

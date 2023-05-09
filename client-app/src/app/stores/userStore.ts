@@ -6,6 +6,7 @@ import { store } from "./store";
 export default class UserStore {
   user: User | null = null;
   searchAnonymous: boolean = false;
+  isSmallScreen: boolean = true;
 
   constructor() {
     makeAutoObservable(this);
@@ -54,5 +55,9 @@ export default class UserStore {
 
   setSearchAnonymous = (state: boolean) => {
     this.searchAnonymous = state;
+  };
+
+  setIsSmallScreen = (state: boolean) => {
+    this.isSmallScreen = state;
   };
 }

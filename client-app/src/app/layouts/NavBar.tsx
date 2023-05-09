@@ -56,22 +56,20 @@ export default observer(function NavBar() {
           </div>
         ) : (
           <div className="right-navbar-menu">
-            <Link
-              to={currentPath}
+            <div
               onClick={() => {
                 modalStore.openModal(<LoginForm />);
               }}
               className="menu-element"
             >
               Login
-            </Link>
-            <Link
-              to={currentPath}
+            </div>
+            <div
               onClick={() => modalStore.openModal(<RegisterForm />)}
               className="menu-element"
             >
               Register
-            </Link>
+            </div>
           </div>
         )}
       </>

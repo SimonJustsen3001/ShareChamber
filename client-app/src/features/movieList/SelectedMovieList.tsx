@@ -6,7 +6,7 @@ import DeleteForm from "../form/DeleteForm";
 import RateForm from "../form/RateForm";
 
 const SelectedMovieList = observer(() => {
-  const { modalStore, movieListStore } = useStore();
+  const { modalStore, movieListStore, userStore } = useStore();
 
   const handleRemove = async (listId: string, movieId: string) => {
     await movieListStore.removeMovieFromList(listId, movieId);
@@ -26,18 +26,41 @@ const SelectedMovieList = observer(() => {
                 {movieListStore.selectedMovieList.name}
               </div>
               <div className="selected-button-container">
-                <button
-                  className="add-collab-button"
-                  onClick={() => modalStore.openModal(<AddCollaboratorForm />)}
-                >
-                  Add Collaborator
-                </button>
-                <button
-                  className="delete-list-button"
-                  onClick={() => modalStore.openModal(<DeleteForm />)}
-                >
-                  Delete List
-                </button>
+                {userStore.isSmallScreen ? (
+                  <>
+                    <button
+                      className="add-collab-button"
+                      onClick={() =>
+                        modalStore.openModal(<AddCollaboratorForm />)
+                      }
+                    >
+                      <i className="fa-solid fa-user-plus"></i>
+                    </button>
+                    <button
+                      className="delete-list-button"
+                      onClick={() => modalStore.openModal(<DeleteForm />)}
+                    >
+                      <i className="fa-solid fa-trash"></i>
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <button
+                      className="add-collab-button"
+                      onClick={() =>
+                        modalStore.openModal(<AddCollaboratorForm />)
+                      }
+                    >
+                      Add Collaborator
+                    </button>
+                    <button
+                      className="delete-list-button"
+                      onClick={() => modalStore.openModal(<DeleteForm />)}
+                    >
+                      Delete List
+                    </button>
+                  </>
+                )}
               </div>
             </div>
             <div className="selected-author">
@@ -66,16 +89,12 @@ const SelectedMovieList = observer(() => {
                     src={movie.movie.imageUrl}
                   />
                   <div className="movie-list-info">
-                    <div className="movie-title-genre-container">
-                      <div className="movie-list-title">
-                        {movie.movie.title}
-                      </div>
-                      <div className="movie-list-metadata">
-                        {movie.movie.runTime / 60} min &#124;
-                        {movie.movie.movieGenres.map((movieGenre) => (
-                          <> {movieGenre.id}, </>
-                        ))}
-                      </div>
+                    <div className="movie-list-title">{movie.movie.title}</div>
+                    <div className="movie-list-metadata">
+                      {movie.movie.runTime / 60} min &#124;
+                      {movie.movie.movieGenres.map((movieGenre) => (
+                        <> {movieGenre.id}, </>
+                      ))}
                     </div>
                     <div className="movie-description">
                       {movie.movie.description}

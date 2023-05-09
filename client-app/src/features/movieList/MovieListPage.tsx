@@ -11,22 +11,25 @@ const MovieListPage = observer(() => {
   const { movieListStore, userStore } = useStore();
 
   useEffect(() => {
-    if (userStore.user) movieListStore.loadMovieLists();
+    // if (userStore.user) movieListStore.loadMovieLists();
+    movieListStore.loadMovieLists();
   }, [movieListStore, userStore]);
 
   return (
     <>
-      {userStore.isLoggedIn ? (
+      {/* {userStore.isLoggedIn ? ( */}
+      <div className="movielist-container">
         <div className="list-setup">
           <SelectedMovieList />
           <UserMovieListsOverview />
         </div>
-      ) : (
+      </div>
+      {/* ) : (
         <Unauthenticated
           message="An account is required to create movie lists"
           loginRequired={true}
         />
-      )}
+      )} */}
     </>
   );
 });
