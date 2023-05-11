@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   position: relative;
-  margin-top: 150px;
+  margin-top: var(--navbar-height);
 }
 
 .search-bar {

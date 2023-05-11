@@ -9,10 +9,15 @@ import { useEffect, useState } from "react";
 export default observer(function NavBar() {
   const { userStore, modalStore, movieListStore } = useStore();
   const [currentPath, setCurrentPath] = useState("");
+  const [dropDownVisible, setDropDownVisible] = useState(false);
   useEffect(() => {
     setCurrentPath(window.location.pathname);
     console.log(currentPath);
   }, []);
+
+  const toggleDropDown = () => {
+    setDropDownVisible(!dropDownVisible);
+  };
 
   return (
     <div className="navbar">
@@ -32,9 +37,14 @@ export default observer(function NavBar() {
         </div>
         {userStore.isLoggedIn ? (
           <div className="right-navbar-menu">
-            <div className="profile-element">
+            <div
+              className={`profile-element ${dropDownVisible ? "clicked" : ""}`}
+              onClick={toggleDropDown}
+            >
               {userStore.user?.displayName}
-              <div className="dropdown-menu">
+              <div
+                className={`dropdown-menu ${dropDownVisible ? "visible" : ""}`}
+              >
                 <Link to="/settings" className="dropdown-link">
                   Settings
                 </Link>

@@ -47,6 +47,10 @@ html {
   --color-3: rgb(57, 48, 83);
   --color-4: rgb(24, 18, 43);
   --color-other: rgb(33, 25, 59);
+  --color-1-transparent: rgba(99, 89, 133, 0.5);
+  --color-2-transparent: rgba(68, 60, 104, 0.5);
+  --color-3-transparent: rgba(57, 48, 83, 0.5);
+  --color-4-transparent: rgba(24, 18, 43, 0.5);
   --font-size-1: 18px;
   --font-size-2: 24px;
   --font-size-3: 30px;

@@ -18,7 +18,7 @@
   display: flex;
   flex-direction: column;
   margin-top: 150px;
-  height: 70%;
+  height: 100%;
   width: 90%;
   max-width: 1200px;
   background-color: var(--color-3);
@@ -45,19 +45,52 @@
 
 .scrollable-container {
   position: relative;
-  height: auto;
-  width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 250px;
+  width: 600px;
+  border-radius: var(--border-radius);
+  background-color: var(--color-other);
+  overflow: hidden;
 }
 
 .scrollable-image {
   position: absolute;
-  max-width: 100%;
+  scale: 0.8;
+  width: 200px;
   aspect-ratio: 9/12;
-  opacity: 0;
 }
 
-.scrollable-image:first-child {
-  opacity: 1;
+.scroll-right-button,
+.scroll-left-button {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: solid 2px var(--color-1-transparent);
+  color: var(--color-1-transparent);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  height: 50px;
+  width: 50px;
+  transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+  z-index: 2;
+}
+
+.scroll-left-button {
+  left: 40px;
+}
+
+.scroll-right-button {
+  right: 40px;
+}
+
+.scroll-left-button:hover,
+.scroll-right-button:hover {
+  color: var(--color-1);
+  border-color: var(--color-1);
 }
 
 .panel-2 {
@@ -66,6 +99,48 @@
 
 .panel-3 {
   background-color: var(--color-3);
+}
+
+@media (min-width: 769px) and (max-width: 1000px) {
+  .information-container {
+    padding: 10px;
+    align-items: center;
+    margin-top: 100px;
+    height: 80%;
+    max-width: 760px;
+  }
+
+  .info-text {
+    margin-top: 40px;
+    padding: 10px;
+    border-radius: var(--border-radius);
+    background-color: var(--color-other);
+    text-align: center;
+  }
+
+  .scrollable-container {
+  }
+
+  .scrollable-image {
+  }
+
+  .about-container {
+    width: 100%;
+  }
+
+  .about-text {
+    font-size: var(--font-size-3);
+    margin-left: 15px;
+  }
+
+  .fa.fa-users.about-icon {
+    display: none;
+  }
+
+  .text-for-replacement {
+    margin-top: 40px;
+    font-size: var(--font-size-2);
+  }
 }
 
 @media (max-width: 768px) {

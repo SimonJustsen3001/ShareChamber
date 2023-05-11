@@ -18,15 +18,16 @@ function App() {
   useEffect(() => {
     const mediaWatcher = window.matchMedia("(max-width: 768px)");
     userStore.setIsSmallScreen(mediaWatcher.matches);
-    mediaWatcher.addEventListener("change", (change) => {
-      userStore.setIsSmallScreen(change.matches);
+    mediaWatcher.addEventListener("change", (event) => {
+      userStore.setIsSmallScreen(event.matches);
+      console.log(event);
     });
-  });
+  }, []);
 
   useLayoutEffect(() => {
-    let ctx = gsap.context(() => {
-      console.log(userStore.isSmallScreen);
-      if (userStore.isSmallScreen) {
+    console.log(userStore.isSmallScreen);
+    if (userStore.isSmallScreen) {
+      let ctx = gsap.context(() => {
         const tl = gsap
           .timeline()
           .to(".navbar", { delay: 0, xPercent: 100 })
@@ -35,11 +36,10 @@ function App() {
         burger.current?.addEventListener("click", () => {
           tl.reversed(!tl.reversed());
         });
-      }
-    });
-
-    return () => ctx.revert();
-  });
+      });
+      return () => ctx.revert();
+    }
+  }, [userStore.isSmallScreen]);
 
   useEffect(() => {
     if (commonStore.token) {
