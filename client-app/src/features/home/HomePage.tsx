@@ -37,9 +37,17 @@ const HomePage = observer(() => {
       });
       if (userStore.isSmallScreen) {
         gsap
-          .timeline({ repeat: -1, repeatDelay: 0.5 })
-          .to(".arrow-animation", { duration: 1, y: 150 })
-          .to(".arrow-animation", { duration: 1, y: 0 });
+          .timeline({ repeat: -1, repeatDelay: 2 })
+          .to(".arrow-animation", {
+            duration: 1,
+            y: 150,
+            ease: "slow(0.5, 0.8, false)",
+          })
+          .to(".arrow-animation", {
+            duration: 1,
+            y: 0,
+            ease: "slow(0.5, 0.8, false)",
+          });
       }
       console.log(pictureIndex);
       let slidePictures = gsap.utils.toArray(".scrollable-image");
@@ -106,9 +114,6 @@ const HomePage = observer(() => {
             </div>
             {!userStore.isSmallScreen ? (
               <>
-                <div className="text-for-replacement">
-                  Scroll down to see how!
-                </div>
                 <div className="scrollable-container">
                   <button
                     className="scroll-left-button"
@@ -126,9 +131,18 @@ const HomePage = observer(() => {
                     <i className="fa-solid fa-angle-right"></i>
                   </button>
                 </div>
+                <div className="scroll-down-container">
+                  <p>Scroll down for more information!</p>
+                  <div className=""></div>
+                </div>
               </>
             ) : (
-              <i className="fa-solid fa-arrow-right fa-rotate-90 arrow-animation"></i>
+              <>
+                <div className="text-for-replacement">
+                  Scroll down to see how!
+                </div>
+                <i className="fa-solid fa-arrow-right fa-rotate-90 arrow-animation"></i>
+              </>
             )}
           </div>
         </div>

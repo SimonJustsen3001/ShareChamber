@@ -48,8 +48,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 250px;
-  width: 600px;
+  height: 265px;
+  width: 500px;
   border-radius: var(--border-radius);
   background-color: var(--color-other);
   overflow: hidden;
@@ -60,6 +60,7 @@
   scale: 0.8;
   width: 200px;
   aspect-ratio: 9/12;
+  cursor: pointer;
 }
 
 .scroll-right-button,
@@ -119,12 +120,14 @@
   }
 
   .scrollable-container {
+    margin-top: 40px;
   }
 
   .scrollable-image {
   }
 
   .about-container {
+    justify-content: center;
     width: 100%;
   }
 
