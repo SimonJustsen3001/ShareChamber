@@ -1,15 +1,30 @@
 import { observer } from "mobx-react-lite";
 import "./HomePage.Module.css";
 import { gsap } from "gsap";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useStore } from "../../app/stores/store";
-import { number } from "yup";
+import { useEffect, useLayoutEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
 const HomePage = observer(() => {
   const tutorialImageRef = useRef<HTMLImageElement>(null);
+
+  const handleMouseMove = (event: MouseEvent) => {
+    const rect = tutorialImageRef.current!.getBoundingClientRect();
+    const y = ((event.clientY - rect!.top) / rect!.height) * 100;
+    console.log("test");
+    gsap.to(tutorialImageRef.current, {
+      duration: 1.5,
+      objectPosition: `0 ${y}%`,
+    });
+  };
+
+  useEffect(() => {
+    if (tutorialImageRef.current) {
+      gsap.to(tutorialImageRef.current, {
+        duration: 0,
+        objectPosition: `0 50%`,
+      });
+    }
+  }, []);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -17,33 +32,27 @@ const HomePage = observer(() => {
         scrollTrigger: {
           trigger: ".banner-wrapper",
           scrub: 1,
-          start: "top 200",
+          start: "top 180",
           end: "bottom 400",
         },
       });
-      bannerScroll.to(".banner-image", { objectPosition: "0px +=20%" });
+      bannerScroll.to(".banner-image", {
+        delay: 0,
+        yPercent: "-=20",
+      });
     }, component);
-  }, []);
 
-  useEffect(() => {
-    if (tutorialImageRef.current) {
-      const handleMouseMove = (event: MouseEvent) => {
-        const rect = tutorialImageRef.current?.getBoundingClientRect();
-        const y = ((event.clientY - rect!.top) / rect!.height) * 100;
-        gsap.to(tutorialImageRef.current, {
-          duration: 1.5,
-          objectPosition: `0 ${y}%`,
-        });
-      };
-      tutorialImageRef.current?.addEventListener("mousemove", handleMouseMove);
-      return () => {
+    return () => {
+      if (tutorialImageRef.current)
         tutorialImageRef.current!.removeEventListener(
           "mousemove",
           handleMouseMove
         );
-      };
-    }
+      ctx.revert();
+    };
   }, []);
+
+  useEffect(() => {}, []);
 
   const component = useRef<HTMLDivElement>(null);
   return (
@@ -78,6 +87,12 @@ const HomePage = observer(() => {
             ref={tutorialImageRef}
             className="tutorial-image"
             src="samuel-regan-asante-wMkaMXTJjlQ-unsplash.webp"
+            onLoad={() => {
+              tutorialImageRef.current!.addEventListener(
+                "mousemove",
+                handleMouseMove
+              );
+            }}
           />
         </div>
         <div className="tutorial-panel-2">
@@ -99,17 +114,20 @@ const HomePage = observer(() => {
               <h4>ShareChamber</h4>
               <Link to="/">Home</Link>
               <Link to="/about">About</Link>
-              <Link to="/about">Movies</Link>
+              <Link to="/movie">Movies</Link>
               <Link to="/about">Movie Lists</Link>
             </div>
           </div>
           <div className="contact-wrapper">
             <h4>Contact me</h4>
             <div className="contact-links">
-              <a href="https://github.com/SimonJustsen3001">
+              <a href="https://github.com/SimonJustsen3001" target="_blank">
                 <i className="fa-brands fa-github" />
               </a>
-              <a href="https://www.linkedin.com/in/simon-justsen-19b3951b6/">
+              <a
+                href="https://www.linkedin.com/in/simon-justsen-19b3951b6/"
+                target="_blank"
+              >
                 <i className="fa-brands fa-linkedin" />
               </a>
               <a href="mailto:justsensimon@hotmail.com">
