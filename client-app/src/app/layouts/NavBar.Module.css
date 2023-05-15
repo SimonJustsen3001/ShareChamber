@@ -1,5 +1,4 @@
 .navbar {
-  position: fixed;
   height: var(--navbar-height);
   inset: 0 0 0 0;
   display: flex;
@@ -105,7 +104,6 @@
     justify-content: start;
   }
   .left-navbar-menu {
-    margin-top: 50px;
     height: 10%;
     width: 100%;
     min-height: 50px;

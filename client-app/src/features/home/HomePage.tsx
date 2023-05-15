@@ -10,7 +10,6 @@ const HomePage = observer(() => {
   const handleMouseMove = (event: MouseEvent) => {
     const rect = tutorialImageRef.current!.getBoundingClientRect();
     const y = ((event.clientY - rect!.top) / rect!.height) * 100;
-    console.log("test");
     gsap.to(tutorialImageRef.current, {
       duration: 1.5,
       objectPosition: `0 ${y}%`,
@@ -32,13 +31,14 @@ const HomePage = observer(() => {
         scrollTrigger: {
           trigger: ".banner-wrapper",
           scrub: 1,
-          start: "top 180",
-          end: "bottom 400",
+          start: "top 100",
+          end: "bottom 100",
+          markers: true,
         },
       });
       bannerScroll.to(".banner-image", {
         delay: 0,
-        yPercent: "-=20",
+        yPercent: "-=5",
       });
     }, component);
 
