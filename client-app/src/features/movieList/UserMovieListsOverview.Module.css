@@ -74,8 +74,8 @@
   font-size: var(--font-size-1);
 }
 
-@media (max-width: 630px) {
+@media (max-width: 768px) {
   .list-overview {
-    width: 300px;
+    width: 100%;
   }
 }

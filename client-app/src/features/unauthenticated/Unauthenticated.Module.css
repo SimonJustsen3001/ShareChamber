@@ -1,9 +1,12 @@
 .unauthorized-overview {
+  text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 300px;
+  padding-top: var(--navbar-height);
+  width: 100vw;
+  height: 100vh;
 }
 
 .unauthorized-info-container {
@@ -12,33 +15,33 @@
   justify-content: center;
   align-items: center;
   background-color: var(--color-3);
-  border-radius: 6px;
+  border-radius: var(--border-radius);
   padding: 40px;
-  width: 1000px;
+  min-width: 1000px;
   line-height: 40px;
   color: white;
 }
 
 .unauthorized-header {
-  font-size: 60px;
+  font-size: var(--font-size-5);
   margin-bottom: 50px;
 }
 
 .unauthorized-message {
-  font-size: 35px;
+  font-size: var(--font-size-3);
   margin-bottom: 50px;
 }
 
 .unauthorized-submessage {
   font-size: 20px;
-  width: 500px;
+  min-width: 500px;
   margin-bottom: 20px;
   text-align: center;
 }
 
 .unauthorized-button-container {
   display: flex;
-  width: 600px;
+  min-width: 600px;
 }
 
 .unauthorized-login-button,
@@ -48,13 +51,41 @@
   color: white;
   box-shadow: 0px 0px 2px 2px rgba(255, 255, 255, 0.4);
   border: none;
-  padding: 20px 0px;
+  padding: 20px 8px;
   width: 100%;
-  border-radius: 10px;
+  border-radius: var(--border-radius);
   cursor: pointer;
-  font-size: 30px;
+  font-size: var(--font-size-3);
 }
 
 .unauthorized-login-button {
   margin-right: 20px;
+}
+
+@media (max-width: 768px) {
+  .unauthorized-overview {
+    padding-top: 0;
+  }
+
+  .unauthorized-info-container {
+    min-width: 300px;
+    padding: 20px;
+    margin: 20px;
+  }
+
+  .unauthorized-header {
+    font-size: var(--font-size-4);
+  }
+
+  .unauthorized-message {
+    font-size: var(--font-size-2);
+  }
+
+  .unauthorized-submessage {
+    min-width: 200px;
+  }
+
+  .unauthorized-button-container {
+    min-width: 200px;
+  }
 }

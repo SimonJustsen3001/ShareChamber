@@ -1,68 +1,25 @@
+.movielist-container {
+  display: flex;
+  width: 100vw;
+  height: auto;
+  margin-top: var(--navbar-height);
+  justify-content: center;
+  align-items: center;
+}
+
 .list-setup {
   display: flex;
-  position: absolute;
-  margin-top: 100px;
+  justify-content: center;
+  align-items: center;
   padding: 20px;
-  inset: 6% auto auto auto;
-  min-width: 1400px;
+  width: 90%;
   background-color: var(--color-3);
-  font-size: 20px;
-  margin-left: calc((100% - 1400px) / 2);
-  margin-right: calc((100% - 1400px) / 2);
-  transition: inset 0.1s ease-in-out;
 }
 
-@media ((min-width: 1030px) and (max-width: 1430px)) {
+@media (max-width: 768px) {
   .list-setup {
-    flex-direction: column-reverse;
-    align-items: center;
-    min-width: 1000px;
-    margin-left: calc((100% - 1000px) / 2);
-    margin-right: calc((100% - 1000px) / 2);
-  }
-
-  .list-overview {
-    width: 60%;
-  }
-
-  .list-selected {
-    width: 90%;
-  }
-}
-
-@media ((min-width: 630px) and (max-width: 1030px)) {
-  .list-setup {
-    flex-direction: column-reverse;
-    align-items: center;
-    min-width: 600px;
-    margin-left: calc((100% - 600px) / 2);
-    margin-right: calc((100% - 600px) / 2);
-  }
-
-  .list-overview {
-    width: 60%;
-  }
-
-  .list-selected {
-    width: 90%;
-  }
-}
-
-@media (max-width: 630px) {
-  .list-setup {
-    flex-direction: column-reverse;
-    align-items: center;
-    width: 350px;
     min-width: 350px;
-    margin-left: calc((100% - 350px) / 2);
-    margin-right: calc((100% - 350px) / 2);
-  }
-
-  .list-overview {
-    width: 60%;
-  }
-
-  .list-selected {
-    width: 90%;
+    width: 350px;
+    flex-direction: column-reverse;
   }
 }

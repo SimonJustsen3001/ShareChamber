@@ -159,38 +159,23 @@ foreignObject:hover .movie-add-to-list-icon {
   color: white;
 }
 
-@media ((min-width: 1030px) and (max-width: 1430px)) {
+@media (min-width: 601px) and (max-width: 768px) {
   .movie-grid {
-    grid-template-columns: repeat(4, 1fr);
-    min-width: 1000px;
-  }
-}
-
-@media ((min-width: 830px) and (max-width: 1029px)) {
-  .movie-grid {
-    grid-template-columns: repeat(3, 1fr);
-    min-width: 800px;
-  }
-}
-
-@media ((min-width: 630px) and (max-width: 829px)) {
-  .movie-grid {
+    min-width: 300px;
     grid-template-columns: repeat(2, 1fr);
-    min-width: 600px;
   }
   .movie-container {
     width: 250px;
   }
-
   .list-item {
     max-width: 250px;
   }
 }
 
-@media (max-width: 629px) {
+@media (max-width: 600px) {
   .movie-grid {
-    grid-template-columns: repeat(1, 1fr);
     min-width: 300px;
+    grid-template-columns: repeat(1, 1fr);
   }
   .movie-container {
     width: 250px;
