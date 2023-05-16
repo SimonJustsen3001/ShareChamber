@@ -33,7 +33,6 @@ const HomePage = observer(() => {
           scrub: 1,
           start: "top 100",
           end: "bottom 100",
-          markers: true,
         },
       });
       bannerScroll.to(".banner-image", {

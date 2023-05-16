@@ -1,0 +1,64 @@
+.moviepage-wrapper {
+  width: 100vw;
+  height: calc(100vh - var(--navbar-height));
+  position: relative;
+}
+
+.moviepage-background-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  filter: blur(3px) brightness(0.7);
+}
+
+.moviepage-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  padding-top: 100px;
+}
+
+.movie-banner {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 1600px;
+  height: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 0 0 100px 0;
+  overflow: hidden;
+}
+
+.movie-banner-image {
+  position: absolute;
+  height: auto;
+  width: 100%;
+}
+
+.movie-banner-control-panel {
+  position: absolute;
+  left: 15%;
+  bottom: 20%;
+  display: flex;
+  z-index: 2;
+}
+
+.movie-banner-not-selected-button,
+.movie-banner-selected-button {
+  width: 24px;
+  height: 24px;
+  background-color: transparent;
+  border: solid grey 3px;
+  border-radius: 50%;
+  margin: 4px;
+  transition: background-color 0.5s;
+}
+
+.movie-banner-selected-button {
+  background-color: grey;
+}

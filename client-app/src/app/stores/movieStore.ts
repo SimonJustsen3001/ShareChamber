@@ -30,17 +30,22 @@ export default class MovieStore {
     this.setLoadingInitial(true);
     try {
       const movies = await agent.Movies.list(query);
-      this.movies = [];
-      this.moviesWithoutPoster = [];
-
-      movies.forEach((movie) => {
-        if (movie.imageUrl) this.movies = [...this.movies, movie];
-        else this.moviesWithoutPoster = [...this.moviesWithoutPoster, movie];
-      });
+      this.setMovies(movies);
       this.setLoadingInitial(false);
     } catch (error) {
       this.setLoadingInitial(false);
     }
+  };
+
+  setMovies = (movies: Movie[]) => {
+    this.movies = [];
+    this.moviesWithoutPoster = [];
+
+    movies.forEach((movie) => {
+      if (movie.imageUrl) this.movies = [...this.movies, movie];
+      else this.moviesWithoutPoster = [...this.moviesWithoutPoster, movie];
+      console.log(movie.imageUrl);
+    });
   };
 
   setMovieRating = async (rating: Rating) => {
