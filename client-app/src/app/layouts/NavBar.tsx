@@ -12,7 +12,6 @@ export default observer(function NavBar() {
   const [dropDownVisible, setDropDownVisible] = useState(false);
   useEffect(() => {
     setCurrentPath(window.location.pathname);
-    console.log(currentPath);
   }, []);
 
   const toggleDropDown = () => {

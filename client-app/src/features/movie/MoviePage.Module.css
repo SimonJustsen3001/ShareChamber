@@ -1,6 +1,6 @@
 .moviepage-wrapper {
   width: 100vw;
-  height: calc(100vh - var(--navbar-height));
+  height: auto;
   position: relative;
 }
 
@@ -22,7 +22,7 @@
 }
 
 .movie-banner {
-  position: absolute;
+  position: relative;
   display: flex;
   justify-content: center;
   width: 100%;
@@ -32,20 +32,22 @@
   margin-right: auto;
   border-radius: 0 0 100px 0;
   overflow: hidden;
+  z-index: 2;
 }
 
 .movie-banner-image {
   position: absolute;
   height: auto;
   width: 100%;
+  opacity: 0;
 }
 
 .movie-banner-control-panel {
   position: absolute;
-  left: 15%;
-  bottom: 20%;
+  left: 5%;
+  bottom: 10%;
   display: flex;
-  z-index: 2;
+  z-index: 3;
 }
 
 .movie-banner-not-selected-button,
@@ -53,12 +55,64 @@
   width: 24px;
   height: 24px;
   background-color: transparent;
-  border: solid grey 3px;
+  border: solid var(--color-1) 3px;
   border-radius: 50%;
   margin: 4px;
   transition: background-color 0.5s;
 }
 
 .movie-banner-selected-button {
-  background-color: grey;
+  background-color: var(--color-3);
+}
+
+.movie-grid-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  margin-top: 60px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 800px;
+  z-index: 2;
+}
+
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 40px;
+}
+
+.movie-card-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 500px;
+  width: flex;
+  cursor: pointer;
+}
+
+.movie-card-image {
+  height: 425px;
+  width: 100%;
+  border-radius: 20px;
+}
+
+.movie-card-container h4 {
+  backdrop-filter: blur(10px);
+  font-size: var(--font-size-2);
+  text-align: right;
+  backdrop-filter: blur(5px);
+  margin: 8px;
+}
+
+.movie-card-rating-container {
+  position: absolute;
+  display: flex;
+  top: 20px;
+  left: 25px;
+  padding: 4px;
+  border: solid rgb(255, 215, 0) 2px;
+  background-color: rgba(255, 215, 0, 0.5);
+  color: white;
+  border-radius: 50%;
 }

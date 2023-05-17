@@ -96,6 +96,7 @@
 
 @media (max-width: 768px) {
   .navbar {
+    position: fixed;
     height: auto;
     width: 100;
     inset: 0 0 0 auto;

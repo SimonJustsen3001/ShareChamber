@@ -32,10 +32,8 @@ axios.interceptors.response.use(
         if (data.errors) {
           const modalStateErrors = [];
           for (const key in data.errors) {
-            console.log(key);
             if (data.errors[key]) {
               modalStateErrors.push(data.errors[key]);
-              console.log(data.errors[key]);
               toast.error(data.errors[key][0]);
             }
           }

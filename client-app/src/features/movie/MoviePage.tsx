@@ -1,8 +1,9 @@
 import { observer } from "mobx-react-lite";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useStore } from "../../app/stores/store";
 import "./MoviePage.Module.css";
 import { gsap } from "gsap";
+import SearchBar from "./SearchBar";
 
 const MoviePage = observer(() => {
   const { movieStore, movieListStore, userStore } = useStore();
@@ -22,36 +23,62 @@ const MoviePage = observer(() => {
   const component = useRef<HTMLDivElement>(null);
   const movieBannerImageRef = useRef<HTMLImageElement>(null);
 
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+  const [loadedImagesCount, setLoadedImagesCount] = useState(0);
+
   useEffect(() => {
+    let movieImages = gsap.utils.toArray(".moviepage-background-image");
+    let bannerImages = gsap.utils.toArray(".movie-banner-image");
     // if (userStore.searchAnonymous) movieStore.loadMovies("spider");
     movieStore.loadMovies("spider");
     if (userStore.user) movieListStore.loadMovieLists();
 
     let ctx = gsap.context(() => {
-      let movieImages = gsap.utils.toArray(".moviepage-background-image");
       movieImages.forEach((movieImage, index) => {
         if (movieBannerIndex === index) {
           gsap.to(movieImage!, { opacity: 1 });
         }
-        switch (index) {
-          case 0:
-            break;
-          case 1:
-            gsap.to(movieBannerImageRef.current, { y: -800 });
-            break;
-          case 2:
-            gsap.to(movieBannerImageRef.current, { y: -800 });
-            break;
-          case 3:
-            gsap.to(movieBannerImageRef.current, { y: -400 });
-        }
       });
+      if (imagesLoaded) {
+        bannerImages.forEach((bannerImage, index) => {
+          if (movieBannerIndex === index) {
+            gsap.to(bannerImage!, { opacity: 1 });
+          }
+          if (!userStore.isSmallScreen) {
+            switch (index) {
+              case 0:
+                gsap.set(bannerImage!, { y: -850 });
+                break;
+              case 1:
+                gsap.set(bannerImage!, { y: -800 });
+                break;
+              case 2:
+                gsap.set(bannerImage!, { y: -820 });
+                break;
+              case 3:
+                gsap.set(bannerImage!, { y: -350 });
+            }
+          }
+        });
+      }
     }, component);
     return () => ctx.revert();
-  }, [movieStore, movieListStore, movieBannerIndex]);
+  }, [
+    imagesLoaded,
+    movieStore,
+    movieListStore,
+    movieBannerIndex,
+    userStore.isSmallScreen,
+  ]);
 
   const handleClickMovieBanner = (index: number) => {
     setMovieBannerImage(index);
+  };
+
+  const handleImageLoad = () => {
+    if (loadedImagesCount === movieBanner.length)
+      setLoadedImagesCount((prev) => prev + 1);
+    else setImagesLoaded(true);
   };
 
   return (
@@ -63,14 +90,16 @@ const MoviePage = observer(() => {
         <div className="moviepage-content-wrapper">
           {movieStore.movies.length > 0 ? (
             <>
-              {movieBanner.map((movie, index) => (
-                <div className="movie-banner">
+              <div className="movie-banner">
+                {movieBanner.map((movie, index) => (
                   <img
-                    ref={movieBannerImageRef}
+                    onLoad={handleImageLoad}
                     className="movie-banner-image"
                     src={movie}
                   ></img>
-                  <div className="movie-banner-control-panel">
+                ))}
+                <div className="movie-banner-control-panel">
+                  {movieBanner.map((movie, index) => (
                     <button
                       className={
                         movieBannerIndex === index
@@ -79,9 +108,31 @@ const MoviePage = observer(() => {
                       }
                       onClick={() => handleClickMovieBanner(index)}
                     ></button>
-                  </div>
+                  ))}
                 </div>
-              ))}
+              </div>
+              <SearchBar />
+              <div className="movie-grid-wrapper">
+                <div className="movie-grid">
+                  {movieStore.movies.map((movie) => (
+                    <div className="movie-card-container">
+                      <img
+                        className="movie-card-image"
+                        src={movie.imageUrl}
+                      ></img>
+                      {movie.rating != 0 ? (
+                        <div className="movie-card-rating-container">
+                          {movie.rating}
+                        </div>
+                      ) : (
+                        <></>
+                      )}
+
+                      <h4>{movie.title}</h4>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </>
           ) : (
             <></>

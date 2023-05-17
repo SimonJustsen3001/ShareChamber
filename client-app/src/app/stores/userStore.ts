@@ -18,8 +18,6 @@ export default class UserStore {
 
   login = async (creds: UserFormValues) => {
     try {
-      console.log("login attempt");
-      console.log(creds);
       const user = await agent.Account.login(creds);
       store.commonStore.setToken(user.token);
       runInAction(() => (this.user = user));
@@ -30,8 +28,6 @@ export default class UserStore {
 
   register = async (creds: UserFormValues) => {
     try {
-      console.log("register attempt");
-      console.log(creds);
       const user = await agent.Account.register(creds);
       store.commonStore.setToken(user.token);
       runInAction(() => (this.user = user));

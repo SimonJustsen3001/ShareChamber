@@ -18,7 +18,6 @@ export default class MovieStore {
     this.setLoading(true);
     try {
       const movie = await agent.Movies.single(movieId);
-      console.log(movie);
       this.selectedMovie = movie;
       this.setLoading(false);
     } catch {
@@ -44,7 +43,6 @@ export default class MovieStore {
     movies.forEach((movie) => {
       if (movie.imageUrl) this.movies = [...this.movies, movie];
       else this.moviesWithoutPoster = [...this.moviesWithoutPoster, movie];
-      console.log(movie.imageUrl);
     });
   };
 

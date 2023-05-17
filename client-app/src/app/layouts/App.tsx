@@ -20,12 +20,10 @@ function App() {
     userStore.setIsSmallScreen(mediaWatcher.matches);
     mediaWatcher.addEventListener("change", (event) => {
       userStore.setIsSmallScreen(event.matches);
-      console.log(event);
     });
   }, []);
 
   useLayoutEffect(() => {
-    console.log(userStore.isSmallScreen);
     if (userStore.isSmallScreen) {
       let ctx = gsap.context(() => {
         const tl = gsap
