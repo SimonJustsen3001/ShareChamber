@@ -2,7 +2,6 @@ import { observer } from "mobx-react-lite";
 import "./HomePage.Module.css";
 import { gsap } from "gsap";
 import { useEffect, useLayoutEffect, useRef } from "react";
-import { Link } from "react-router-dom";
 
 const HomePage = observer(() => {
   const tutorialImageRef = useRef<HTMLImageElement>(null);
@@ -103,36 +102,6 @@ const HomePage = observer(() => {
               <li>Add your friends to the movielist</li>
               <li>Enjoy!</li>
             </ol>
-          </div>
-        </div>
-      </div>
-      <div className="footer-wrapper">
-        <div className="footer-content">
-          <div className="footer-links-wrapper">
-            <div className="footer-links">
-              <h4>ShareChamber</h4>
-              <Link to="/">Home</Link>
-              <Link to="/about">About</Link>
-              <Link to="/movie">Movies</Link>
-              <Link to="/about">Movie Lists</Link>
-            </div>
-          </div>
-          <div className="contact-wrapper">
-            <h4>Contact me</h4>
-            <div className="contact-links">
-              <a href="https://github.com/SimonJustsen3001" target="_blank">
-                <i className="fa-brands fa-github" />
-              </a>
-              <a
-                href="https://www.linkedin.com/in/simon-justsen-19b3951b6/"
-                target="_blank"
-              >
-                <i className="fa-brands fa-linkedin" />
-              </a>
-              <a href="mailto:justsensimon@hotmail.com">
-                <i className="fa-solid fa-envelope" />
-              </a>
-            </div>
           </div>
         </div>
       </div>

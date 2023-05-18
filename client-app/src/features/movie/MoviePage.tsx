@@ -88,30 +88,30 @@ const MoviePage = observer(() => {
           <img className="moviepage-background-image" src={backgroundImage} />
         ))}
         <div className="moviepage-content-wrapper">
-          {movieStore.movies.length > 0 ? (
-            <>
-              <div className="movie-banner">
+          <>
+            <div className="movie-banner">
+              {movieBanner.map((movie, index) => (
+                <img
+                  onLoad={handleImageLoad}
+                  className="movie-banner-image"
+                  src={movie}
+                ></img>
+              ))}
+              <div className="movie-banner-control-panel">
                 {movieBanner.map((movie, index) => (
-                  <img
-                    onLoad={handleImageLoad}
-                    className="movie-banner-image"
-                    src={movie}
-                  ></img>
+                  <button
+                    className={
+                      movieBannerIndex === index
+                        ? "movie-banner-selected-button"
+                        : "movie-banner-not-selected-button"
+                    }
+                    onClick={() => handleClickMovieBanner(index)}
+                  ></button>
                 ))}
-                <div className="movie-banner-control-panel">
-                  {movieBanner.map((movie, index) => (
-                    <button
-                      className={
-                        movieBannerIndex === index
-                          ? "movie-banner-selected-button"
-                          : "movie-banner-not-selected-button"
-                      }
-                      onClick={() => handleClickMovieBanner(index)}
-                    ></button>
-                  ))}
-                </div>
               </div>
-              <SearchBar />
+            </div>
+            <SearchBar />
+            {movieStore.movies.length > 0 ? (
               <div className="movie-grid-wrapper">
                 <div className="movie-grid">
                   {movieStore.movies.map((movie) => (
@@ -132,11 +132,25 @@ const MoviePage = observer(() => {
                     </div>
                   ))}
                 </div>
+                <div className="movie-scroll-visualizer">
+                  {movieBanner.map((movie, index) => (
+                    <button
+                      className={
+                        movieBannerIndex === index
+                          ? "movie-banner-selected-button"
+                          : "movie-banner-not-selected-button"
+                      }
+                      onClick={() => handleClickMovieBanner(index)}
+                    ></button>
+                  ))}
+                </div>
               </div>
-            </>
-          ) : (
-            <></>
-          )}
+            ) : (
+              <div className="nothing-found-wrapper">
+                <p>No movies found</p>
+              </div>
+            )}
+          </>
         </div>
       </div>
     </>

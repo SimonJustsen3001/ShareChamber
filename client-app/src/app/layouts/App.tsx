@@ -8,6 +8,7 @@ import { ToastContainer } from "react-toastify";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "@fortawesome/fontawesome-free/css/all.css";
+import Footer from "./Footer";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -54,6 +55,7 @@ function App() {
       <button ref={burger} className="fa fa-bars burger-menu"></button>
       <NavBar />
       <Outlet />
+      <Footer />
     </>
   );
 }
