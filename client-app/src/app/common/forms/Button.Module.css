@@ -14,7 +14,7 @@
 
 .button-positive,
 .button-positive-invalid {
-  background-color: rgb(1, 136, 225);
+  background-color: var(--color-button);
   color: white;
   box-shadow: 0px 0px 2px 2px rgb(38, 38, 38);
 }
