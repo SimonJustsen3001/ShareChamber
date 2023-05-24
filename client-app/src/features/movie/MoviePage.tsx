@@ -5,12 +5,13 @@ import "./MoviePage.Module.css";
 import { gsap } from "gsap";
 import { ScrollTrigger, ScrollToPlugin } from "gsap/all";
 import SearchBar from "./SearchBar";
+import AddMovieForm from "../form/AddMovieForm";
 
 gsap.registerPlugin(ScrollToPlugin);
 gsap.registerPlugin(ScrollTrigger);
 
 const MoviePage = observer(() => {
-  const { movieStore, movieListStore, userStore } = useStore();
+  const { movieStore, movieListStore, userStore, modalStore } = useStore();
   const [movieBanner, setMovieBanner] = useState([
     "//wsrv.nl/?url=https://m.media-amazon.com/images/M/MV5BNjk5YTU0OTAtMTM1NC00Zjc1LWEzZjAtOWJkYzcxOGRhNWNhXkEyXkFqcGdeQXVyMzQ0MzA0NTM@._V1_.jpg&w=1920",
     "//wsrv.nl/?url=https://m.media-amazon.com/images/M/MV5BODhhY2M5NjEtZTc0OC00MDE5LWJiMWQtYTZkMTMwMTA0NmZjXkEyXkFqcGdeQXVyMTEwMjgyMzIz._V1_.jpg&w=1920",
@@ -75,26 +76,30 @@ const MoviePage = observer(() => {
     let movies = gsap.utils.toArray(".movie-card-container") as Element[];
     let navigators = gsap.utils.toArray(".movie-scroll-button") as Element[];
     navigators.forEach((navigator, index) => {
-      console.log(
-        "Movie at index " + index * 10 + ": ",
-        movies[index * 10],
-        " and navigator: ",
-        navigator
-      );
       gsap.to(navigator, {
         scrollTrigger: {
           trigger: movies[index * 10],
-          start: "top bottom",
-          end: "top bottom",
+          start: "top 600",
+          end: "bottom top",
           onEnter: () =>
             gsap.to(navigator, {
               backgroundColor: "var(--color-2)",
-              duration: 0.3,
+              duration: 0.25,
+            }),
+          onEnterBack: () =>
+            gsap.to(navigator, {
+              backgroundColor: "var(--color-2)",
+              duration: 0.25,
             }),
           onLeaveBack: () =>
             gsap.to(navigator, {
               backgroundColor: "transparent",
-              duration: 0.3,
+              duration: 0.25,
+            }),
+          onLeave: () =>
+            gsap.to(navigator, {
+              backgroundColor: "transparent",
+              duration: 0.25,
             }),
           scroller: movieGridRef.current,
         },
@@ -179,7 +184,17 @@ const MoviePage = observer(() => {
                         </div>
                         <div className="movie-card-back">
                           <div className="movie-card-buttons-wrapper">
-                            <button className="movie-card-back-button">
+                            <button
+                              className="movie-card-back-button"
+                              onClick={() =>
+                                modalStore.openModal(
+                                  <AddMovieForm
+                                    movieId={movie.id}
+                                    movieTitle={movie.title}
+                                  />
+                                )
+                              }
+                            >
                               <i className="fa-solid fa-plus" />
                               &nbsp; Add
                             </button>
