@@ -5,6 +5,7 @@ import { useStore } from "../../app/stores/store";
 import * as Yup from "yup";
 import CheckBox from "../../app/common/forms/CheckBox";
 import { ErrorResponse } from "../../app/interfaces/errorInterface";
+import { MovieListIds } from "../../app/interfaces/movieListInterface";
 
 type movieData = {
   movieId: string;
@@ -12,10 +13,10 @@ type movieData = {
 };
 
 const validationSchema = Yup.object({
-  // movieId: Yup.string().required(
-  //   "Unexpected problem, please contact developer"
-  // ),
-  // movieLists: Yup.array().min(1).required("Add to at least one list"),
+  movieId: Yup.string().required(
+    "Unexpected problem, please contact developer"
+  ),
+  movieLists: Yup.array().min(1).required("Add to at least one list"),
 });
 
 const AddMovieForm = observer(({ movieId, movieTitle }: movieData) => {
@@ -32,7 +33,11 @@ const AddMovieForm = observer(({ movieId, movieTitle }: movieData) => {
       }}
       onSubmit={async (values, { setErrors }) => {
         try {
-          console.log("test ", values);
+          const movieListIds: MovieListIds = {
+            movieLists: values.movieLists,
+          };
+          
+          await movieListStore.addMovieToList(movieListIds, values.movieId)
         } catch (error) {
           const errorResponse = error as ErrorResponse;
           setErrors({

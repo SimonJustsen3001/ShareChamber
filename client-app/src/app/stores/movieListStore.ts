@@ -2,10 +2,10 @@ import { makeAutoObservable } from "mobx";
 import agent from "../api/agent";
 import {
   MovieList,
+  MovieListIds,
   MovieListCreateFormValues,
 } from "../interfaces/movieListInterface";
 import { store } from "./store";
-import { MovieId } from "../interfaces/movieInterface";
 
 export default class MovieListStore {
   movieLists: MovieList[] = [];
@@ -34,9 +34,9 @@ export default class MovieListStore {
     }
   };
 
-  addMovieToList = async (listId: string, movieId: string) => {
-    const creds: MovieId = { movieId };
-    await agent.MovieLists.addMovieToList(listId, creds);
+  addMovieToList = async (movieListIds: MovieListIds, movieId: string) => {
+    console.log("made it here");
+    await agent.MovieLists.addMovieToLists(movieListIds, movieId);
   };
 
   addCollaborator = async (listId: string, displayName: string) => {
@@ -59,20 +59,20 @@ export default class MovieListStore {
     store.modalStore.closeModal();
   };
 
-  toggleMovieInList = async (listId: string, movieId: string) => {
-    const isMovieInList = this.doesListHaveMovie(listId, movieId);
-    this.setLoadingToggle(true, movieId, listId);
+  // toggleMovieInList = async (listId: string, movieId: string) => {
+  //   const isMovieInList = this.doesListHaveMovie(listId, movieId);
+  //   this.setLoadingToggle(true, movieId, listId);
 
-    if (isMovieInList) {
-      await agent.MovieLists.removeMovieFromList(listId, movieId);
-    } else {
-      const creds: MovieId = { movieId };
-      await agent.MovieLists.addMovieToList(listId, creds);
-    }
-    this.setLoadingToggle(false, null, null);
+  //   if (isMovieInList) {
+  //     await agent.MovieLists.removeMovieFromList(listId, movieId);
+  //   } else {
+  //     const creds: MovieId = { movieId };
+  //     await agent.MovieLists.addMovieToList(listId, creds);
+  //   }
+  //   this.setLoadingToggle(false, null, null);
 
-    this.loadMovieLists();
-  };
+  //   this.loadMovieLists();
+  // };
 
   doesListHaveMovie = (movieListId: string, movieId: string): boolean => {
     const movieList = this.movieLists.find((x) => x.id == movieListId);

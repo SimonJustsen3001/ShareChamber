@@ -124,8 +124,9 @@ body::-webkit-scrollbar {
 .movie-card-front,
 .movie-card-back {
   display: flex;
-  justify-content: center;
-  align-items: flex-end;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   position: absolute;
   height: 425px;
   width: 300px;
@@ -146,13 +147,36 @@ body::-webkit-scrollbar {
   border-radius: 20px;
 }
 
+.movie-card-description-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 4;
+  transform: scaleX(-1);
+  z-index: 2;
+}
+
+.movie-card-description-wrapper p {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 8;
+  background-color: var(--color-4-transparent);
+  font-size: var(--font-size-2);
+  padding: 2%;
+  max-width: 100%;
+  max-height: 85%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+}
+
 .movie-card-buttons-wrapper {
+  flex: 1;
   z-index: 1;
   display: flex;
   width: 90%;
   justify-content: center;
   align-items: center;
-  margin-bottom: 15px;
 }
 
 .movie-card-back-button {
@@ -190,12 +214,13 @@ body::-webkit-scrollbar {
   align-items: center;
   top: 30px;
   left: 25px;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   border: solid rgb(255, 215, 0) 2px;
-  background-color: rgba(255, 215, 0, 0.5);
-  color: white;
+  background-color: rgba(255, 215, 0, 0.8);
+  color: black;
   border-radius: 50%;
+  font-size: var(--font-size-2);
 }
 
 .movie-scroll-visualizer {

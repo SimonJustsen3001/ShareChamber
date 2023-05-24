@@ -8,13 +8,6 @@ import SelectedMovieList from "./SelectedMovieList";
 import Unauthenticated from "../unauthenticated/Unauthenticated";
 
 const MovieListPage = observer(() => {
-  const { movieListStore, userStore } = useStore();
-
-  useEffect(() => {
-    // if (userStore.user) movieListStore.loadMovieLists();
-    movieListStore.loadMovieLists();
-  }, [movieListStore, userStore]);
-
   return (
     <>
       {/* {userStore.isLoggedIn ? ( */}

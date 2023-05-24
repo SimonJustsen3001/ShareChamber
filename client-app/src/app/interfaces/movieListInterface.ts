@@ -14,6 +14,10 @@ export interface MovieList {
   collaboratorNames: string[];
 }
 
+export interface MovieListIds {
+  movieLists: string[];
+}
+
 export interface MovieListCreateFormValues {
   name: string;
 }

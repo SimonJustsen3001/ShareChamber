@@ -13,7 +13,7 @@ import Footer from "./Footer";
 gsap.registerPlugin(ScrollTrigger);
 
 function App() {
-  const { userStore, commonStore } = useStore();
+  const { userStore, commonStore, movieListStore } = useStore();
   const burger = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
@@ -47,6 +47,10 @@ function App() {
       commonStore.setAppLoaded();
     }
   }, [userStore, commonStore]);
+
+  useEffect(() => {
+    if (userStore.user) movieListStore.loadMovieLists();
+  }, [movieListStore, userStore.user]);
 
   return (
     <>

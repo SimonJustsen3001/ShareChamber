@@ -183,6 +183,9 @@ const MoviePage = observer(() => {
                           )}
                         </div>
                         <div className="movie-card-back">
+                          <div className="movie-card-description-wrapper">
+                            <p>{movie.description}</p>
+                          </div>
                           <div className="movie-card-buttons-wrapper">
                             <button
                               className="movie-card-back-button"

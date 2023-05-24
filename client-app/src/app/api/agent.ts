@@ -2,6 +2,7 @@ import axios, { AxiosError, AxiosResponse } from "axios";
 import { Movie, MovieId } from "../interfaces/movieInterface";
 import {
   MovieList,
+  MovieListIds,
   MovieListCreateFormValues,
 } from "../interfaces/movieListInterface";
 import { User, UserFormValues } from "../interfaces/userInterface";
@@ -88,8 +89,8 @@ const MovieLists = {
   list: () => requests.get<MovieList[]>("/movielist"),
   createList: (movieList: MovieListCreateFormValues) =>
     requests.post<MovieList>(`/movielist/${movieList.name}`, movieList),
-  addMovieToList: (movieListId: string, movieId: MovieId) =>
-    requests.patch<MovieId>(`/movielist/${movieListId}`, movieId),
+  addMovieToLists: (movieListIds: MovieListIds, movieId: string) =>
+    requests.patch<MovieId>(`/movielist/addMovie/${movieId}`, movieListIds),
   removeMovieFromList: (movieListId: string, movieId: string) =>
     requests.patch<MovieId>(
       `/movielist/${movieListId}/removeMovie/${movieId}`,
