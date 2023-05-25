@@ -35,7 +35,6 @@ export default class MovieListStore {
   };
 
   addMovieToList = async (movieListIds: MovieListIds, movieId: string) => {
-    console.log("made it here");
     await agent.MovieLists.addMovieToLists(movieListIds, movieId);
   };
 
