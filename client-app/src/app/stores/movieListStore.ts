@@ -34,8 +34,28 @@ export default class MovieListStore {
     }
   };
 
-  addMovieToList = async (movieListIds: MovieListIds, movieId: string) => {
-    await agent.MovieLists.addMovieToLists(movieListIds, movieId);
+  addMovieToList = async (addMovieListIds: MovieListIds, movieId: string) => {
+    await agent.MovieLists.addMovieToLists(addMovieListIds, movieId);
+  };
+
+  removeMovieFromList = async (
+    removeMovieListIds: MovieListIds,
+    movieId: string
+  ) => {
+    await agent.MovieLists.removeMovieFromList(removeMovieListIds, movieId);
+  };
+
+  updateMovieList = async (
+    addMovieListIds: MovieListIds,
+    removeMovieListIds: MovieListIds,
+    movieId: string
+  ) => {
+    if (addMovieListIds.movieLists.length > 0)
+      this.addMovieToList(addMovieListIds, movieId);
+    if (removeMovieListIds.movieLists.length > 0)
+      this.removeMovieFromList(removeMovieListIds, movieId);
+    this.loadMovieLists();
+    store.modalStore.closeModal();
   };
 
   addCollaborator = async (listId: string, displayName: string) => {
@@ -48,30 +68,11 @@ export default class MovieListStore {
     store.modalStore.closeModal();
   };
 
-  removeMovieFromList = async (listId: string, movieId: string) => {
-    await agent.MovieLists.removeMovieFromList(listId, movieId);
-  };
-
   deleteList = async (listId: string) => {
     await agent.MovieLists.deleteList(listId);
     this.selectedMovieList = null;
     store.modalStore.closeModal();
   };
-
-  // toggleMovieInList = async (listId: string, movieId: string) => {
-  //   const isMovieInList = this.doesListHaveMovie(listId, movieId);
-  //   this.setLoadingToggle(true, movieId, listId);
-
-  //   if (isMovieInList) {
-  //     await agent.MovieLists.removeMovieFromList(listId, movieId);
-  //   } else {
-  //     const creds: MovieId = { movieId };
-  //     await agent.MovieLists.addMovieToList(listId, creds);
-  //   }
-  //   this.setLoadingToggle(false, null, null);
-
-  //   this.loadMovieLists();
-  // };
 
   doesListHaveMovie = (movieListId: string, movieId: string): boolean => {
     const movieList = this.movieLists.find((x) => x.id == movieListId);

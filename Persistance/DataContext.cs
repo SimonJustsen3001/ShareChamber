@@ -1,13 +1,19 @@
 using Domain;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+
 namespace Persistance
 {
   public class DataContext : IdentityDbContext<AppUser>
   {
-    public DataContext(DbContextOptions options) : base(options)
-    {
+    private readonly IConfiguration _config;
+    private readonly DbContextOptions _options;
 
+    public DataContext(DbContextOptions options, IConfiguration config) : base(options)
+    {
+      _options = options;
+      _config = config;
     }
 
     public DbSet<Movie> Movies { get; set; }
@@ -18,8 +24,19 @@ namespace Persistance
     public DbSet<MovieGenre> MovieGenres { get; set; }
     public DbSet<MovieRating> MovieRatings { get; set; }
 
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+      // Configure your database provider and connection string
+      optionsBuilder.UseNpgsql(_config.GetConnectionString("DefaultConnection"));
+
+      // Enable sensitive data logging
+      optionsBuilder.EnableSensitiveDataLogging();
+    }
+
     protected override void OnModelCreating(ModelBuilder builder)
     {
+
+
 
       base.OnModelCreating(builder);
 

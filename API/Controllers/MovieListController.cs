@@ -21,15 +21,23 @@ namespace API.Controllers
     }
 
     [HttpPatch("addMovie/{movieId}")]
-    public async Task<IActionResult> AddMovieToList(string movieId, AddMovieListsDTO movieLists)
+    public async Task<IActionResult> AddMovieToList(string movieId, UpdateMovieListsDTO addMovieList)
     {
-      return HandleResult(await Mediator.Send(new AddMovieToMovieLists.Command { MovieId = movieId, MovieLists = movieLists }));
+      System.Console.WriteLine("\n\n\n\n\n\n");
+      foreach (var movieListId in addMovieList.MovieLists)
+      {
+        System.Console.WriteLine($"MovieListId: {movieListId}, movieId: {movieId}");
+      }
+
+      System.Console.WriteLine("\n\n\n\n\n\n");
+
+      return HandleResult(await Mediator.Send(new AddMovieToMovieLists.Command { MovieId = movieId, MovieLists = addMovieList }));
     }
 
-    [HttpPatch("{movieListId}/removeMovie/{movieId}")]
-    public async Task<IActionResult> RemoveMovieFromList(Guid movieListId, string movieId)
+    [HttpPatch("removeMovie/{movieId}")]
+    public async Task<IActionResult> RemoveMovieFromList(string movieId, UpdateMovieListsDTO removeMovieList)
     {
-      return HandleResult(await Mediator.Send(new RemoveMovieFromMovieList.Command { MovieListId = movieListId, MovieId = movieId }));
+      return HandleResult(await Mediator.Send(new RemoveMovieFromMovieLists.Command { MovieId = movieId, MovieLists = removeMovieList }));
     }
     [HttpPatch("{movieListId}/addCollaborator/{collaboratorName}")]
     public async Task<IActionResult> AddCollaborator(Guid movieListId, string collaboratorName)

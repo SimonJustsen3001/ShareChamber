@@ -5,6 +5,7 @@ import { useStore } from "../../app/stores/store";
 import * as Yup from "yup";
 import CheckBox from "../../app/common/forms/CheckBox";
 import { ErrorResponse } from "../../app/interfaces/errorInterface";
+import { MovieListIds } from "../../app/interfaces/movieListInterface";
 
 type movieData = {
   movieId: string;
@@ -21,6 +22,10 @@ const validationSchema = Yup.object({
 const AddMovieForm = observer(({ movieId, movieTitle }: movieData) => {
   const { modalStore, movieListStore } = useStore();
 
+  const RemoveDuplicates = (array: string[]) => {
+    return array.filter((element, index) => array.indexOf(element) === index);
+  };
+
   return (
     <Formik
       validationSchema={validationSchema}
@@ -34,11 +39,19 @@ const AddMovieForm = observer(({ movieId, movieTitle }: movieData) => {
       }}
       onSubmit={async (values, { setErrors }) => {
         try {
-          console.log("data: ", values);
-          // const movieListIds: MovieListIds = {
-          //   movieLists: values.movieLists,
-          // };
-          // await movieListStore.addMovieToList(movieListIds, values.movieId)
+          const addedMovies = RemoveDuplicates(values.addedMovies);
+          const removedMovies = RemoveDuplicates(values.removedMovies);
+          const addMovieListIds: MovieListIds = {
+            movieLists: addedMovies,
+          };
+          const removeMovieListIds: MovieListIds = {
+            movieLists: removedMovies,
+          };
+          await movieListStore.updateMovieList(
+            addMovieListIds,
+            removeMovieListIds,
+            values.movieId
+          );
         } catch (error) {
           const errorResponse = error as ErrorResponse;
           setErrors({
@@ -74,7 +87,7 @@ const AddMovieForm = observer(({ movieId, movieTitle }: movieData) => {
               isSubmitting={isSubmitting}
               type="submit"
               style={isValid ? "positive" : "positive-invalid"}
-              content="Add to list(s)"
+              content="Update list(s)"
             />
           </div>
         </Form>

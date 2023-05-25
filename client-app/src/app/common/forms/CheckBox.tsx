@@ -36,8 +36,6 @@ const CheckBox = observer((props: Props) => {
     let addedValues: string[] = formikValues[props.addList];
     let removedValues: string[] = formikValues[props.removeList];
 
-    console.log(isChecked, listHasMovie, "\nAdded ", currentAddedValue);
-
     if (isChecked && listHasMovie) {
       removedValues.push(value);
     } else if (isChecked && !listHasMovie) {

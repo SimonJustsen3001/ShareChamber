@@ -1,6 +1,6 @@
 namespace API.DTOs
 {
-  public class AddMovieListsDTO
+  public class UpdateMovieListsDTO
   {
     public ICollection<Guid> MovieLists { get; set; }
   }

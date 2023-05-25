@@ -28,6 +28,7 @@ axios.interceptors.response.use(
     const { data, status, config } = error.response as AxiosResponse;
     switch (status) {
       case 400:
+        console.log("Bad request error details: ", data);
         if (config.method === "get" && data.errors.hasOwnProperty("id"))
           router.navigate("/not-found");
         if (data.errors) {
@@ -44,15 +45,19 @@ axios.interceptors.response.use(
         }
         break;
       case 401:
+        console.log("Unauthorized error details: ", data);
         toast.error("unauthorized");
         break;
       case 403:
+        console.log("forbidden error details: ", data);
         toast.error("forbidden");
         break;
       case 404:
+        console.log("not-found error details: ", data);
         router.navigate("/not-found");
         break;
       case 500:
+        console.log("Server error details: ", data);
         router.navigate("/server-error");
         break;
     }
@@ -91,11 +96,8 @@ const MovieLists = {
     requests.post<MovieList>(`/movielist/${movieList.name}`, movieList),
   addMovieToLists: (movieListIds: MovieListIds, movieId: string) =>
     requests.patch<MovieId>(`/movielist/addMovie/${movieId}`, movieListIds),
-  removeMovieFromList: (movieListId: string, movieId: string) =>
-    requests.patch<MovieId>(
-      `/movielist/${movieListId}/removeMovie/${movieId}`,
-      []
-    ),
+  removeMovieFromList: (movieListIds: MovieListIds, movieId: string) =>
+    requests.patch<MovieId>(`/movielist/removeMovie/${movieId}`, movieListIds),
   deleteList: (movieListId: string) =>
     requests.del<MovieList>(`/movielist/${movieListId}`),
   addCollaborator: (movieListId: string, collaboratorName: string) =>
