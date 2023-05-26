@@ -24,7 +24,6 @@ export default class MovieListStore {
     try {
       const movieLists = await agent.MovieLists.list();
       this.movieLists = [];
-
       movieLists.forEach((movieList) => {
         this.movieLists = [...this.movieLists, movieList];
       });
@@ -51,10 +50,10 @@ export default class MovieListStore {
     movieId: string
   ) => {
     if (addMovieListIds.movieLists.length > 0)
-      this.addMovieToList(addMovieListIds, movieId);
+      await this.addMovieToList(addMovieListIds, movieId);
     if (removeMovieListIds.movieLists.length > 0)
-      this.removeMovieFromList(removeMovieListIds, movieId);
-    this.loadMovieLists();
+      await this.removeMovieFromList(removeMovieListIds, movieId);
+    await this.loadMovieLists();
     store.modalStore.closeModal();
   };
 

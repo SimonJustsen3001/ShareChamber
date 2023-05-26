@@ -18,10 +18,12 @@
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 80%;
+  cursor: inherit;
 }
 
 .checkbox-box {
   margin-left: 10px;
   height: 50px;
   width: 50px;
+  cursor: inherit;
 }

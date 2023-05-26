@@ -75,8 +75,8 @@
   margin-top: 60px;
   margin-left: auto;
   margin-right: auto;
-  z-index: 2;
   padding-bottom: 50px;
+  z-index: 2;
 }
 
 body::-webkit-scrollbar {
@@ -92,6 +92,10 @@ body::-webkit-scrollbar {
   overflow: auto;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  box-shadow: 0px 0px 5px var(--color-1);
+  /* border: 1px var(--color-1) solid; */
+  padding-bottom: 40px;
+  border-radius: 20px;
 }
 
 .movie-card-container {
@@ -207,20 +211,31 @@ body::-webkit-scrollbar {
   margin: 2%;
 }
 
-.movie-card-rating-container {
+.movie-card-rating-container,
+.movie-card-year-container {
   position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: var(--font-size-2);
   top: 30px;
+  height: 50px;
+}
+
+.movie-card-rating-container {
   left: 25px;
   width: 50px;
-  height: 50px;
   border: solid rgb(255, 215, 0) 2px;
   background-color: rgba(255, 215, 0, 0.8);
   color: black;
   border-radius: 50%;
-  font-size: var(--font-size-2);
+}
+
+.movie-card-year-container {
+  right: 25px;
+  padding: 0px 10px;
+  border-radius: 10px;
+  background-color: var(--color-2-transparent);
 }
 
 .movie-scroll-visualizer {

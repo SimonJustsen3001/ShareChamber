@@ -173,10 +173,16 @@ const MoviePage = observer(() => {
                             className="movie-card-image"
                             src={movie.imageUrl}
                           />
-
                           {movie.rating != 0 ? (
                             <div className="movie-card-rating-container">
                               {movie.rating}
+                            </div>
+                          ) : (
+                            <></>
+                          )}
+                          {movie.year ? (
+                            <div className="movie-card-year-container">
+                              {movie.year}
                             </div>
                           ) : (
                             <></>

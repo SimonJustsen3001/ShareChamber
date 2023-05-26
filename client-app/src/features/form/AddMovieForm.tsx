@@ -16,15 +16,15 @@ const validationSchema = Yup.object({
   movieId: Yup.string().required(
     "Unexpected problem, please contact developer"
   ),
-  // movieLists: Yup.array().min(1).required("Add to at least one list"),
+  //movieLists: Yup.array().min(1).required("Add to at least one list"),
 });
+
+const RemoveDuplicates = (array: string[]) => {
+  return array.filter((element, index) => array.indexOf(element) === index);
+};
 
 const AddMovieForm = observer(({ movieId, movieTitle }: movieData) => {
   const { modalStore, movieListStore } = useStore();
-
-  const RemoveDuplicates = (array: string[]) => {
-    return array.filter((element, index) => array.indexOf(element) === index);
-  };
 
   return (
     <Formik

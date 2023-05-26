@@ -100,7 +100,9 @@ const HomePage = observer(() => {
               <li>Register/Login</li>
               <li>Create a new movielist</li>
               <li>Add your friends to the movielist</li>
-              <li>Enjoy!</li>
+              <li>
+                Add movies <span className="bold">together</span>
+              </li>
             </ol>
           </div>
         </div>

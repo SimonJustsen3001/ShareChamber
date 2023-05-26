@@ -33,21 +33,26 @@ const CheckBox = observer((props: Props) => {
     const currentAddedValue = formikValues[addList] || [];
     const currentRemovedValue = formikValues[removeList] || [];
 
+    let updatedValues: string[] = [];
     let addedValues: string[] = formikValues[props.addList];
     let removedValues: string[] = formikValues[props.removeList];
 
     if (isChecked && listHasMovie) {
+      updatedValues = currentValue.filter((val: string) => val !== value);
       removedValues.push(value);
     } else if (isChecked && !listHasMovie) {
+      updatedValues = currentValue.filter((val: string) => val !== value);
       addedValues = currentAddedValue.filter((val: string) => val !== value);
     } else if (!isChecked && listHasMovie) {
+      updatedValues = [...currentValue, value];
       removedValues = currentRemovedValue.filter(
         (val: string) => val !== value
       );
     } else if (!isChecked && !listHasMovie) {
+      updatedValues = [...currentValue, value];
       addedValues.push(value);
     }
-
+    setFieldValue(name, updatedValues);
     setFieldValue(addList, addedValues);
     setFieldValue(removeList, removedValues);
   };
