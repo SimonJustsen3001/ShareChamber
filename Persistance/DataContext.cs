@@ -23,6 +23,7 @@ namespace Persistance
     public DbSet<Genre> Genres { get; set; }
     public DbSet<MovieGenre> MovieGenres { get; set; }
     public DbSet<MovieRating> MovieRatings { get; set; }
+    public DbSet<PopularMovie> PopularMovies { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -91,7 +92,15 @@ namespace Persistance
         .WithMany(m => m.MovieRatings)
         .HasForeignKey(mr => mr.MovieId);
 
-    }
+      builder.Entity<Movie>()
+        .HasOne(m => m.Popular)
+        .WithOne(pm => pm.Movie)
+        .HasForeignKey<PopularMovie>(pm => pm.MovieId);
 
+      builder.Entity<MovieTranslation>()
+        .HasOne(mt => mt.Movie)
+        .WithMany(m => m.Translations)
+        .HasForeignKey(mt => mt.MovieId);
+    }
   }
 }

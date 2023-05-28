@@ -13,6 +13,8 @@ namespace Domain
     public string Director { get; set; }
     public string Id { get; set; }
     public string ImageUrl { get; set; }
+    public PopularMovie Popular { get; set; }
+    public ICollection<MovieTranslation> Translations { get; set; }
     public ICollection<MovieGenre> MovieGenres { get; set; }
     public ICollection<MovieMovieList> MovieMovieLists { get; set; }
     public ICollection<MovieRating> MovieRatings { get; set; }

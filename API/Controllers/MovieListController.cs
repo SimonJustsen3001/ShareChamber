@@ -23,14 +23,6 @@ namespace API.Controllers
     [HttpPatch("addMovie/{movieId}")]
     public async Task<IActionResult> AddMovieToList(string movieId, UpdateMovieListsDTO addMovieList)
     {
-      System.Console.WriteLine("\n\n\n\n\n\n");
-      foreach (var movieListId in addMovieList.MovieLists)
-      {
-        System.Console.WriteLine($"MovieListId: {movieListId}, movieId: {movieId}");
-      }
-
-      System.Console.WriteLine("\n\n\n\n\n\n");
-
       return HandleResult(await Mediator.Send(new AddMovieToMovieLists.Command { MovieId = movieId, MovieLists = addMovieList }));
     }
 

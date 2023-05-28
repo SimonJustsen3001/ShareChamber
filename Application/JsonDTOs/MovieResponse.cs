@@ -89,7 +89,7 @@ namespace Application.JsonDTOs
     [JsonProperty("genres")]
     public Genres Genres { get; set; }
 
-    [JsonProperty("titleText")]
+    [JsonProperty("originalTitleText")]
     public Title Title { get; set; }
 
     [JsonProperty("releaseDate")]
