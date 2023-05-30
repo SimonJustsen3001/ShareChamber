@@ -6,66 +6,28 @@ import { gsap } from "gsap";
 import { ScrollTrigger, ScrollToPlugin } from "gsap/all";
 import SearchBar from "./SearchBar";
 import AddMovieForm from "../form/AddMovieForm";
+import MovieBanner from "./MovieBanner";
 
 gsap.registerPlugin(ScrollToPlugin);
 gsap.registerPlugin(ScrollTrigger);
 
 const MoviePage = observer(() => {
   const { movieStore, movieListStore, userStore, modalStore } = useStore();
-  const [movieBanner, setMovieBanner] = useState([
-    "//wsrv.nl/?url=https://m.media-amazon.com/images/M/MV5BNjk5YTU0OTAtMTM1NC00Zjc1LWEzZjAtOWJkYzcxOGRhNWNhXkEyXkFqcGdeQXVyMzQ0MzA0NTM@._V1_.jpg&w=1920",
-    "//wsrv.nl/?url=https://m.media-amazon.com/images/M/MV5BODhhY2M5NjEtZTc0OC00MDE5LWJiMWQtYTZkMTMwMTA0NmZjXkEyXkFqcGdeQXVyMTEwMjgyMzIz._V1_.jpg&w=1920",
-  ]);
+
   const [movieBackgroundImages, setMovieBackgroundImages] = useState([
     "/cheng-feng-psdV2Rl-GvU-unsplash.jpg",
     "/juskteez-vu-TIrXot28Znc-unsplash.jpg",
   ]);
   const [movieNavigators, setMovieNavigators] = useState([]);
-  const [movieBannerIndex, setMovieBannerImage] = useState(0);
+
   const component = useRef<HTMLDivElement>(null);
   const movieGridRef = useRef<HTMLImageElement>(null);
 
-  const [imagesLoaded, setImagesLoaded] = useState(false);
-  const [loadedImagesCount, setLoadedImagesCount] = useState(0);
-
   useEffect(() => {
-    let movieImages = gsap.utils.toArray(".moviepage-background-image");
-    let bannerImages = gsap.utils.toArray(".movie-banner-image");
     // if (userStore.searchAnonymous) movieStore.loadMovies("spider");
-    movieStore.loadMovies("pi");
+    movieStore.loadMovies("");
     if (userStore.user) movieListStore.loadMovieLists();
-    let ctx = gsap.context(() => {
-      movieImages.forEach((movieImage, index) => {
-        if (movieBannerIndex === index) {
-          gsap.to(movieImage!, { opacity: 1 });
-        }
-      });
-      if (imagesLoaded) {
-        bannerImages.forEach((bannerImage, index) => {
-          if (movieBannerIndex === index) {
-            gsap.to(bannerImage!, { opacity: 1 });
-          }
-          if (!userStore.isSmallScreen) {
-            switch (index) {
-              case 0:
-                gsap.set(bannerImage!, { y: -850 });
-                break;
-              case 1:
-                gsap.set(bannerImage!, { y: -800 });
-                break;
-            }
-          }
-        });
-      }
-    }, component);
-    return () => ctx.revert();
-  }, [
-    imagesLoaded,
-    movieStore,
-    movieListStore,
-    movieBannerIndex,
-    userStore.isSmallScreen,
-  ]);
+  }, [movieStore, movieListStore]);
 
   useEffect(() => {
     const pageNumber = Math.ceil(movieStore.movies.length / 10);
@@ -122,16 +84,6 @@ const MoviePage = observer(() => {
     }
   };
 
-  const handleClickMovieBanner = (index: number) => {
-    setMovieBannerImage(index);
-  };
-
-  const handleImageLoad = () => {
-    if (loadedImagesCount === movieBanner.length)
-      setLoadedImagesCount((prev) => prev + 1);
-    else setImagesLoaded(true);
-  };
-
   return (
     <>
       <div ref={component} className="moviepage-wrapper">
@@ -140,27 +92,7 @@ const MoviePage = observer(() => {
         ))}
         <div className="moviepage-content-wrapper">
           <>
-            <div className="movie-banner">
-              {movieBanner.map((movie, index) => (
-                <img
-                  onLoad={handleImageLoad}
-                  className="movie-banner-image"
-                  src={movie}
-                ></img>
-              ))}
-              <div className="movie-banner-control-panel">
-                {movieBanner.map((movie, index) => (
-                  <button
-                    className={
-                      movieBannerIndex === index
-                        ? "movie-banner-selected-button"
-                        : "movie-banner-not-selected-button"
-                    }
-                    onClick={() => handleClickMovieBanner(index)}
-                  ></button>
-                ))}
-              </div>
-            </div>
+            <MovieBanner />
             <SearchBar />
             {movieStore.movies.length > 0 ? (
               <div className="movie-grid-wrapper">

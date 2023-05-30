@@ -1,0 +1,60 @@
+.movie-banner {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 1600px;
+  height: 500px;
+  border-radius: 0 0 100px 0;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.movie-banner-image {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  object-fit: cover;
+}
+
+.movie-banner-control-panel {
+  position: absolute;
+  left: 5%;
+  bottom: 10%;
+  display: flex;
+  z-index: 3;
+}
+
+.movie-banner-not-selected-button,
+.movie-banner-selected-button {
+  width: 24px;
+  height: 24px;
+  background-color: transparent;
+  border: solid var(--color-1) 3px;
+  border-radius: 50%;
+  margin: 4px;
+  transition: background-color 0.5s;
+}
+
+.movie-banner-selected-button {
+  background-color: var(--color-3);
+}
+
+@media (max-width: 768px) {
+  .movie-banner {
+    height: 300px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 999px) {
+  .movie-banner {
+    height: 350px;
+  }
+}
+
+@media (min-width: 1000px) and (max-width: 1199px) {
+  .movie-banner {
+    height: 450px;
+  }
+}

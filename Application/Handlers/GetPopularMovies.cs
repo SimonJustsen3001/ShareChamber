@@ -7,11 +7,11 @@ using Persistance;
 
 namespace Application.Handlers
 {
-  public class GetMovies
+  public class GetPopularMovies
   {
     public class Query : IRequest<Result<List<Movie>>>
     {
-      public string QueryString { get; set; }
+
     }
 
     public class Handler : IRequestHandler<Query, Result<List<Movie>>>
@@ -25,14 +25,15 @@ namespace Application.Handlers
       }
       public async Task<Result<List<Movie>>> Handle(Query request, CancellationToken cancellationToken)
       {
-        var query = request.QueryString.Replace("%", " ").Replace("'", "").ToLower();
+        var popularMoviesIds = await _context.PopularMovies
+          .Select(pm => pm.MovieId)
+          .ToListAsync();
         var movies = await _context.Movies
-          .Where(x => x.Title
-            .ToLower()
-            .Replace("'", "")
-            .Contains(query))
+          .Where(m => popularMoviesIds
+            .Contains(m.Id))
           .OrderBy(x => x.ImageUrl == null ? 1 : 0)
-          .ThenBy(x => x.Title).ToListAsync();
+          .ThenBy(x => x.Title)
+          .ToListAsync();
 
         return Result<List<Movie>>.Success(movies);
       }
