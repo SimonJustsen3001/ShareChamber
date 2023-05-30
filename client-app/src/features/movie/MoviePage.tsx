@@ -24,7 +24,6 @@ const MoviePage = observer(() => {
   const movieGridRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
-    // if (userStore.searchAnonymous) movieStore.loadMovies("spider");
     movieStore.loadMovies("");
     if (userStore.user) movieListStore.loadMovieLists();
   }, [movieStore, movieListStore]);
@@ -122,7 +121,9 @@ const MoviePage = observer(() => {
                         </div>
                         <div className="movie-card-back">
                           <div className="movie-card-description-wrapper">
-                            <p className="movie-card-description-text">{movie.description}</p>
+                            <p className="movie-card-description-text">
+                              {movie.description}
+                            </p>
                           </div>
                           <div className="movie-card-buttons-wrapper">
                             <button

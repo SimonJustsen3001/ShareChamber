@@ -163,7 +163,7 @@ body::-webkit-scrollbar {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
-  height: 68px;
+  height: 74px;
   backdrop-filter: blur(5px);
   font-size: var(--font-size-2);
   text-align: center;
@@ -249,6 +249,7 @@ body::-webkit-scrollbar {
 
   .movie-card-title {
     font-size: var(--font-size-1);
+    height: 68px;
   }
 
   .movie-card-rating-container,
@@ -300,6 +301,7 @@ body::-webkit-scrollbar {
 
   .movie-card-title {
     font-size: var(--font-size-1);
+    height: 68px;
   }
 
   .movie-card-rating-container,
@@ -348,9 +350,9 @@ body::-webkit-scrollbar {
     height: 225px;
     width: 160px;
   }
-
-  .movie-card-container p {
+  .movie-card-title {
     font-size: var(--font-size-1);
+    height: 68px;
   }
 
   .movie-card-rating-container,
