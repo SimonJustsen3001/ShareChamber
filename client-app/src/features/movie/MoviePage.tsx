@@ -122,7 +122,7 @@ const MoviePage = observer(() => {
                         </div>
                         <div className="movie-card-back">
                           <div className="movie-card-description-wrapper">
-                            <p>{movie.description}</p>
+                            <p className="movie-card-description-text">{movie.description}</p>
                           </div>
                           <div className="movie-card-buttons-wrapper">
                             <button
@@ -146,7 +146,7 @@ const MoviePage = observer(() => {
                           />
                         </div>
                       </div>
-                      <h4>{movie.title}</h4>
+                      <p className="movie-card-title">{movie.title}</p>
                     </div>
                   ))}
                 </div>
