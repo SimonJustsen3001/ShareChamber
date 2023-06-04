@@ -6,6 +6,7 @@ import {
   MovieListCreateFormValues,
 } from "../interfaces/movieListInterface";
 import { store } from "./store";
+import Cookies from "js-cookie";
 
 export default class MovieListStore {
   movieLists: MovieList[] = [];
@@ -104,7 +105,16 @@ export default class MovieListStore {
     this.loadingInitial = state;
   };
 
+  loadSelectedMovieList = (movieList: MovieList | null) => {
+    this.selectedMovieList = movieList;
+  };
+
   setSelectedMovieList = (movieList: MovieList | null) => {
+    Cookies.set("selectedList", movieList?.id!, {
+      sameSite: "none",
+      secure: true,
+      expires: 1 / 48,
+    });
     this.selectedMovieList = movieList;
   };
 

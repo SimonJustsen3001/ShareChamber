@@ -11,8 +11,8 @@ const MovieListPage = observer(() => {
   return (
     <>
       {/* {userStore.isLoggedIn ? ( */}
-      <div className="movielist-container">
-        <div className="list-setup">
+      <div className="movielistpage-wrapper">
+        <div className="movielistpage-content">
           <SelectedMovieList />
           <UserMovieListsOverview />
         </div>
