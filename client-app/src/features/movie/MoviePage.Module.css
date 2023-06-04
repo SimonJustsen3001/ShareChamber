@@ -5,10 +5,11 @@
 }
 
 .moviepage-background-image {
-  position: absolute;
-  width: 100%;
-  height: 100%;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
   object-fit: cover;
+  object-position: 0 -600px;
   opacity: 0;
   filter: blur(3px) brightness(0.7);
 }
@@ -47,10 +48,6 @@ body::-webkit-scrollbar {
   grid-auto-flow: dense;
   gap: 40px;
   height: auto;
-  max-height: 1075px;
-  overflow: auto;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
   box-shadow: 0px 0px 5px var(--color-1);
   padding-bottom: 40px;
   border-radius: 20px;
@@ -227,7 +224,7 @@ body::-webkit-scrollbar {
   font-size: var(--font-size-5);
 }
 
-@media (max-width: 576px) {
+/* @media (max-width: 576px) {
   .movie-grid-wrapper {
     width: 90%;
     height: auto;
@@ -401,4 +398,4 @@ body::-webkit-scrollbar {
   .movie-grid {
     grid-template-columns: repeat(4, 1fr);
   }
-}
+} */

@@ -3,7 +3,9 @@
   inset: 0 0 0 0;
   display: flex;
   justify-content: space-between;
-  z-index: 50;
+  z-index: 1;
+  max-height: var(--navbar-height);
+  overflow: hidden;
   flex-direction: row;
 }
 
