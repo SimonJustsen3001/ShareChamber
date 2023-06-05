@@ -31,7 +31,7 @@ namespace Persistance
       optionsBuilder.UseNpgsql(_config.GetConnectionString("DefaultConnection"));
 
       // Enable sensitive data logging
-      optionsBuilder.EnableSensitiveDataLogging();
+      // optionsBuilder.EnableSensitiveDataLogging();
     }
 
     protected override void OnModelCreating(ModelBuilder builder)
