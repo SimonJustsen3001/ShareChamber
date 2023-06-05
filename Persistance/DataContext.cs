@@ -1,13 +1,19 @@
 using Domain;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+
 namespace Persistance
 {
   public class DataContext : IdentityDbContext<AppUser>
   {
-    public DataContext(DbContextOptions options) : base(options)
-    {
+    private readonly IConfiguration _config;
+    private readonly DbContextOptions _options;
 
+    public DataContext(DbContextOptions options, IConfiguration config) : base(options)
+    {
+      _options = options;
+      _config = config;
     }
 
     public DbSet<Movie> Movies { get; set; }
@@ -17,9 +23,21 @@ namespace Persistance
     public DbSet<Genre> Genres { get; set; }
     public DbSet<MovieGenre> MovieGenres { get; set; }
     public DbSet<MovieRating> MovieRatings { get; set; }
+    public DbSet<PopularMovie> PopularMovies { get; set; }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+      // Configure your database provider and connection string
+      optionsBuilder.UseNpgsql(_config.GetConnectionString("DefaultConnection"));
+
+      // Enable sensitive data logging
+      optionsBuilder.EnableSensitiveDataLogging();
+    }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
+
+
 
       base.OnModelCreating(builder);
 
@@ -74,7 +92,15 @@ namespace Persistance
         .WithMany(m => m.MovieRatings)
         .HasForeignKey(mr => mr.MovieId);
 
-    }
+      builder.Entity<Movie>()
+        .HasOne(m => m.Popular)
+        .WithOne(pm => pm.Movie)
+        .HasForeignKey<PopularMovie>(pm => pm.MovieId);
 
+      builder.Entity<MovieTranslation>()
+        .HasOne(mt => mt.Movie)
+        .WithMany(m => m.Translations)
+        .HasForeignKey(mt => mt.MovieId);
+    }
   }
 }

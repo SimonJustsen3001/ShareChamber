@@ -8,11 +8,13 @@ import { ToastContainer } from "react-toastify";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "@fortawesome/fontawesome-free/css/all.css";
+import Footer from "./Footer";
+import Cookies from "js-cookie";
 
 gsap.registerPlugin(ScrollTrigger);
 
 function App() {
-  const { userStore, commonStore } = useStore();
+  const { userStore, commonStore, movieListStore } = useStore();
   const burger = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
@@ -20,12 +22,10 @@ function App() {
     userStore.setIsSmallScreen(mediaWatcher.matches);
     mediaWatcher.addEventListener("change", (event) => {
       userStore.setIsSmallScreen(event.matches);
-      console.log(event);
     });
   }, []);
 
   useLayoutEffect(() => {
-    console.log(userStore.isSmallScreen);
     if (userStore.isSmallScreen) {
       let ctx = gsap.context(() => {
         const tl = gsap
@@ -38,6 +38,8 @@ function App() {
         });
       });
       return () => ctx.revert();
+    } else {
+      let ctx = gsap.context(() => {});
     }
   }, [userStore.isSmallScreen]);
 
@@ -49,6 +51,11 @@ function App() {
     }
   }, [userStore, commonStore]);
 
+  useEffect(() => {
+    if (userStore.user) movieListStore.loadMovieLists();
+    var theme = Cookies.get("theme");
+  }, [movieListStore, userStore.user]);
+
   return (
     <>
       <ModalContainer />
@@ -56,6 +63,7 @@ function App() {
       <button ref={burger} className="fa fa-bars burger-menu"></button>
       <NavBar />
       <Outlet />
+      <Footer />
     </>
   );
 }

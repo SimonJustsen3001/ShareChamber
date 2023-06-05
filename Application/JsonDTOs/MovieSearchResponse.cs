@@ -1,18 +1,17 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace Application.JsonDTOs
 {
   public class MovieSearchDTO
   {
     public string Id { get; set; }
-    public string S { get; set; }
+    [JsonProperty("S")]
+    public string Actors { get; set; }
   }
 
   public class MovieSearchResponse
   {
-    public List<MovieSearchDTO> D { get; set; }
+    [JsonProperty("D")]
+    public List<MovieSearchDTO> movieSearchDTO { get; set; }
   }
 }

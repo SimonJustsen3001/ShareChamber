@@ -7,6 +7,11 @@ export default class UserStore {
   user: User | null = null;
   searchAnonymous: boolean = false;
   isSmallScreen: boolean = true;
+  currentTheme: number = 0;
+  backgrounds: string[] = [
+    "/cheng-feng-psdV2Rl-GvU-unsplash.jpg",
+    "/pexels-guillaume-meurice-2873671.jpg",
+  ];
 
   constructor() {
     makeAutoObservable(this);
@@ -18,8 +23,6 @@ export default class UserStore {
 
   login = async (creds: UserFormValues) => {
     try {
-      console.log("login attempt");
-      console.log(creds);
       const user = await agent.Account.login(creds);
       store.commonStore.setToken(user.token);
       runInAction(() => (this.user = user));
@@ -30,8 +33,6 @@ export default class UserStore {
 
   register = async (creds: UserFormValues) => {
     try {
-      console.log("register attempt");
-      console.log(creds);
       const user = await agent.Account.register(creds);
       store.commonStore.setToken(user.token);
       runInAction(() => (this.user = user));
@@ -59,5 +60,9 @@ export default class UserStore {
 
   setIsSmallScreen = (state: boolean) => {
     this.isSmallScreen = state;
+  };
+
+  setTheme = (theme: number) => {
+    this.currentTheme = theme;
   };
 }

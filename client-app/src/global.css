@@ -24,11 +24,8 @@ body {
   background-color: var(--color-4) !important;
 }
 
-.ui.modal {
-  border-radius: 50px !important;
-  width: 100% !important;
-  max-width: 500px !important;
-  margin: 0 auto !important;
+.ui.small.modal {
+  border-radius: 10px !important;
 }
 
 html {
@@ -47,10 +44,12 @@ html {
   --color-3: rgb(57, 48, 83);
   --color-4: rgb(24, 18, 43);
   --color-other: rgb(33, 25, 59);
+  --color-button: rgb(1, 136, 225);
   --color-1-transparent: rgba(99, 89, 133, 0.5);
   --color-2-transparent: rgba(68, 60, 104, 0.5);
   --color-3-transparent: rgba(57, 48, 83, 0.5);
   --color-4-transparent: rgba(24, 18, 43, 0.5);
+  --color-button-transparent: rgba(1, 136, 225, 0.9);
   --font-size-1: 18px;
   --font-size-2: 24px;
   --font-size-3: 30px;

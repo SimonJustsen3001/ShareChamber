@@ -1,3 +1,4 @@
+using API.Services;
 using Application.Core;
 using Application.Interfaces;
 using Application.JsonDTOs;
@@ -40,96 +41,17 @@ namespace Application.Handlers
 
         var movies = new List<Movie>();
         var genres = new List<Genre>();
-        var movieIds = "";
+
         Dictionary<string, string> titleFeaturedActors = new Dictionary<string, string>();
         Dictionary<string, string> titleDirector = new Dictionary<string, string>();
+        APIHelper api = new APIHelper(titleFeaturedActors, titleDirector);
 
-        var requestUri = $"https://imdb8.p.rapidapi.com/auto-complete?q={request.Query}";
-
-        var client = new HttpClient();
-        var movieIdRequest = new HttpRequestMessage
-        {
-          Method = HttpMethod.Get,
-          RequestUri = new Uri(requestUri),
-          Headers =
-          {
-            { "X-RapidAPI-Key", "20fa404be5msh445f68288872167p1a35a9jsn7bc985aea709" },
-            { "X-RapidAPI-Host", "imdb8.p.rapidapi.com" },
-          },
-        };
-        using (var response = await client.SendAsync(movieIdRequest))
-        {
-          response.EnsureSuccessStatusCode();
-          var body = await response.Content.ReadAsStringAsync();
-          var movieObject = JsonConvert.DeserializeObject<MovieSearchResponse>(body);
-          System.Console.WriteLine(body);
-          foreach (var movie in movieObject.D)
-          {
-            titleFeaturedActors[movie.Id] = movie.S;
-            if (movieIds != "")
-            {
-              movieIds = $"{movieIds}%2C{movie.Id}";
-              continue;
-            }
-            movieIds = movie.Id;
-          }
-        }
-
-        System.Console.WriteLine("\n\n Got movie Ids\n\n");
-
-
-
-        var directorRequest = new HttpRequestMessage
-        {
-          Method = HttpMethod.Get,
-          RequestUri = new Uri($"https://moviesdatabase.p.rapidapi.com/titles/x/titles-by-ids?idsList={movieIds}&info=creators_directors_writers"),
-          Headers =
-          {
-            { "X-RapidAPI-Key", "20fa404be5msh445f68288872167p1a35a9jsn7bc985aea709" },
-            { "X-RapidAPI-Host", "moviesdatabase.p.rapidapi.com" },
-          },
-        };
-        using (var response = await client.SendAsync(directorRequest))
-        {
-          response.EnsureSuccessStatusCode();
-          var body = await response.Content.ReadAsStringAsync();
-          var movieObject = JsonConvert.DeserializeObject<DirectorResponse>(body);
-          foreach (var movieResult in movieObject.Results)
-          {
-            if (movieResult.Directors != null && movieResult.Directors.Count > 0)
-            {
-              var firstDirector = movieResult.Directors[0];
-              if (firstDirector.Credits != null && firstDirector.Credits.Count > 0)
-              {
-                string directorName = firstDirector.Credits[0].Name.Nametext.Text;
-                titleDirector[movieResult.Id] = directorName;
-              }
-            }
-          }
-        }
-
-        System.Console.WriteLine("\n\n Got director name \n\n");
-
-        var getMoviesUri = new Uri($"https://moviesdatabase.p.rapidapi.com/titles/x/titles-by-ids?idsList={movieIds}&info=base_info");
-
-        var movieRequest = new HttpRequestMessage
-        {
-          Method = HttpMethod.Get,
-          RequestUri = getMoviesUri,
-          Headers =
-          {
-            { "X-RapidAPI-Key", "20fa404be5msh445f68288872167p1a35a9jsn7bc985aea709" },
-            { "X-RapidAPI-Host", "moviesdatabase.p.rapidapi.com" },
-          },
-        };
-        using (var response = await client.SendAsync(movieRequest))
-        {
-          response.EnsureSuccessStatusCode();
-          var body = await response.Content.ReadAsStringAsync();
-          var movieObject = JsonConvert.DeserializeObject<MovieResponse>(body);
-          movies = ParseMovie(movieObject, titleFeaturedActors, titleDirector);
-          System.Console.WriteLine($"Printing body: {body}");
-        }
+        var movieIds = api.GetIdsFromAPI(request.Query);
+        if (movieIds == "")
+          return Result<Unit>.Failure("No movies found");
+        api.PopulateDirectorField(movieIds);
+        MovieResponse movieObject = api.GetMoviesFromAPI(movieIds);
+        movies = ParseMovie(movieObject, titleFeaturedActors, titleDirector);
 
         foreach (var movie in movies)
         {
@@ -139,7 +61,7 @@ namespace Application.Handlers
 
         var result = await _context.SaveChangesAsync() > 0;
 
-        if (!result) return Result<Unit>.Failure("No movies available");
+        if (!result) return Result<Unit>.Failure("No changes made");
 
         return Result<Unit>.Success(Unit.Value);
       }
@@ -171,8 +93,6 @@ namespace Application.Handlers
                 _context.Genres.Add(existingGenre);
                 _context.SaveChanges(); // Save the changes to create the new genre in the database
               }
-
-              System.Console.WriteLine($"inside parse of movie {movie.Id} {existingGenre.Id}");
 
               movieGenre.Add(new MovieGenre
               {

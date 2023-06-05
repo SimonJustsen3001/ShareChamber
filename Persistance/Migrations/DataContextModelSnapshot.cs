@@ -227,6 +227,47 @@ namespace Persistance.Migrations
                     b.ToTable("MovieRatings");
                 });
 
+            modelBuilder.Entity("Domain.MovieTranslation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Language")
+                        .HasColumnType("text");
+
+                    b.Property<string>("MovieId")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MovieId");
+
+                    b.ToTable("MovieTranslation");
+                });
+
+            modelBuilder.Entity("Domain.PopularMovie", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("MovieId")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MovieId")
+                        .IsUnique();
+
+                    b.ToTable("PopularMovies");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -431,6 +472,24 @@ namespace Persistance.Migrations
                     b.Navigation("Movie");
                 });
 
+            modelBuilder.Entity("Domain.MovieTranslation", b =>
+                {
+                    b.HasOne("Domain.Movie", "Movie")
+                        .WithMany("Translations")
+                        .HasForeignKey("MovieId");
+
+                    b.Navigation("Movie");
+                });
+
+            modelBuilder.Entity("Domain.PopularMovie", b =>
+                {
+                    b.HasOne("Domain.Movie", "Movie")
+                        .WithOne("Popular")
+                        .HasForeignKey("Domain.PopularMovie", "MovieId");
+
+                    b.Navigation("Movie");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -501,6 +560,10 @@ namespace Persistance.Migrations
                     b.Navigation("MovieMovieLists");
 
                     b.Navigation("MovieRatings");
+
+                    b.Navigation("Popular");
+
+                    b.Navigation("Translations");
                 });
 
             modelBuilder.Entity("Domain.MovieList", b =>

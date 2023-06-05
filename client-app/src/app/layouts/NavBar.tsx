@@ -4,23 +4,40 @@ import LoginForm from "../../features/form/LoginForm";
 import RegisterForm from "../../features/form/RegisterForm";
 import { useStore } from "../stores/store";
 import "./NavBar.Module.css";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { gsap } from "gsap";
 
 export default observer(function NavBar() {
   const { userStore, modalStore, movieListStore } = useStore();
   const [currentPath, setCurrentPath] = useState("");
   const [dropDownVisible, setDropDownVisible] = useState(false);
+  const navbarRef = useRef(null);
   useEffect(() => {
     setCurrentPath(window.location.pathname);
-    console.log(currentPath);
   }, []);
+
+  useEffect(() => {
+    if (!userStore.isSmallScreen) {
+      gsap.to(navbarRef.current, {
+        maxHeight: 0,
+        overflow: "hidden",
+        duration: 0.1,
+        scrollTrigger: {
+          trigger: "",
+          scrub: 1,
+          start: "10 top",
+          end: "50 50",
+        },
+      });
+    }
+  }, [userStore.isSmallScreen]);
 
   const toggleDropDown = () => {
     setDropDownVisible(!dropDownVisible);
   };
 
   return (
-    <div className="navbar">
+    <div className="navbar" ref={navbarRef}>
       <div className="left-navbar-menu">
         <Link to={"/"} className="menu-element">
           Home

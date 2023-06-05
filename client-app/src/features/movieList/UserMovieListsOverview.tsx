@@ -7,46 +7,47 @@ const UserMovieListsOverview = observer(() => {
   const { modalStore, movieListStore } = useStore();
 
   return (
-    <div className="list-overview">
-      <button
-        className="create-list-button"
-        onClick={() => modalStore.openModal(<CreateListForm />)}
-      >
-        Create New List
-      </button>
-      <div className="movie-lists">
-        <p>Lists you own</p>
+    <div className="usermovielist-wrapper">
+      <div className="usermovielist-header-wrapper">
+        <h2 className="usermovielist-header-text">Movie lists</h2>
+        <button
+          onClick={() => modalStore.openModal(<CreateListForm />)}
+          className="usermovielist-new-list-button"
+        >
+          New
+          <img src="addList.svg" />
+        </button>
+      </div>
+      <div className="usermovielist-all-list-wrapper">
         {movieListStore.movieLists.map((movieList) => (
           <div
-            className="movie-list-container"
-            onClick={() => {
-              movieListStore.setSelectedMovieList(movieList);
-            }}
-            key={movieList.id}
+            className="usermovielist-list-wrapper"
+            onClick={() => movieListStore.setSelectedMovieList(movieList)}
           >
-            {movieList.movieMovieLists &&
-            movieList.movieMovieLists.length > 0 ? (
-              <>
+            <div className="usermovielist-image-wrapper">
+              {movieList.movieMovieLists[0] ? (
                 <img
-                  className="favorite-movie-image"
+                  className="usermovielist-image"
                   src={movieList.movieMovieLists[0].movie.imageUrl}
                 />
-                <div className="movie-lists-info">
-                  <div className="list-name">{movieList.name}</div>
-                  <div className="list-movie-count">
-                    {movieList.movieMovieLists.length} titles
-                  </div>
-                </div>
-              </>
-            ) : (
-              <>
-                <div className="no-movie-image">No Image</div>
-                <div className="movie-lists-info">
-                  <div className="list-name">{movieList.name}</div>
-                  <div className="list-movie-count">0 titles</div>
-                </div>
-              </>
-            )}
+              ) : (
+                <div className="usermovielist-image"></div>
+              )}
+            </div>
+            <div className="usermovielist-text-wrapper">
+              <h4 className="usermovielist-title">{movieList.name}</h4>
+              <div className="usermovielist-list-info-wrapper">
+                <p className="usermovielist-movie-number">
+                  {movieList.movieMovieLists.length}
+                  {movieList.movieMovieLists.length === 1
+                    ? " title"
+                    : " titles"}
+                </p>
+                <p className="usermovielist-owner">
+                  {movieList.ownerName}'s list
+                </p>
+              </div>
+            </div>
           </div>
         ))}
       </div>

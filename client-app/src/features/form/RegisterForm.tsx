@@ -9,7 +9,7 @@ import Button from "../../app/common/forms/Button";
 import { ErrorResponse } from "../../app/interfaces/errorInterface";
 
 const validationSchema = Yup.object({
-  displayName: Yup.string().required("Please enter a name for the site"),
+  displayName: Yup.string().required("Please enter a name to be displayed"),
   username: Yup.string().required("Please enter a username"),
   email: Yup.string().required("Email cannot be empty").email(),
   password: Yup.string().required("Password cannot be empty"),
@@ -23,10 +23,10 @@ const RegisterForm = observer(() => {
       validationSchema={validationSchema}
       enableReinitialize
       initialValues={{
-        displayName: "test2",
-        username: "test2",
-        email: "test2@hotmail.com",
-        password: "Pa$$w0rd",
+        displayName: "",
+        username: "",
+        email: "",
+        password: "",
         error: null,
       }}
       onSubmit={async (value) => {
@@ -38,25 +38,25 @@ const RegisterForm = observer(() => {
           <p className="form-header">Welcome to Movie List</p>
           <TextInputStandard
             name="username"
-            placeholder="Account Name"
+            placeholder="JohnDoe1992"
             label="Username"
             icon={faUser}
           />
           <TextInputStandard
             name="displayName"
-            placeholder="Name shown to other users"
+            placeholder="Johnny21Doey"
             label="Display Name"
             icon={faUser}
           />
           <TextInputStandard
             name="email"
-            placeholder="Email"
+            placeholder="JohnDoe@hotmail.com"
             label="Email"
             icon={faEnvelope}
           />
           <TextInputStandard
             name="password"
-            placeholder="Password"
+            placeholder="**********"
             label="Password"
             type="password"
             icon={faLock}

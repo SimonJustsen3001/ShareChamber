@@ -18,7 +18,7 @@ export default class MovieStore {
     this.setLoading(true);
     try {
       const movie = await agent.Movies.single(movieId);
-      console.log(movie);
+      movie.isFlipped = false;
       this.selectedMovie = movie;
       this.setLoading(false);
     } catch {
@@ -30,17 +30,32 @@ export default class MovieStore {
     this.setLoadingInitial(true);
     try {
       const movies = await agent.Movies.list(query);
-      this.movies = [];
-      this.moviesWithoutPoster = [];
-
-      movies.forEach((movie) => {
-        if (movie.imageUrl) this.movies = [...this.movies, movie];
-        else this.moviesWithoutPoster = [...this.moviesWithoutPoster, movie];
-      });
+      this.setMovies(movies);
       this.setLoadingInitial(false);
     } catch (error) {
       this.setLoadingInitial(false);
     }
+  };
+
+  setMovies = (movies: Movie[]) => {
+    this.movies = [];
+    this.moviesWithoutPoster = [];
+
+    movies.forEach((movie) => {
+      if (movie.imageUrl) this.movies = [...this.movies, movie];
+      else this.moviesWithoutPoster = [...this.moviesWithoutPoster, movie];
+    });
+  };
+
+  formatGenres = (movie: Movie) => {
+    const genreNames = movie.movieGenres.map((genre) => genre.id);
+    return genreNames.join(", ");
+  };
+
+  formatActors = (actors: string) => {
+    const actorArray = actors.split(",");
+    if (actorArray.length > 2) return actorArray.splice(0, 3).join(", ");
+    else return actorArray.join(", ");
   };
 
   setMovieRating = async (rating: Rating) => {
@@ -69,5 +84,9 @@ export default class MovieStore {
 
   setLoading = (state: boolean) => {
     this.loading = state;
+  };
+
+  setFlip = (index: number) => {
+    this.movies[index].isFlipped = !this.movies[index].isFlipped;
   };
 }

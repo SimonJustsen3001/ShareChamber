@@ -1,4 +1,5 @@
 using API.Extensions;
+using Application.Services;
 using Domain;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -41,6 +42,9 @@ try
 {
   var context = services.GetRequiredService<DataContext>();
   var userManager = services.GetRequiredService<UserManager<AppUser>>();
+  var httpClient = new HttpClient();
+  var popularMovieService = new PopularMovieService(context);
+  await popularMovieService.StartAsync(CancellationToken.None);
   await context.Database.MigrateAsync();
   await Seed.SeedData(context, userManager);
 }

@@ -1,271 +1,319 @@
-.list-selected {
-  height: 100%;
-  width: 70%;
-  margin-right: 50px;
-  padding-right: 20px;
-  box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.15);
-}
-
-.list-selected-info {
-  margin-top: 20px;
-  margin-left: 20px;
-}
-
-.list-title-container {
+.selectedmovielist-wrapper {
   display: flex;
-  width: 100%;
+  flex-direction: column;
+  height: auto;
+  max-width: 60%;
+  flex: 1;
+  padding: 2%;
+  margin: 0 2%;
+  border-radius: 50px;
+  background-color: var(--color-other);
+}
+
+.selectedmovielist-header-wrapper {
+  display: flex;
   justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.selectedmovielist-header-text {
+  margin: 0;
+  padding: 0;
+  font-size: var(--font-size-4);
+  flex: 4;
+}
+
+.selectedmovielist-buttons-wrapper {
+  display: flex;
+  justify-content: center;
   align-items: center;
-  margin-bottom: 10px;
-}
-
-.selected-name {
-  font-weight: 600;
-  font-size: var(--font-size-3);
-  padding: 10px 0px;
-  line-height: 30px;
-}
-
-.selected-button-container {
-  display: flex;
-  justify-content: space-between;
   min-width: 400px;
+  flex: 1;
 }
 
-.add-collab-button,
-.delete-list-button {
+.selectedmovielist-button-add-collab,
+.selectedmovielist-button-remove-list {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex: 1;
+  font-size: var(--font-size-3);
+  background-color: var(--color-1);
+  border-radius: 10px;
   color: white;
-  box-shadow: 0px 0px 2px 2px rgba(255, 255, 255, 0.4);
-  border: none;
-  padding: 10px 0px;
-  width: 100%;
-  border-radius: var(--border-radius);
+  padding: 2%;
+  transition: scale 0.5s;
   cursor: pointer;
 }
 
-.add-collab-button {
-  background-color: #0277bd;
-  margin-right: 10px;
+.selectedmovielist-button-add-collab:hover,
+.selectedmovielist-button-remove-list:hover {
+  scale: 1.1;
 }
 
-.delete-list-button {
-  background-color: rgb(189, 2, 43);
+.selectedmovielist-button-add-collab {
+  margin-right: 20px;
+  border: 3px var(--color-button) solid;
 }
 
-.selected-author {
-  font-size: var(--font-size-1);
-}
-.author {
-  font-weight: bold;
-}
-.other-collaborators {
-  color: rgb(183, 183, 183);
+.selectedmovielist-button-remove-list {
+  border: 3px rgb(189, 2, 43) solid;
 }
 
-.selected-list-overview {
-  position: relative;
-  margin-top: 20px;
-  height: auto;
-  width: 100%;
-}
-
-.selected-list-container {
-  position: relative;
-  display: flex;
-  aspect-ratio: 20 / 8;
-  margin-bottom: 20px;
-  padding: 20px;
-  border-radius: var(--border-radius);
-  box-shadow: 0px 0px 2px 2px rgba(255, 255, 255, 0.4);
-}
-
-.movie-list-image {
-  width: 200px;
-}
-
-.movie-list-info {
-  display: flex;
-  position: relative;
-  flex-direction: column;
-  width: 60%;
-  height: auto;
-  margin-left: 30px;
-}
-
-.movie-list-title {
-  margin-bottom: 5px;
-  font-weight: 600;
+.selectedmovielist-collaborators {
   font-size: var(--font-size-3);
-  padding: 8px 0px;
-  max-height: 70px;
-  max-width: 75%;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  line-height: 30px;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  margin-bottom: 10px;
+  color: gray;
 }
 
-.movie-list-metadata {
-  color: rgb(183, 183, 183);
-  max-width: 75%;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.selectedmovielist-owner {
+  color: white;
 }
 
-.movie-description {
-  margin-top: 40px;
-  margin-bottom: 20px;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  line-height: 30px;
-  height: 120px;
-  -webkit-line-clamp: 4;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.movie-list-director,
-.movie-list-actors {
-  color: rgb(183, 183, 183);
-  margin-bottom: 6px;
-  font-size: var(--font-size-1);
-}
-
-.movie-list-ratings {
+.selectedmovielist-movielist-wrapper {
   display: flex;
   flex-direction: column;
-  position: absolute;
-  right: 5px;
-  width: 110px;
 }
 
-.personal-rating,
-.imdb-rating {
+.selectedmovielist-movie-wrapper {
+  display: flex;
+  height: 400px;
+  background-color: var(--color-2);
+  padding: 2%;
+  border-radius: 40px;
+  margin: 10px 0;
+}
+
+.selectedmovielist-image-wrapper {
+  position: relative;
+  width: 250px;
+  height: 350px;
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+.selectedmovielist-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.selectedmovielist-all-rating-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.selectedmovielist-rating-wrapper,
+.selectedmovielist-personal-rating-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  width: 50px;
+  height: 50px;
+}
+
+.rating-star {
+  position: absolute;
+  height: 65px;
+}
+
+.selectedmovielist-rating,
+.selectedmovielist-personal-rating {
+  position: absolute;
+  display: flex;
+}
+
+.selectedmovielist-movie-year {
+  position: absolute;
+  bottom: 10px;
+  right: 15px;
+  background-color: black;
+  padding: 6px;
+  border-radius: 10px;
+}
+
+.selectedmovielist-movie-info-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0 2%;
+}
+
+.selectedmovielist-movie-title-wrapper {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+}
+
+.selectedmovielist-title-genre {
+  flex: 2;
+  margin-right: 10px;
+}
+
+.selectedmovielist-movie-title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-right: 10px;
   font-size: var(--font-size-3);
 }
 
-.personal-rating:hover {
-  cursor: pointer;
-  box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.15);
+.selectedmovielist-genres {
+  color: gray;
 }
 
-.imdb-rating {
-  margin-bottom: 20px;
-}
-
-.imdb-rating i {
-  margin-bottom: 2px;
-  margin-right: 10px;
-}
-
-.imdb-rating i {
-  color: gold;
-}
-
-.personal-rating i {
-  margin-right: 10px;
-  color: rgb(2, 119, 189);
-}
-
-.remove-movie-button {
-  position: absolute;
+.selectedmovielist-button-remove-movie {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex: 1;
+  font-size: var(--font-size-3);
+  background-color: var(--color-1);
+  border-radius: 10px;
   color: white;
-  background-color: rgb(189, 2, 43);
-  box-shadow: 0px 0px 2px 2px rgba(255, 255, 255, 0.4);
-  border: none;
-  padding: 10px 0px;
-  width: 20%;
-  border-radius: var(--border-radius);
+  padding: 2%;
+  transition: scale 0.5s;
   cursor: pointer;
-  right: 30px;
-  bottom: 25px;
-  z-index: 3;
+  border: 3px rgb(189, 2, 43) solid;
 }
 
-@media (max-width: 768px) {
-  .list-selected {
-    height: 100%;
-    width: 100%;
-    margin-right: 0px;
-    padding-right: 20px;
+.selectedmovielist-button-remove-movie:hover {
+  scale: 1.1;
+}
+
+.selectedmovielist-movie-description {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  font-size: var(--font-size-2);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0;
+}
+
+.selectedmovielist-movie-crew-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.selectedmovielist-movie-featured-actors,
+.selectedmovielist-movie-director {
+  margin: 0;
+  font-size: var(--font-size-1);
+  color: gray;
+}
+
+@media (max-width: 576px) {
+  .selectedmovielist-wrapper {
+    max-width: 320px;
   }
 
-  .selected-button-container {
-    min-width: 100px;
+  .selectedmovielist-movie-wrapper {
+    height: auto;
+    flex-direction: column;
+    align-items: center;
   }
 
-  .list-selected-info {
-    margin-top: 20px;
-    margin-left: 20px;
+  .selectedmovielist-header-wrapper {
+    flex-direction: column;
+    align-items: center;
   }
 
-  .list-title-container {
-    width: 100%;
+  .selectedmovielist-header-text {
+    font-size: var(--font-size-4);
     margin-bottom: 10px;
   }
 
-  .selected-list-container {
-    display: flex;
-    aspect-ratio: none;
-    flex-direction: column-reverse;
-    padding: 10px;
-    width: 100%;
+  .selectedmovielist-buttons-wrapper {
+    min-width: 300px;
+  }
+
+  .selectedmovielist-button-text {
+    display: none;
+  }
+
+  .selectedmovielist-movie-title {
+    width: 190px;
+    margin-right: 0;
+    -webkit-line-clamp: 4;
+  }
+
+  .selectedmovielist-movie-title-wrapper {
+    align-items: start;
+    margin-top: 10px;
+  }
+
+  .selectedmovielist-movie-description {
+    font-size: var(--font-size-1);
+    -webkit-line-clamp: 6;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+  .selectedmovielist-wrapper {
+    max-width: 320px;
+  }
+
+  .selectedmovielist-movie-wrapper {
     height: auto;
-    border-radius: var(--border-radius);
-  }
-
-  .movie-list-image {
-    width: 150px;
-  }
-
-  .movie-list-info {
-    display: flex;
     flex-direction: column;
-    width: 100%;
-    margin-left: 0;
+    align-items: center;
   }
 
-  .movie-list-title {
-    font-size: var(--font-size-2);
-    max-height: 120px;
-    max-width: none;
-    -webkit-line-clamp: 3;
+  .selectedmovielist-header-wrapper {
+    flex-direction: column;
+    align-items: center;
   }
 
-  .movie-list-metadata {
+  .selectedmovielist-header-text {
+    font-size: var(--font-size-4);
+    margin-bottom: 10px;
+  }
+
+  .selectedmovielist-buttons-wrapper {
+    min-width: 300px;
+  }
+
+  .selectedmovielist-button-text {
     display: none;
   }
 
-  .movie-description {
-    display: none;
+  .selectedmovielist-movie-title {
+    width: 190px;
+    margin-right: 0;
+    -webkit-line-clamp: 4;
   }
 
-  .movie-list-director,
-  .movie-list-actors {
-    display: none;
+  .selectedmovielist-movie-title-wrapper {
+    align-items: start;
+    margin-top: 10px;
   }
 
-  .movie-list-ratings {
-    right: 0px;
-    bottom: 160px;
-    width: 100px;
+  .selectedmovielist-movie-description {
+    font-size: var(--font-size-1);
+    -webkit-line-clamp: 6;
   }
+}
 
-  .personal-rating,
-  .imdb-rating {
-    font-size: var(--font-size-2);
+@media (min-width: 769px) and (max-width: 999px) {
+  .selectedmovielist-wrapper {
+    max-width: 760px;
   }
+}
 
-  .remove-movie-button {
-    width: 30%;
-    right: 15px;
-    bottom: 12px;
+@media (min-width: 1000px) and (max-width: 1199px) {
+  .selectedmovielist-wrapper {
+    max-width: 760px;
   }
+}
+
+@media (min-width: 1200px) and (max-width: 1599px) {
+}
+
+@media (min-width: 1600px) and (max-width: 2199px) {
 }

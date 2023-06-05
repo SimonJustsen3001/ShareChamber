@@ -1,10 +1,10 @@
 .navbar {
-  position: fixed;
   height: var(--navbar-height);
   inset: 0 0 0 0;
   display: flex;
   justify-content: space-between;
-  z-index: 50;
+  z-index: 3;
+  max-height: var(--navbar-height);
   flex-direction: row;
 }
 
@@ -30,7 +30,7 @@
 .right-navbar-menu {
   width: 10%;
   height: 100%;
-  min-width: 200px;
+  min-width: 250px;
 }
 
 .menu-element,
@@ -40,7 +40,7 @@
   color: white;
   height: 100%;
   display: flex;
-  min-width: 100px;
+  min-width: 110px;
   justify-content: center;
   align-items: center;
   flex: 1;
@@ -62,10 +62,6 @@
   transition: max-height 0.5s ease-in-out;
 }
 
-.profile-element.clicked {
-  box-shadow: inset 0px -4px 5px 1px var(--color-1);
-}
-
 .dropdown-menu {
   display: flex;
   flex-direction: column;
@@ -76,6 +72,7 @@
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.5s ease-in-out;
+  z-index: 3;
 }
 
 .dropdown-link {
@@ -97,15 +94,17 @@
 
 @media (max-width: 768px) {
   .navbar {
+    position: fixed;
     height: auto;
     width: 100;
+    max-height: 100vh;
     inset: 0 0 0 auto;
     flex-direction: column;
     background-color: var(--color-4);
     justify-content: start;
   }
   .left-navbar-menu {
-    margin-top: 50px;
+    margin-top: 60px;
     height: 10%;
     width: 100%;
     min-height: 50px;
@@ -114,7 +113,7 @@
   }
 
   .middle-navbar-menu {
-    height: 20%;
+    height: auto;
     width: 100%;
     min-height: 50px;
     min-width: auto;
@@ -122,7 +121,7 @@
   }
 
   .right-navbar-menu {
-    height: 10%;
+    height: auto;
     width: 100%;
     min-height: 50px;
     min-width: auto;
@@ -132,6 +131,7 @@
   .menu-element,
   .profile-element {
     text-align: center;
+    min-height: 100px;
     min-width: 150px;
   }
 

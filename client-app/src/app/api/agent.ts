@@ -2,6 +2,7 @@ import axios, { AxiosError, AxiosResponse } from "axios";
 import { Movie, MovieId } from "../interfaces/movieInterface";
 import {
   MovieList,
+  MovieListIds,
   MovieListCreateFormValues,
 } from "../interfaces/movieListInterface";
 import { User, UserFormValues } from "../interfaces/userInterface";
@@ -27,15 +28,14 @@ axios.interceptors.response.use(
     const { data, status, config } = error.response as AxiosResponse;
     switch (status) {
       case 400:
+        console.log("Bad request error details: ", data);
         if (config.method === "get" && data.errors.hasOwnProperty("id"))
           router.navigate("/not-found");
         if (data.errors) {
           const modalStateErrors = [];
           for (const key in data.errors) {
-            console.log(key);
             if (data.errors[key]) {
               modalStateErrors.push(data.errors[key]);
-              console.log(data.errors[key]);
               toast.error(data.errors[key][0]);
             }
           }
@@ -45,15 +45,19 @@ axios.interceptors.response.use(
         }
         break;
       case 401:
+        console.log("Unauthorized error details: ", data);
         toast.error("unauthorized");
         break;
       case 403:
+        console.log("forbidden error details: ", data);
         toast.error("forbidden");
         break;
       case 404:
+        console.log("not-found error details: ", data);
         router.navigate("/not-found");
         break;
       case 500:
+        console.log("Server error details: ", data);
         router.navigate("/server-error");
         break;
     }
@@ -90,13 +94,10 @@ const MovieLists = {
   list: () => requests.get<MovieList[]>("/movielist"),
   createList: (movieList: MovieListCreateFormValues) =>
     requests.post<MovieList>(`/movielist/${movieList.name}`, movieList),
-  addMovieToList: (movieListId: string, movieId: MovieId) =>
-    requests.patch<MovieId>(`/movielist/${movieListId}`, movieId),
-  removeMovieFromList: (movieListId: string, movieId: string) =>
-    requests.patch<MovieId>(
-      `/movielist/${movieListId}/removeMovie/${movieId}`,
-      []
-    ),
+  addMovieToLists: (movieListIds: MovieListIds, movieId: string) =>
+    requests.patch<MovieId>(`/movielist/addMovie/${movieId}`, movieListIds),
+  removeMovieFromList: (movieListIds: MovieListIds, movieId: string) =>
+    requests.patch<MovieId>(`/movielist/removeMovie/${movieId}`, movieListIds),
   deleteList: (movieListId: string) =>
     requests.del<MovieList>(`/movielist/${movieListId}`),
   addCollaborator: (movieListId: string, collaboratorName: string) =>

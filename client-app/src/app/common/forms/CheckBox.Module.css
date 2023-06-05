@@ -1,0 +1,29 @@
+.checkbox-wrapper {
+  display: flex;
+  width: 90%;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: var(--font-size-3);
+  height: 100px;
+  cursor: pointer;
+}
+
+.checkbox-wrapper:hover {
+  box-shadow: 0px 0px 6px var(--color-1-transparent);
+}
+
+.checkbox-label {
+  margin-left: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 80%;
+  cursor: inherit;
+}
+
+.checkbox-box {
+  margin-left: 10px;
+  height: 50px;
+  width: 50px;
+  cursor: inherit;
+}

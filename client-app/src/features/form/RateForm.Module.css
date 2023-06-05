@@ -1,20 +1,49 @@
-.testing-environment {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  translate: -50% -50%;
-}
-
 .stars {
   display: flex;
 }
 
 .star-item-blue {
-  font-size: 35px;
+  margin: 0px 2px;
+  flex-basis: 20%;
+  font-size: 40px;
   color: rgb(2, 119, 189);
 }
 
 .star-item-gold {
-  font-size: 35px;
+  margin: 0px 2px;
+  flex-basis: 20%;
+  font-size: 40px;
   color: gold;
+}
+
+@media (max-width: 576px) {
+  .stars {
+    flex-direction: row;
+    flex-wrap: wrap-reverse;
+  }
+  .star-item-blue {
+    margin: 0px 0px;
+    flex-basis: 20%;
+    font-size: 50px;
+  }
+
+  .star-item-gold {
+    margin: 0px 0px;
+    flex-basis: 20%;
+    font-size: 50px;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+  .star-item-blue {
+    margin: 0px 2px;
+    flex-basis: 20%;
+    font-size: 40px;
+  }
+
+  .star-item-gold {
+    margin: 0px 2px;
+    flex-basis: 20%;
+    font-size: 40px;
+  }
 }

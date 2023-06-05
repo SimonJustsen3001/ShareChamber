@@ -2,10 +2,11 @@ import { makeAutoObservable } from "mobx";
 import agent from "../api/agent";
 import {
   MovieList,
+  MovieListIds,
   MovieListCreateFormValues,
 } from "../interfaces/movieListInterface";
 import { store } from "./store";
-import { MovieId } from "../interfaces/movieInterface";
+import Cookies from "js-cookie";
 
 export default class MovieListStore {
   movieLists: MovieList[] = [];
@@ -23,9 +24,7 @@ export default class MovieListStore {
     this.setLoadingInitial(true);
     try {
       const movieLists = await agent.MovieLists.list();
-      console.log(movieLists);
       this.movieLists = [];
-
       movieLists.forEach((movieList) => {
         this.movieLists = [...this.movieLists, movieList];
       });
@@ -35,9 +34,28 @@ export default class MovieListStore {
     }
   };
 
-  addMovieToList = async (listId: string, movieId: string) => {
-    const creds: MovieId = { movieId };
-    await agent.MovieLists.addMovieToList(listId, creds);
+  addMovieToList = async (addMovieListIds: MovieListIds, movieId: string) => {
+    await agent.MovieLists.addMovieToLists(addMovieListIds, movieId);
+  };
+
+  removeMovieFromList = async (
+    removeMovieListIds: MovieListIds,
+    movieId: string
+  ) => {
+    await agent.MovieLists.removeMovieFromList(removeMovieListIds, movieId);
+  };
+
+  updateMovieList = async (
+    addMovieListIds: MovieListIds,
+    removeMovieListIds: MovieListIds,
+    movieId: string
+  ) => {
+    if (addMovieListIds.movieLists.length > 0)
+      await this.addMovieToList(addMovieListIds, movieId);
+    if (removeMovieListIds.movieLists.length > 0)
+      await this.removeMovieFromList(removeMovieListIds, movieId);
+    await this.loadMovieLists();
+    store.modalStore.closeModal();
   };
 
   addCollaborator = async (listId: string, displayName: string) => {
@@ -50,29 +68,10 @@ export default class MovieListStore {
     store.modalStore.closeModal();
   };
 
-  removeMovieFromList = async (listId: string, movieId: string) => {
-    await agent.MovieLists.removeMovieFromList(listId, movieId);
-  };
-
   deleteList = async (listId: string) => {
     await agent.MovieLists.deleteList(listId);
     this.selectedMovieList = null;
     store.modalStore.closeModal();
-  };
-
-  toggleMovieInList = async (listId: string, movieId: string) => {
-    const isMovieInList = this.doesListHaveMovie(listId, movieId);
-    this.setLoadingToggle(true, movieId, listId);
-
-    if (isMovieInList) {
-      await agent.MovieLists.removeMovieFromList(listId, movieId);
-    } else {
-      const creds: MovieId = { movieId };
-      await agent.MovieLists.addMovieToList(listId, creds);
-    }
-    this.setLoadingToggle(false, null, null);
-
-    this.loadMovieLists();
   };
 
   doesListHaveMovie = (movieListId: string, movieId: string): boolean => {
@@ -106,7 +105,16 @@ export default class MovieListStore {
     this.loadingInitial = state;
   };
 
+  loadSelectedMovieList = (movieList: MovieList | null) => {
+    this.selectedMovieList = movieList;
+  };
+
   setSelectedMovieList = (movieList: MovieList | null) => {
+    Cookies.set("selectedList", movieList?.id!, {
+      sameSite: "none",
+      secure: true,
+      expires: 1 / 48,
+    });
     this.selectedMovieList = movieList;
   };
 
