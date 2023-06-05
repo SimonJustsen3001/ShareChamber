@@ -2,10 +2,11 @@
 .button-negative,
 .button-positive-invalid,
 .button-negative-invalid {
-  padding: 16px 0px;
-  width: 75%;
+  padding: 24px 0px;
+  width: 80%;
+  max-width: 700px;
   margin: 10px 0px;
-  font-size: 18px;
+  font-size: var(--font-size-3);
   font-weight: 600px;
   border-radius: 10px;
   border: none;

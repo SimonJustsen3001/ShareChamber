@@ -17,17 +17,19 @@ export default observer(function NavBar() {
   }, []);
 
   useEffect(() => {
-    gsap.to(navbarRef.current, {
-      maxHeight: 0,
-      duration: 0.3,
-      scrollTrigger: {
-        trigger: "",
-        scrub: 1,
-        start: "10 top",
-        end: "50 50",
-      },
-    });
-    console.log("test");
+    if (!userStore.isSmallScreen) {
+      gsap.to(navbarRef.current, {
+        maxHeight: 0,
+        overflow: "hidden",
+        duration: 0.1,
+        scrollTrigger: {
+          trigger: "",
+          scrub: 1,
+          start: "10 top",
+          end: "50 50",
+        },
+      });
+    }
   }, [userStore.isSmallScreen]);
 
   const toggleDropDown = () => {

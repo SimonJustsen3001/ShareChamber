@@ -3,14 +3,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-width: 500px;
   color: white;
   background-color: var(--color-4);
+  overflow: hidden;
 }
 
 .form-header {
   text-align: center;
-  font-size: 28px;
+  font-size: var(--font-size-5);
   font-weight: 700px;
 }
 

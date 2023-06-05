@@ -24,11 +24,8 @@ body {
   background-color: var(--color-4) !important;
 }
 
-.ui.modal {
-  border-radius: 50px !important;
-  width: 100% !important;
-  max-width: 500px !important;
-  margin: 0 auto !important;
+.ui.small.modal {
+  border-radius: 10px !important;
 }
 
 html {

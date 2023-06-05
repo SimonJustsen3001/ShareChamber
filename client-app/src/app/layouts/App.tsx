@@ -9,6 +9,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "@fortawesome/fontawesome-free/css/all.css";
 import Footer from "./Footer";
+import Cookies from "js-cookie";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -52,6 +53,7 @@ function App() {
 
   useEffect(() => {
     if (userStore.user) movieListStore.loadMovieLists();
+    var theme = Cookies.get("theme");
   }, [movieListStore, userStore.user]);
 
   return (

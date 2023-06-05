@@ -7,6 +7,11 @@ export default class UserStore {
   user: User | null = null;
   searchAnonymous: boolean = false;
   isSmallScreen: boolean = true;
+  currentTheme: number = 0;
+  backgrounds: string[] = [
+    "/cheng-feng-psdV2Rl-GvU-unsplash.jpg",
+    "/pexels-guillaume-meurice-2873671.jpg",
+  ];
 
   constructor() {
     makeAutoObservable(this);
@@ -55,5 +60,9 @@ export default class UserStore {
 
   setIsSmallScreen = (state: boolean) => {
     this.isSmallScreen = state;
+  };
+
+  setTheme = (theme: number) => {
+    this.currentTheme = theme;
   };
 }

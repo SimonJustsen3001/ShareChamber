@@ -12,6 +12,7 @@ export interface Movie {
   id: string;
   imageUrl: string;
   movieGenres: Genre[];
+  isFlipped: boolean;
 }
 
 export interface MovieId {

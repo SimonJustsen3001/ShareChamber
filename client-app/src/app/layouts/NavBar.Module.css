@@ -3,9 +3,8 @@
   inset: 0 0 0 0;
   display: flex;
   justify-content: space-between;
-  z-index: 1;
+  z-index: 3;
   max-height: var(--navbar-height);
-  overflow: hidden;
   flex-direction: row;
 }
 
@@ -63,10 +62,6 @@
   transition: max-height 0.5s ease-in-out;
 }
 
-.profile-element.clicked {
-  box-shadow: inset 0px -4px 5px 1px var(--color-1);
-}
-
 .dropdown-menu {
   display: flex;
   flex-direction: column;
@@ -102,6 +97,7 @@
     position: fixed;
     height: auto;
     width: 100;
+    max-height: 100vh;
     inset: 0 0 0 auto;
     flex-direction: column;
     background-color: var(--color-4);

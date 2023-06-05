@@ -18,6 +18,7 @@ export default class MovieStore {
     this.setLoading(true);
     try {
       const movie = await agent.Movies.single(movieId);
+      movie.isFlipped = false;
       this.selectedMovie = movie;
       this.setLoading(false);
     } catch {
@@ -72,5 +73,9 @@ export default class MovieStore {
 
   setLoading = (state: boolean) => {
     this.loading = state;
+  };
+
+  setFlip = (index: number) => {
+    this.movies[index].isFlipped = !this.movies[index].isFlipped;
   };
 }

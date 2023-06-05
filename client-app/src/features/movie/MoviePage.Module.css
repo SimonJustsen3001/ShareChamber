@@ -9,7 +9,6 @@
   width: 100vw;
   height: 100vh;
   object-fit: cover;
-  object-position: 0 -600px;
   opacity: 0;
   filter: blur(3px) brightness(0.7);
 }
@@ -27,7 +26,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 70%;
+  width: 80%;
   height: auto;
   margin-top: 60px;
   margin-left: auto;
@@ -49,6 +48,7 @@ body::-webkit-scrollbar {
   gap: 40px;
   height: auto;
   box-shadow: 0px 0px 5px var(--color-1);
+  padding-top: 40px;
   padding-bottom: 40px;
   border-radius: 20px;
 }
@@ -65,6 +65,10 @@ body::-webkit-scrollbar {
 }
 
 .movie-card-container:hover .movie-flip-card {
+  transform: rotateY(180deg);
+}
+
+.flipped {
   transform: rotateY(180deg);
 }
 
@@ -100,10 +104,15 @@ body::-webkit-scrollbar {
 
 .movie-card-image,
 .movie-card-back-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   height: 100%;
   width: 100%;
   border-radius: 20px;
+  background-color: var(--color-3);
+  font-size: var(--font-size-3);
 }
 
 .movie-card-description-wrapper {
@@ -224,10 +233,11 @@ body::-webkit-scrollbar {
   font-size: var(--font-size-5);
 }
 
-/* @media (max-width: 576px) {
+@media (max-width: 576px) {
   .movie-grid-wrapper {
-    width: 90%;
+    width: 100%;
     height: auto;
+    min-width: auto;
   }
 
   .movie-grid {
@@ -278,6 +288,7 @@ body::-webkit-scrollbar {
 
 @media (min-width: 576px) and (max-width: 768px) {
   .movie-grid-wrapper {
+    min-width: 576px;
     width: 90%;
     height: auto;
   }
@@ -332,6 +343,7 @@ body::-webkit-scrollbar {
   .movie-grid-wrapper {
     width: 90%;
     height: auto;
+    min-width: auto;
   }
 
   .movie-grid {
@@ -383,19 +395,61 @@ body::-webkit-scrollbar {
 @media (min-width: 1000px) and (max-width: 1599px) {
   .movie-grid-wrapper {
     width: 90%;
+    min-width: auto;
   }
 
   .movie-grid {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .movie-card-container {
+    height: 400px;
+  }
+  .movie-card-front,
+  .movie-card-back {
+    height: 325px;
+    width: 260px;
+  }
+  .movie-card-title {
+    font-size: var(--font-size-2);
+    height: 68px;
+  }
+
+  .movie-card-rating-container,
+  .movie-card-year-container {
+    font-size: var(--font-size-2);
+    top: 10px;
+    height: 35px;
+  }
+
+  .movie-card-rating-container {
+    left: 15px;
+    width: 35px;
+  }
+
+  .movie-card-year-container {
+    right: 15px;
+    padding: 0px 10px;
+    border-radius: 10px;
+  }
+
+  .movie-card-description-text {
+    -webkit-line-clamp: 6;
+    font-size: var(--font-size-2);
+  }
+
+  .movie-card-back-button {
+    font-size: var(--font-size-2);
   }
 }
 
 @media (min-width: 1600px) and (max-width: 2199px) {
   .movie-grid-wrapper {
     width: 80%;
+    min-width: 1450px;
   }
 
   .movie-grid {
     grid-template-columns: repeat(4, 1fr);
   }
-} */
+}
