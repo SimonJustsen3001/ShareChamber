@@ -169,7 +169,7 @@ body::-webkit-scrollbar {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
-  height: 74px;
+  min-height: calc(2 * 1.4285 * var(--font-size-2));
   backdrop-filter: blur(5px);
   font-size: var(--font-size-2);
   text-align: center;
@@ -256,7 +256,7 @@ body::-webkit-scrollbar {
 
   .movie-card-title {
     font-size: var(--font-size-1);
-    height: 68px;
+    min-height: calc(2 * 1.4285 * var(--font-size-1));
   }
 
   .movie-card-rating-container,
@@ -309,7 +309,7 @@ body::-webkit-scrollbar {
 
   .movie-card-title {
     font-size: var(--font-size-1);
-    height: 68px;
+    min-height: calc(2 * 1.4285 * var(--font-size-1));
   }
 
   .movie-card-rating-container,
@@ -361,7 +361,7 @@ body::-webkit-scrollbar {
   }
   .movie-card-title {
     font-size: var(--font-size-1);
-    height: 68px;
+    min-height: calc(2 * 1.4285 * var(--font-size-1));
   }
 
   .movie-card-rating-container,
@@ -412,7 +412,7 @@ body::-webkit-scrollbar {
   }
   .movie-card-title {
     font-size: var(--font-size-2);
-    height: 68px;
+    min-height: calc(2 * 1.4285 * var(--font-size-2));
   }
 
   .movie-card-rating-container,
