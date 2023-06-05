@@ -9,7 +9,7 @@ import Button from "../../app/common/forms/Button";
 import { ErrorResponse } from "../../app/interfaces/errorInterface";
 
 const validationSchema = Yup.object({
-  name: Yup.string().required("Name cannot be empty"),
+  name: Yup.string().required("Name cannot be empty").max(20),
 });
 
 export default observer(function CreateListForm() {

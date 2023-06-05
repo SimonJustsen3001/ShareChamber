@@ -26,7 +26,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 80%;
+  width: 90%;
   height: auto;
   margin-top: 60px;
   margin-left: auto;
@@ -191,7 +191,7 @@ body::-webkit-scrollbar {
 .movie-card-rating-container {
   left: 25px;
   width: 50px;
-  border: solid rgb(255, 215, 0) 2px;
+  border: solid #ffd700 2px;
   background-color: rgba(255, 215, 0, 0.8);
   color: black;
   border-radius: 50%;
@@ -443,7 +443,7 @@ body::-webkit-scrollbar {
   }
 }
 
-@media (min-width: 1600px) and (max-width: 2199px) {
+@media (min-width: 1600px) and (max-width: 1900px) {
   .movie-grid-wrapper {
     width: 80%;
     min-width: 1450px;

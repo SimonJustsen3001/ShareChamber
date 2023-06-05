@@ -14,39 +14,43 @@ const UserMovieListsOverview = observer(() => {
           onClick={() => modalStore.openModal(<CreateListForm />)}
           className="usermovielist-new-list-button"
         >
-          New list
+          New
+          <img src="addList.svg" />
         </button>
       </div>
-
-      {movieListStore.movieLists.map((movieList) => (
-        <div
-          className="usermovielist-list-wrapper"
-          onClick={() => movieListStore.setSelectedMovieList(movieList)}
-        >
-          <div className="usermovielist-image-wrapper">
-            {movieList.movieMovieLists[0] ? (
-              <img
-                className="usermovielist-image"
-                src={movieList.movieMovieLists[0].movie.imageUrl}
-              />
-            ) : (
-              <div className="usermovielist-image grey"></div>
-            )}
-          </div>
-          <div className="usermovielist-text-wrapper">
-            <h4 className="usermovielist-title">{movieList.name}</h4>
-            <div className="usermovielist-list-info-wrapper">
-              <p className="usermovielist-movie-number">
-                {movieList.movieMovieLists.length}
-                {movieList.movieMovieLists.length === 1 ? " title" : " titles"}
-              </p>
-              <p className="usermovielist-owner">
-                {movieList.ownerName}'s list
-              </p>
+      <div className="usermovielist-all-list-wrapper">
+        {movieListStore.movieLists.map((movieList) => (
+          <div
+            className="usermovielist-list-wrapper"
+            onClick={() => movieListStore.setSelectedMovieList(movieList)}
+          >
+            <div className="usermovielist-image-wrapper">
+              {movieList.movieMovieLists[0] ? (
+                <img
+                  className="usermovielist-image"
+                  src={movieList.movieMovieLists[0].movie.imageUrl}
+                />
+              ) : (
+                <div className="usermovielist-image"></div>
+              )}
+            </div>
+            <div className="usermovielist-text-wrapper">
+              <h4 className="usermovielist-title">{movieList.name}</h4>
+              <div className="usermovielist-list-info-wrapper">
+                <p className="usermovielist-movie-number">
+                  {movieList.movieMovieLists.length}
+                  {movieList.movieMovieLists.length === 1
+                    ? " title"
+                    : " titles"}
+                </p>
+                <p className="usermovielist-owner">
+                  {movieList.ownerName}'s list
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 });

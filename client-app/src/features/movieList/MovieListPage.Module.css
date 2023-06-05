@@ -14,3 +14,37 @@
   width: 100%;
   background-color: var(--color-4);
 }
+
+@media (max-width: 576px) {
+  .movielistpage-content {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+  .movielistpage-content {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 999px) {
+  .movielistpage-content {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+}
+
+@media (min-width: 1000px) and (max-width: 1199px) {
+  .movielistpage-content {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1599px) {
+}
+
+@media (min-width: 1600px) and (max-width: 2199px) {
+}

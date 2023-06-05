@@ -47,6 +47,17 @@ export default class MovieStore {
     });
   };
 
+  formatGenres = (movie: Movie) => {
+    const genreNames = movie.movieGenres.map((genre) => genre.id);
+    return genreNames.join(", ");
+  };
+
+  formatActors = (actors: string) => {
+    const actorArray = actors.split(",");
+    if (actorArray.length > 2) return actorArray.splice(0, 3).join(", ");
+    else return actorArray.join(", ");
+  };
+
   setMovieRating = async (rating: Rating) => {
     try {
       await agent.Movies.updateMovieRating(rating);
