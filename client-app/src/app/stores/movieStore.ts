@@ -65,15 +65,15 @@ export default class MovieStore {
   };
 
   submitMovies = async (query: string): Promise<Boolean> => {
-    this.setLoadingInitial(true);
+    this.setLoading(true);
     try {
       const response = await agent.Movies.createMovie(
         query.replace(" ", "%20")
       );
-      this.setLoadingInitial(false);
+      this.setLoading(false);
       return response.status === 200;
     } catch (error) {
-      this.setLoadingInitial(false);
+      this.setLoading(false);
       return false;
     }
   };

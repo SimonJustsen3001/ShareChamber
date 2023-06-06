@@ -39,7 +39,11 @@ const MoviePage = observer(() => {
           <>
             <MovieBanner />
             <SearchBar />
-            {movieStore.movies.length > 0 ? (
+            {movieStore.loading ? (
+              <div className="moviepage-loader">
+                <img className="moviepage-loader-icon" src="loading.svg" />
+              </div>
+            ) : movieStore.movies.length > 0 ? (
               <div className="movie-grid-wrapper">
                 <div ref={movieGridRef} className="movie-grid">
                   {movieStore.movies.map((movie, index) => (

@@ -1,18 +1,34 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./Footer.Module.css";
 import { observer } from "mobx-react-lite";
+import { useEffect } from "react";
 
 const Footer = observer(() => {
+  const location = useLocation();
+
+  const scrollToTop = () => {
+    scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollTo(0, 0);
+  }, [location.pathname]);
+
   return (
     <div className="footer-wrapper">
       <div className="footer-content">
         <div className="footer-links-wrapper">
           <div className="footer-links">
             <h4>ShareChamber</h4>
-            <Link to="/">Home</Link>
-            <Link to="/about">About</Link>
-            <Link to="/movie">Movies</Link>
-            <Link to="/about">Movie Lists</Link>
+            <Link to="/" onClick={scrollToTop}>
+              Home
+            </Link>
+            <Link to="/movie" onClick={scrollToTop}>
+              Movies
+            </Link>
+            <Link to="/list" onClick={scrollToTop}>
+              Movie Lists
+            </Link>
           </div>
         </div>
         <div className="contact-wrapper">

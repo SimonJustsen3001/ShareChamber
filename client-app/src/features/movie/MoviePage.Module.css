@@ -21,6 +21,22 @@
   padding-top: 100px;
 }
 
+.moviepage-loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  height: 50vh;
+  text-align: center;
+  font-size: var(--font-size-5);
+  z-index: 1;
+}
+
+.moviepage-loader-icon {
+  height: 80px;
+  animation: spin 4s infinite;
+}
+
 .movie-grid-wrapper {
   position: relative;
   display: flex;
@@ -231,6 +247,15 @@ body::-webkit-scrollbar {
 .nothing-found-wrapper p {
   text-align: center;
   font-size: var(--font-size-5);
+}
+
+@keyframes spin {
+  from {
+    transform: rotateZ(0deg);
+  }
+  to {
+    transform: rotateZ(360deg);
+  }
 }
 
 @media (hover: none) {
