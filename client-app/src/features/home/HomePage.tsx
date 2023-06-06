@@ -65,7 +65,7 @@ const HomePage = observer(() => {
           <h2 className="banner-subtitle">
             Share lists with eachother with the click of a button.
           </h2>
-          <button className="banner-button">Get Started</button>
+          {/* <button className="banner-button">Get Started</button> */}
         </div>
       </div>
       <div className="about-wrapper">

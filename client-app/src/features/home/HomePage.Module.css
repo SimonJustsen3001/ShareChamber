@@ -122,6 +122,10 @@
   padding: 5%;
 }
 
+.tutorial-title {
+  font-size: var(--font-size-5);
+}
+
 .tutorial-list {
   display: flex;
   flex-direction: column;
