@@ -11,8 +11,9 @@ import { router } from "../routes/Routes";
 import { toast } from "react-toastify";
 import { Rating } from "../interfaces/ratingInterface";
 
-axios.defaults.baseURL =
-  import.meta.env.VITE_API_URL || "https://sharechamber.com/api";
+axios.defaults.baseURL = import.meta.env.DEV
+  ? "https://localhost:5000/api"
+  : "https://sharechamber.com/api";
 
 axios.interceptors.request.use((config) => {
   const token = store.commonStore.token;

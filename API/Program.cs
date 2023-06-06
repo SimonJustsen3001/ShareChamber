@@ -44,6 +44,10 @@ try
   var userManager = services.GetRequiredService<UserManager<AppUser>>();
   var httpClient = new HttpClient();
   var popularMovieService = new PopularMovieService(context);
+  if (!app.Environment.IsDevelopment())
+  {
+    await popularMovieService.UpdatePopular();
+  }
   await popularMovieService.StartAsync(CancellationToken.None);
   await context.Database.MigrateAsync();
   await Seed.SeedData(context, userManager);
