@@ -29,7 +29,6 @@ namespace Persistance
     {
       // Configure your database provider and connection string
       optionsBuilder.UseNpgsql(_config.GetConnectionString("DefaultConnection"));
-
       // Enable sensitive data logging
       // optionsBuilder.EnableSensitiveDataLogging();
     }

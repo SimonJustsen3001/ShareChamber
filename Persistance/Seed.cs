@@ -12,15 +12,15 @@ namespace Persistance
         var users = new List<AppUser>{
           new AppUser
           {
-            DisplayName = "Bob",
-            Email = "Bob@hotmail.com",
-            UserName = "Bob"
+            DisplayName = "test",
+            Email = "test@hotmail.com",
+            UserName = "test"
           },
           new AppUser
           {
-            DisplayName = "Tom",
-            Email = "Tom@hotmail.com",
-            UserName = "Tom"
+            DisplayName = "test2",
+            Email = "test2@hotmail.com",
+            UserName = "test2"
           }
         };
 

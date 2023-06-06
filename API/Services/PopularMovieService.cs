@@ -1,9 +1,7 @@
-using System.Text.RegularExpressions;
 using API.Services;
 using Application.JsonDTOs;
 using Domain;
 using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
 using Persistance;
 
 namespace Application.Services
@@ -67,19 +65,18 @@ namespace Application.Services
         var existingPopularMovies = _context.PopularMovies.ToList();
 
         var moviesToRemove = existingPopularMovies
-            .Where(pm => !allMovies.Any(am => am.Id == pm.MovieId))
-            .ToList();
+          .Where(pm => !allMovies.Any(am => am.Id == pm.MovieId))
+          .ToList();
 
-        if (moviesToRemove != null && moviesToRemove.Count > 0)
+        var moviesToAdd = allMovies
+          .Where(am => !existingPopularMovies.Any(pm => pm.MovieId == am.Id))
+          .Select(am => new PopularMovie { MovieId = am.Id })
+          .ToList();
+
+        if (moviesToRemove.Count > 0 || moviesToAdd.Count > 0)
         {
-          _context.RemoveRange(moviesToRemove);
-
-          var moviesToAdd = allMovies
-              .Where(am => !existingPopularMovies.Any(pm => pm.MovieId == am.Id))
-              .Select(am => new PopularMovie { MovieId = am.Id })
-              .ToList();
-
-          await _context.AddRangeAsync(moviesToAdd);
+          _context.PopularMovies.RemoveRange(moviesToRemove);
+          await _context.PopularMovies.AddRangeAsync(moviesToAdd);
         }
 
         var result = await _context.SaveChangesAsync() > 0;
@@ -118,9 +115,9 @@ namespace Application.Services
             var existingGenre = _context.Genres.AsNoTracking().FirstOrDefault(x => x.Id == genre.Id);
             if (existingGenre == null)
             {
-              existingGenre = new Genre { Id = genre.Id }; // Assuming your Genre class has a Name property
+              existingGenre = new Genre { Id = genre.Id };
               _context.Genres.Add(existingGenre);
-              _context.SaveChanges(); // Save the changes to create the new genre in the database
+              _context.SaveChanges();
             }
 
             movieGenre.Add(new MovieGenre

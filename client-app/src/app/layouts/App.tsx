@@ -38,8 +38,6 @@ function App() {
         });
       });
       return () => ctx.revert();
-    } else {
-      let ctx = gsap.context(() => {});
     }
   }, [userStore.isSmallScreen]);
 

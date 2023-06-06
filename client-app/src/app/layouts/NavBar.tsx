@@ -17,18 +17,24 @@ export default observer(function NavBar() {
   }, []);
 
   useEffect(() => {
-    if (!userStore.isSmallScreen) {
-      gsap.to(navbarRef.current, {
-        maxHeight: 0,
-        overflow: "hidden",
-        duration: 0.1,
-        scrollTrigger: {
-          trigger: "",
-          scrub: 1,
-          start: "10 top",
-          end: "50 50",
-        },
+    if (userStore.isSmallScreen) {
+      let ctx = gsap.context(() => {
+        gsap.to(navbarRef.current, {
+          maxHeight: 0,
+          overflow: "hidden",
+          duration: 0.1,
+          scrollTrigger: {
+            trigger: "",
+            scrub: 1,
+            start: "10 top",
+            end: "50 50",
+          },
+        });
       });
+      return () => ctx.revert();
+    }
+
+    if (!userStore.isSmallScreen) {
     }
   }, [userStore.isSmallScreen]);
 
@@ -62,12 +68,6 @@ export default observer(function NavBar() {
               <div
                 className={`dropdown-menu ${dropDownVisible ? "visible" : ""}`}
               >
-                <Link to="/settings" className="dropdown-link">
-                  Settings
-                </Link>
-                <Link to="/profile" className="dropdown-link">
-                  Profile
-                </Link>
                 <Link
                   to={currentPath}
                   onClick={() => {

@@ -18,9 +18,11 @@ const MoviePage = observer(() => {
     "/cheng-feng-psdV2Rl-GvU-unsplash.jpg",
     "/pexels-guillaume-meurice-2873671.jpg",
   ]);
+  const [isTouch, setIsTouch] = useState(false);
 
   const component = useRef<HTMLDivElement>(null);
   const movieGridRef = useRef<HTMLImageElement>(null);
+  const canHover: boolean = window.matchMedia("(hover: hover)").matches;
 
   useEffect(() => {
     movieStore.loadMovies("");
@@ -41,10 +43,7 @@ const MoviePage = observer(() => {
               <div className="movie-grid-wrapper">
                 <div ref={movieGridRef} className="movie-grid">
                   {movieStore.movies.map((movie, index) => (
-                    <div
-                      className="movie-card-container"
-                      onClick={() => movieStore.setFlip(index)}
-                    >
+                    <div className="movie-card-container">
                       <div
                         className={
                           movie.isFlipped
@@ -52,7 +51,10 @@ const MoviePage = observer(() => {
                             : "movie-flip-card"
                         }
                       >
-                        <div className="movie-card-front">
+                        <div
+                          className="movie-card-front"
+                          onClick={() => movieStore.setFlip(index)}
+                        >
                           <img
                             className="movie-card-image"
                             src={movie.imageUrl}
@@ -73,7 +75,10 @@ const MoviePage = observer(() => {
                             <></>
                           )}
                         </div>
-                        <div className="movie-card-back">
+                        <div
+                          className="movie-card-back"
+                          onClick={() => movieStore.setFlip(index)}
+                        >
                           <div className="movie-card-description-wrapper">
                             <p className="movie-card-description-text">
                               {movie.description}
