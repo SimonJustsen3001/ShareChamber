@@ -28,8 +28,7 @@ namespace Persistance
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
       // Configure your database provider and connection string
-      optionsBuilder.UseNpgsql(_config.GetConnectionString("DefaultConnection"));
-      // Enable sensitive data logging
+      optionsBuilder.UseNpgsql(Environment.GetEnvironmentVariable("DB_CONNECTION_STRING"));
       // optionsBuilder.EnableSensitiveDataLogging();
     }
 

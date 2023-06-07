@@ -15,8 +15,6 @@ axios.defaults.baseURL = import.meta.env.DEV
   ? "https://localhost:5000/api"
   : "https://sharechamber.com/api";
 
-console.log(import.meta.env.MODE);
-
 axios.interceptors.request.use((config) => {
   const token = store.commonStore.token;
   if (token && config.headers) config.headers.Authorization = `Bearer ${token}`;

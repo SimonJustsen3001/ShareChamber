@@ -15,7 +15,7 @@ namespace API.Extensions
       services.AddSwaggerGen();
       services.AddDbContext<DataContext>(opt =>
       {
-        opt.UseNpgsql(config.GetConnectionString("DefaultConnection"));
+        opt.UseNpgsql(Environment.GetEnvironmentVariable("DB_CONNECTION_STRING"));
       });
 
       services.AddCors(opt =>
