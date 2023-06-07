@@ -46,19 +46,15 @@ axios.interceptors.response.use(
         }
         break;
       case 401:
-        console.log("Unauthorized error details: ", data);
-        toast.error("unauthorized");
+        toast.error("Unauthorized, Please login");
         break;
       case 403:
-        console.log("forbidden error details: ", data);
         toast.error("forbidden");
         break;
       case 404:
-        console.log("not-found error details: ", data);
         router.navigate("/not-found");
         break;
       case 500:
-        console.log("Server error details: ", data);
         router.navigate("/server-error");
         break;
     }

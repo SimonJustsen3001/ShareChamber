@@ -41,10 +41,11 @@ namespace Application.Handlers
 
         var movies = new List<Movie>();
         var genres = new List<Genre>();
+        var apiKey = Environment.GetEnvironmentVariable("API_KEY");
 
         Dictionary<string, string> titleFeaturedActors = new Dictionary<string, string>();
         Dictionary<string, string> titleDirector = new Dictionary<string, string>();
-        APIHelper api = new APIHelper(titleFeaturedActors, titleDirector);
+        APIHelper api = new APIHelper(apiKey, titleFeaturedActors, titleDirector);
 
         var movieIds = api.GetIdsFromAPI(request.Query);
         if (movieIds == "")

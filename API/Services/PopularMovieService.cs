@@ -35,12 +35,13 @@ namespace Application.Services
         var genres = new List<Genre>();
         var allMovies = new List<Movie>();
         var batchSize = 25;
+        var apiKey = Environment.GetEnvironmentVariable("API_KEY");
 
 
         Dictionary<string, string> titleFeaturedActors = new Dictionary<string, string>();
         Dictionary<string, string> titleDirector = new Dictionary<string, string>();
 
-        APIHelper api = new APIHelper(titleFeaturedActors, titleDirector);
+        APIHelper api = new APIHelper(apiKey, titleFeaturedActors, titleDirector);
 
         var splitMovieIds = api.GetPopularIdsFromAPI();
         for (int i = 0; i < 4; i++)

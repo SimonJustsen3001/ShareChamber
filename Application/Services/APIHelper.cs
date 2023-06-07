@@ -7,15 +7,19 @@ namespace API.Services
 {
   public class APIHelper
   {
+    private readonly string _APIKey;
     public HttpClient Client { get; set; }
     public Dictionary<string, string> TitleFeaturedActors { get; set; }
     public Dictionary<string, string> TitleDirector { get; set; }
-    public APIHelper(Dictionary<string, string> titleFeaturedActors, Dictionary<string, string> titleDirector)
+
+    public APIHelper(string APIKey, Dictionary<string, string> titleFeaturedActors, Dictionary<string, string> titleDirector)
     {
+      _APIKey = APIKey;
       Client = new HttpClient();
       TitleFeaturedActors = titleFeaturedActors;
       TitleDirector = titleDirector;
     }
+
     public string GetIdsFromAPI(string query)
     {
       var requestUri = $"https://imdb8.p.rapidapi.com/auto-complete?q={query}";
@@ -26,7 +30,7 @@ namespace API.Services
         RequestUri = new Uri(requestUri),
         Headers =
           {
-            { "X-RapidAPI-Key", "20fa404be5msh445f68288872167p1a35a9jsn7bc985aea709" },
+            { "X-RapidAPI-Key", _APIKey },
             { "X-RapidAPI-Host", "imdb8.p.rapidapi.com" },
           },
       };
@@ -62,7 +66,7 @@ namespace API.Services
         RequestUri = new Uri("https://imdb8.p.rapidapi.com/title/get-most-popular-movies?homeCountry=US&purchaseCountry=US&currentCountry=US"),
         Headers =
         {
-          { "X-RapidAPI-Key", "20fa404be5msh445f68288872167p1a35a9jsn7bc985aea709" },
+          { "X-RapidAPI-Key", _APIKey },
           { "X-RapidAPI-Host", "imdb8.p.rapidapi.com" },
         },
       };
@@ -89,7 +93,7 @@ namespace API.Services
         RequestUri = new Uri($"https://moviesdatabase.p.rapidapi.com/titles/x/titles-by-ids?idsList={movieIds}&info=extendedCast"),
         Headers =
   {
-    { "X-RapidAPI-Key", "20fa404be5msh445f68288872167p1a35a9jsn7bc985aea709" },
+    { "X-RapidAPI-Key", _APIKey },
     { "X-RapidAPI-Host", "moviesdatabase.p.rapidapi.com" },
   },
       };
@@ -127,7 +131,7 @@ namespace API.Services
         RequestUri = new Uri($"https://moviesdatabase.p.rapidapi.com/titles/x/titles-by-ids?idsList={movieIds}&info=creators_directors_writers"),
         Headers =
           {
-            { "X-RapidAPI-Key", "20fa404be5msh445f68288872167p1a35a9jsn7bc985aea709" },
+            { "X-RapidAPI-Key", _APIKey },
             { "X-RapidAPI-Host", "moviesdatabase.p.rapidapi.com" },
           },
       };
@@ -161,7 +165,7 @@ namespace API.Services
         RequestUri = getMoviesUri,
         Headers =
           {
-            { "X-RapidAPI-Key", "20fa404be5msh445f68288872167p1a35a9jsn7bc985aea709" },
+            { "X-RapidAPI-Key", _APIKey },
             { "X-RapidAPI-Host", "moviesdatabase.p.rapidapi.com" },
           },
       };
