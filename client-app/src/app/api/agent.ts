@@ -46,7 +46,8 @@ axios.interceptors.response.use(
         }
         break;
       case 401:
-        toast.error("Unauthorized, Please login");
+        if (data.error) toast.error(data.error);
+        else toast.error("Please login");
         break;
       case 403:
         toast.error("forbidden");

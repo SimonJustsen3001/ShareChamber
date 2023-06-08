@@ -40,7 +40,7 @@ namespace API.Controllers
 
       var user = await _userManager.FindByEmailAsync(loginDto.Email);
       if (user == null)
-        return Unauthorized();
+        return Unauthorized(new { error = "Invalid email or password" });
 
       var result = await _userManager.CheckPasswordAsync(user, loginDto.Password);
 
@@ -49,10 +49,7 @@ namespace API.Controllers
         return CreateUserObject(user);
       }
 
-      return Unauthorized();
-
-
-
+      return Unauthorized(new { error = "Invalid email or password" });
     }
 
     [AllowAnonymous]
