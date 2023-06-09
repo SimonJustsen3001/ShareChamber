@@ -17,7 +17,6 @@ namespace API.Controllers
     [HttpPost("{name}")]
     public async Task<IActionResult> GetMoviesOnList(string name)
     {
-      System.Console.WriteLine("Made it here");
       return HandleResult(await Mediator.Send(new CreateMovieList.Command { Name = name }));
     }
 

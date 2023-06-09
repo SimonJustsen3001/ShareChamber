@@ -18,7 +18,7 @@ namespace Application.Services
     {
       while (!cancelToken.IsCancellationRequested)
       {
-        var nextRunTime = DateTime.Now.AddDays(2);
+        var nextRunTime = DateTime.Now.AddDays(1);
         var delay = nextRunTime - DateTime.Now;
 
         await Task.Delay(delay, cancelToken);

@@ -29,7 +29,6 @@ axios.interceptors.response.use(
     const { data, status, config } = error.response as AxiosResponse;
     switch (status) {
       case 400:
-        console.log("Bad request error details: ", data);
         if (config.method === "get" && data.errors.hasOwnProperty("id"))
           router.navigate("/not-found");
         if (data.errors) {

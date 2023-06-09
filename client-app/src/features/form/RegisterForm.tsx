@@ -12,7 +12,14 @@ const validationSchema = Yup.object({
   displayName: Yup.string().required("Please enter a name to be displayed"),
   username: Yup.string().required("Please enter a username"),
   email: Yup.string().required("Email cannot be empty").email(),
-  password: Yup.string().required("Password cannot be empty"),
+  password: Yup.string()
+    .required("Password cannot be empty")
+    .min(6, "Password must be at least 6 characters")
+    .max(16, "Password can max have 16 characters")
+    .matches(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).*$/,
+      "Password must contain at least one digit and one uppercase and lowercase letter"
+    ),
 });
 
 const RegisterForm = observer(() => {
